@@ -58,9 +58,9 @@ export default function Page() {
         }
       />
 
-      {/* Navigation Controls */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="glassmorphic-dark rounded-2xl p-4 flex items-center space-x-4">
+      {/* Navigation Controls - Moved to center */}
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
+        <div className="glassmorphic-dark rounded-2xl p-4 flex items-center space-x-4 pointer-events-auto">
           {/* Previous Button */}
           <Button
             onClick={prevSlide}

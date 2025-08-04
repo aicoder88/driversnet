@@ -1,17 +1,41 @@
 import { Card } from "@/components/ui/card";
 import { Handshake, Target, Zap, TrendingUp } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function PerfectPartnershipSlide() {
   return (
     <Slide>
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* MASSIVE Partnership Handshake Visual */}
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920&q=90"
+            alt="Massive partnership handshake and connection visual"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Speed/Velocity Imagery Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=90"
+            alt="Speed and velocity imagery with integration diagrams"
+            fill
+            className="object-cover mix-blend-screen"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            THE PERFECT <span className="text-drivers-orange">PARTNERSHIP</span>
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
+            THE PERFECT{" "}
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent">
+              PARTNERSHIP
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Driver's Net + Uber Freight = The most powerful freight network in
             history
           </p>

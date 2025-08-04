@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Rocket, Clock, Phone, CheckCircle } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 interface ImmediateActionSlideProps {
   onRestart?: () => void;
@@ -12,13 +13,36 @@ export default function ImmediateActionSlide({
 }: ImmediateActionSlideProps) {
   return (
     <Slide background="gradient">
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* Urgency Imagery - Clocks, Calendars, Countdown */}
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=1920&q=90"
+            alt="Urgency imagery with clocks and countdown timers"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Action Steps Visual Hierarchy */}
+        <div className="absolute inset-0 opacity-15">
+          <Image
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=90"
+            alt="Clear action steps with visual hierarchy"
+            fill
+            className="object-cover mix-blend-screen"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-bold text-white mb-6">
-            THE TIME IS <span className="text-drivers-orange">NOW</span>
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-7xl font-bold text-white mb-6">
+            THE TIME IS{" "}
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-red bg-clip-text text-transparent animate-pulse">
+              NOW
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Every day you wait, competitors get closer. Secure your freight
             dominance today.
           </p>
@@ -134,39 +158,50 @@ export default function ImmediateActionSlide({
           </div>
         </Card>
 
-        {/* Call to Action */}
-        <div className="text-center space-y-8">
-          <Card className="glassmorphic-dark p-8 inline-block">
-            <h3 className="text-4xl font-bold text-white mb-6">
+        {/* MASSIVE Call to Action */}
+        <div className="text-center space-y-12 relative z-10">
+          <Card className="glassmorphic-dark p-16 inline-block border-2 border-drivers-orange/50 shadow-2xl">
+            <h3 className="text-5xl font-bold text-white mb-8">
               Ready to{" "}
-              <span className="text-drivers-orange">Dominate Freight?</span>
+              <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent">
+                Dominate Freight?
+              </span>
             </h3>
-            <div className="flex justify-center space-x-6">
+
+            {/* DOMINANT Call-to-Action Button */}
+            <div className="flex flex-col items-center space-y-8">
               <Button
                 size="lg"
-                className="bg-drivers-orange hover:bg-drivers-orange/90 text-white px-8 py-4 text-xl font-semibold rounded-xl"
+                className="bg-gradient-to-r from-drivers-orange to-drivers-red hover:from-drivers-orange/90 hover:to-drivers-red/90 text-white px-20 py-10 text-4xl font-bold rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-4 border-drivers-orange/50"
               >
-                <Phone className="mr-2 w-6 h-6" />
-                Call Now: 1-800-FREIGHT
+                <Phone className="mr-4 w-10 h-10" />
+                SCHEDULE DEMO NOW
               </Button>
+
+              {/* Contact Information - Large and Readable */}
+              <div className="space-y-4">
+                <div className="text-3xl font-bold text-drivers-orange">
+                  1-800-FREIGHT
+                </div>
+                <div className="text-2xl text-white">
+                  partnerships@driversnet.com
+                </div>
+                <div className="text-xl text-drivers-yellow font-semibold">
+                  30 Days to Launch • Guaranteed ROI
+                </div>
+              </div>
+
               <Button
                 onClick={onRestart}
                 size="lg"
                 variant="outline"
-                className="border-drivers-orange text-drivers-orange hover:bg-drivers-orange hover:text-white px-8 py-4 text-xl font-semibold rounded-xl"
+                className="border-2 border-drivers-orange text-drivers-orange hover:bg-drivers-orange hover:text-white px-12 py-6 text-2xl font-semibold rounded-xl"
               >
-                <Rocket className="mr-2 w-6 h-6" />
+                <Rocket className="mr-3 w-8 h-8" />
                 Review Presentation
               </Button>
             </div>
           </Card>
-
-          <div className="text-gray-300 text-lg">
-            <strong className="text-white">Contact:</strong>{" "}
-            partnerships@driversnet.com |
-            <strong className="text-white">Direct Line:</strong> +1 (555)
-            123-FREIGHT
-          </div>
         </div>
       </div>
     </Slide>

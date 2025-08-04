@@ -1,17 +1,41 @@
 import { Card } from "@/components/ui/card";
 import { DollarSign, TrendingUp, Calculator, Target } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function InvestmentROISlide() {
   return (
     <Slide background="gradient">
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* HUGE ROI Calculator/Comparison Charts */}
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=90"
+            alt="Huge ROI calculator and comparison charts"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Money/Profit Imagery Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&q=90"
+            alt="Money, profit imagery and performance metrics"
+            fill
+            className="object-cover mix-blend-overlay"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            GUARANTEED <span className="text-drivers-orange">ROI</span>
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
+            GUARANTEED{" "}
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent animate-pulse">
+              ROI
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Every dollar invested returns $4.70 within 18 months. Here's the
             math.
           </p>

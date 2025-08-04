@@ -14,14 +14,28 @@ export default function ProblemOpportunitySlide() {
   return (
     <Slide>
       <div className="space-y-12 relative">
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-            alt="Freight logistics"
-            fill
-            className="object-cover"
-          />
+        {/* MASSIVE Split-Screen Background Images */}
+        <div className="absolute inset-0 flex">
+          {/* Left side - Problem imagery */}
+          <div className="w-1/2 relative opacity-25">
+            <Image
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=90"
+              alt="Traffic congestion and delays"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-drivers-red/30"></div>
+          </div>
+          {/* Right side - Opportunity imagery */}
+          <div className="w-1/2 relative opacity-25">
+            <Image
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=90"
+              alt="Efficient freight operations"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-drivers-green/30"></div>
+          </div>
         </div>
 
         {/* Header with Interactive Chart */}

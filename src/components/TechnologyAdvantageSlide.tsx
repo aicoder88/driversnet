@@ -1,17 +1,41 @@
 import { Card } from "@/components/ui/card";
 import { Brain, Zap, Shield, Cpu } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function TechnologyAdvantageSlide() {
   return (
     <Slide background="gradient">
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* LARGE Technology Dashboard Screenshots */}
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1920&q=90"
+            alt="Advanced AI brain and neural network visualization"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Route Optimization Maps Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90"
+            alt="Route optimization and connected device ecosystem"
+            fill
+            className="object-cover mix-blend-overlay"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            CUTTING-EDGE <span className="text-drivers-orange">TECHNOLOGY</span>
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
+            CUTTING-EDGE{" "}
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent animate-pulse">
+              TECHNOLOGY
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Proprietary AI algorithms and infrastructure that competitors can't
             match
           </p>

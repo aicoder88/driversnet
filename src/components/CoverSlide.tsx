@@ -20,13 +20,23 @@ export default function CoverSlide({ onNext }: CoverSlideProps) {
   return (
     <Slide background="gradient">
       <div className="text-center space-y-12 relative">
-        {/* Background Images */}
+        {/* MASSIVE Background Hero Image */}
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=90"
+            alt="Massive freight network visualization"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Secondary Network Overlay */}
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
-            alt="Freight trucks"
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=90"
+            alt="Trucking logistics network"
             fill
-            className="object-cover rounded-3xl"
+            className="object-cover mix-blend-overlay"
           />
         </div>
 
@@ -65,31 +75,30 @@ export default function CoverSlide({ onNext }: CoverSlideProps) {
           </div>
         </div>
 
-        {/* Main Title with Interactive Elements */}
-        <Card className="glassmorphic-dark border-drivers-orange/30 p-12 relative z-10 transform hover:scale-[1.02] transition-all duration-500">
-          <div className="absolute top-4 right-4">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-drivers-green rounded-full animate-ping"></div>
+        {/* MASSIVE Glassmorphic Title Treatment */}
+        <Card className="glassmorphic-dark border-drivers-orange/50 p-16 relative z-10 transform hover:scale-[1.02] transition-all duration-500 shadow-2xl">
+          <div className="absolute top-6 right-6">
+            <div className="flex space-x-3">
+              <div className="w-4 h-4 bg-drivers-green rounded-full animate-ping"></div>
               <div
-                className="w-3 h-3 bg-drivers-blue rounded-full animate-ping"
+                className="w-4 h-4 bg-drivers-blue rounded-full animate-ping"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-3 h-3 bg-drivers-purple rounded-full animate-ping"
+                className="w-4 h-4 bg-drivers-purple rounded-full animate-ping"
                 style={{ animationDelay: "1s" }}
               ></div>
             </div>
           </div>
-          <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
-            THE FREIGHT
-            <span className="text-drivers-orange block bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent animate-pulse">
-              REVOLUTION
+          <h1 className="text-8xl font-bold text-white mb-8 leading-tight">
+            DRIVER'S NET:
+            <span className="text-drivers-orange block bg-gradient-to-r from-drivers-orange via-drivers-yellow to-drivers-orange bg-clip-text text-transparent animate-pulse">
+              THE GAME CHANGER
             </span>
-            STARTS HERE
           </h1>
-          <p className="text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            How Driver's Net will transform Uber Freight's network into the most
-            powerful, efficient, and profitable freight ecosystem in North
+          <p className="text-3xl text-gray-200 mb-12 max-w-5xl mx-auto leading-relaxed font-light">
+            Revolutionary AI-powered freight optimization that will transform
+            Uber Freight into the most dominant logistics network in North
             America
           </p>
 
@@ -135,15 +144,15 @@ export default function CoverSlide({ onNext }: CoverSlideProps) {
           </div>
         </Card>
 
-        {/* CTA Section */}
-        <div className="flex justify-center space-x-6">
+        {/* MASSIVE CTA Section */}
+        <div className="flex justify-center space-x-8 relative z-10">
           <Button
             onClick={onNext}
             size="lg"
-            className="bg-drivers-orange hover:bg-drivers-orange/90 text-white px-8 py-4 text-xl font-semibold rounded-xl"
+            className="bg-gradient-to-r from-drivers-orange to-drivers-yellow hover:from-drivers-orange/90 hover:to-drivers-yellow/90 text-white px-16 py-8 text-3xl font-bold rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-drivers-orange/50"
           >
-            Begin Presentation
-            <ArrowRight className="ml-2 w-6 h-6" />
+            BEGIN PRESENTATION
+            <ArrowRight className="ml-4 w-8 h-8" />
           </Button>
         </div>
 

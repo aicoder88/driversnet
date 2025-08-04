@@ -1,20 +1,33 @@
 import { Card } from "@/components/ui/card";
 import { Zap, Brain, Network, Shield } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function OurSolutionSlide() {
   return (
     <Slide background="gradient">
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* MASSIVE Technology Dashboard Background */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90"
+            alt="Technology dashboard and AI visualization"
+            fill
+            className="object-cover"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
             DRIVER'S NET: THE{" "}
-            <span className="text-drivers-orange">GAME CHANGER</span>
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent">
+              GAME CHANGER
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Revolutionary AI-powered freight optimization that transforms
-            inefficiency into profit
+            inefficiency into massive profit
           </p>
         </div>
 

@@ -1,18 +1,41 @@
 import { Card } from "@/components/ui/card";
 import { MapPin, Truck, Building, Network } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function ScaleFootprintSlide() {
   return (
     <Slide>
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* HUGE Interactive-Style Map Background */}
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=1920&q=90"
+            alt="Massive North America map with network connections"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Network Visualization Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=90"
+            alt="Network connections and city pins visualization"
+            fill
+            className="object-cover mix-blend-screen"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
             MASSIVE{" "}
-            <span className="text-drivers-orange">SCALE & FOOTPRINT</span>
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent">
+              SCALE & FOOTPRINT
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Continental reach, local expertise. Driver's Net operates where
             freight moves.
           </p>

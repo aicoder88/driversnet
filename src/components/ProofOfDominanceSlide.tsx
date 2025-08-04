@@ -1,17 +1,41 @@
 import { Card } from "@/components/ui/card";
 import { Trophy, TrendingUp, Users, Star } from "lucide-react";
 import Slide from "./Slide";
+import Image from "next/image";
 
 export default function ProofOfDominanceSlide() {
   return (
     <Slide>
-      <div className="space-y-12">
+      <div className="space-y-12 relative">
+        {/* Success Stories Background */}
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=90"
+            alt="Success stories and client testimonials"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Market Leadership Imagery */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=90"
+            alt="Market leadership and dominance visualization"
+            fill
+            className="object-cover mix-blend-overlay"
+          />
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            PROVEN <span className="text-drivers-orange">MARKET DOMINANCE</span>
+        <div className="text-center mb-16 relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-6">
+            PROVEN{" "}
+            <span className="text-drivers-orange bg-gradient-to-r from-drivers-orange to-drivers-yellow bg-clip-text text-transparent">
+              MARKET DOMINANCE
+            </span>
           </h1>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-3xl text-gray-200 max-w-5xl mx-auto font-light">
             Real results from real clients. Driver's Net doesn't just promise—we
             deliver.
           </p>
