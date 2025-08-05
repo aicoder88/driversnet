@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import SideNavigation from "@/components/SideNavigation";
+import SlideZoom from "@/components/SlideZoom";
+import CustomCursor from "@/components/CustomCursor";
 import CoverSlide from "@/components/CoverSlide";
 import ProblemOpportunitySlide from "@/components/ProblemOpportunitySlide";
 import OurSolutionSlide from "@/components/OurSolutionSlide";
@@ -49,77 +51,109 @@ export default function Page() {
   const CurrentSlideComponent = slides[currentSlide].component;
 
   return (
-    <div className="relative">
-      {/* Slide Content */}
-      <CurrentSlideComponent
-        onNext={currentSlide === 0 ? nextSlide : undefined}
-        onRestart={
-          currentSlide === slides.length - 1 ? restartPresentation : undefined
-        }
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden cursor-none">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-drivers-orange/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Side Navigation */}
+      <SideNavigation
+        currentSlide={currentSlide}
+        totalSlides={slides.length}
+        onSlideChange={goToSlide}
+        onNext={nextSlide}
+        onPrev={prevSlide}
+        onRestart={restartPresentation}
+        slideData={slides}
       />
 
-      {/* Navigation Controls - Moved to center */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
-        <div className="glassmorphic-dark rounded-2xl p-4 flex items-center space-x-4 pointer-events-auto">
-          {/* Previous Button */}
-          <Button
-            onClick={prevSlide}
-            disabled={currentSlide === 0}
-            variant="ghost"
-            size="sm"
-            className="text-white hover:text-drivers-orange disabled:opacity-30"
+      {/* Main Content Area */}
+      <div className="ml-0 lg:ml-80 relative transition-all duration-300">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -50, scale: 0.95 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+            className="relative"
           >
-            <ChevronLeft className="w-5 h-5" />
-          </Button>
-
-          {/* Slide Indicators */}
-          <div className="flex space-x-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide
-                    ? "bg-drivers-orange scale-125"
-                    : "bg-white/30 hover:bg-white/50"
-                }`}
-                title={slides[index].title}
+            <SlideZoom isZoomable={true}>
+              <CurrentSlideComponent
+                onNext={currentSlide === 0 ? nextSlide : undefined}
+                onRestart={
+                  currentSlide === slides.length - 1 ? restartPresentation : undefined
+                }
               />
-            ))}
+            </SlideZoom>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Breadcrumb Navigation */}
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="fixed top-6 right-6 z-40"
+      >
+        <div className="glassmorphic-dark rounded-xl px-4 py-2 border border-drivers-orange/30">
+          <div className="flex items-center space-x-2 text-sm">
+            <span className="text-drivers-orange font-semibold">
+              {currentSlide + 1}
+            </span>
+            <span className="text-white/50">/</span>
+            <span className="text-white">{slides.length}</span>
+            <span className="text-white/30">•</span>
+            <span className="text-white/70 max-w-32 truncate">
+              {slides[currentSlide].title}
+            </span>
           </div>
-
-          {/* Next Button */}
-          <Button
-            onClick={nextSlide}
-            disabled={currentSlide === slides.length - 1}
-            variant="ghost"
-            size="sm"
-            className="text-white hover:text-drivers-orange disabled:opacity-30"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Slide Counter */}
-      <div className="fixed top-8 right-8 z-50">
-        <div className="glassmorphic-dark rounded-xl px-4 py-2">
-          <span className="text-white font-semibold">
-            {currentSlide + 1} / {slides.length}
-          </span>
-        </div>
-      </div>
+      {/* Loading Indicator for Slide Transitions */}
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed bottom-6 right-6 z-40"
+        >
+          <div className="glassmorphic-dark rounded-full p-3 border border-drivers-orange/30">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="w-4 h-4 border-2 border-drivers-orange border-t-transparent rounded-full"
+            />
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Keyboard Navigation */}
-      <div
-        className="fixed inset-0 pointer-events-none"
-        onKeyDown={(e) => {
-          if (e.key === "ArrowRight" && currentSlide < slides.length - 1)
-            nextSlide();
-          if (e.key === "ArrowLeft" && currentSlide > 0) prevSlide();
-        }}
-        tabIndex={0}
-      />
+      {/* Custom Cursor */}
+      <CustomCursor />
     </div>
   );
 }
