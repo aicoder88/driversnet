@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SideNavigation from "@/components/SideNavigation";
 import SlideZoom from "@/components/SlideZoom";
@@ -31,17 +31,37 @@ const slides = [
 
 export default function Page() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState({ width: 1920, height: 1080 });
+
+  useEffect(() => {
+    // Set window dimensions on client side
+    const updateDimensions = () => {
+      setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
+    };
+    
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   const nextSlide = () => {
+    setIsTransitioning(true);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const prevSlide = () => {
+    setIsTransitioning(true);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const goToSlide = (index: number) => {
+    setIsTransitioning(true);
     setCurrentSlide(index);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const restartPresentation = () => {
@@ -59,12 +79,12 @@ export default function Page() {
             key={i}
             className="absolute w-1 h-1 bg-drivers-orange/20 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * windowDimensions.width,
+              y: Math.random() * windowDimensions.height,
             }}
             animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * windowDimensions.width,
+              y: Math.random() * windowDimensions.height,
             }}
             transition={{
               duration: Math.random() * 20 + 10,
@@ -136,20 +156,22 @@ export default function Page() {
 
       {/* Loading Indicator for Slide Transitions */}
       <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed bottom-6 right-6 z-40"
-        >
-          <div className="glassmorphic-dark rounded-full p-3 border border-drivers-orange/30">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="w-4 h-4 border-2 border-drivers-orange border-t-transparent rounded-full"
-            />
-          </div>
-        </motion.div>
+        {isTransitioning && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed bottom-6 right-6 z-40"
+          >
+            <div className="glassmorphic-dark rounded-full p-3 border border-drivers-orange/30">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="w-4 h-4 border-2 border-drivers-orange border-t-transparent rounded-full"
+              />
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Custom Cursor */}

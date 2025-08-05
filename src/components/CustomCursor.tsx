@@ -7,10 +7,33 @@ export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch device
+    const checkTouchDevice = () => {
+      const hasTouchScreen = 'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        // @ts-ignore
+        navigator.msMaxTouchPoints > 0;
+      setIsTouchDevice(hasTouchScreen);
+      return hasTouchScreen;
+    };
+
+    // Skip adding event listeners on touch devices
+    if (checkTouchDevice()) {
+      return;
+    }
+
+    // Throttle mousemove for performance
+    let throttleTimer: NodeJS.Timeout | null = null;
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (throttleTimer) return;
+      
+      throttleTimer = setTimeout(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        throttleTimer = null;
+      }, 16); // ~60fps
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -30,12 +53,20 @@ export default function CustomCursor() {
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
+      if (throttleTimer) {
+        clearTimeout(throttleTimer);
+      }
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
+
+  // Don't render cursor on touch devices
+  if (isTouchDevice) {
+    return null;
+  }
 
   return (
     <>

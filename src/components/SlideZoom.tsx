@@ -16,6 +16,45 @@ export default function SlideZoom({ children, isZoomable = true }: SlideZoomProp
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [containerSize, setContainerSize] = useState({ width: 1920, height: 1080 });
+
+  // Handle container size for boundary calculations
+  useEffect(() => {
+    const updateContainerSize = () => {
+      setContainerSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    
+    updateContainerSize();
+    window.addEventListener('resize', updateContainerSize);
+    
+    return () => window.removeEventListener('resize', updateContainerSize);
+  }, []);
+
+  // Calculate pan boundaries based on zoom level and container size
+  const calculateBoundaries = () => {
+    const scaledWidth = containerSize.width * zoomLevel;
+    const scaledHeight = containerSize.height * zoomLevel;
+    const maxX = Math.max(0, (scaledWidth - containerSize.width) / 2);
+    const maxY = Math.max(0, (scaledHeight - containerSize.height) / 2);
+    
+    return {
+      minX: -maxX,
+      maxX: maxX,
+      minY: -maxY,
+      maxY: maxY,
+    };
+  };
+
+  // Constrain position within boundaries
+  const constrainPosition = (newPosition: { x: number; y: number }) => {
+    if (!isZoomed) return newPosition;
+    
+    const boundaries = calculateBoundaries();
+    return {
+      x: Math.max(boundaries.minX, Math.min(boundaries.maxX, newPosition.x)),
+      y: Math.max(boundaries.minY, Math.min(boundaries.maxY, newPosition.y)),
+    };
+  };
 
   // Keyboard shortcuts for zoom
   useEffect(() => {
@@ -24,7 +63,7 @@ export default function SlideZoom({ children, isZoomable = true }: SlideZoomProp
       
       switch (e.key) {
         case "z":
-          if (e.ctrlKey || e.metaKey) {
+          if (e.altKey) {
             e.preventDefault();
             setIsZoomed(!isZoomed);
             if (!isZoomed) {
@@ -59,7 +98,7 @@ export default function SlideZoom({ children, isZoomable = true }: SlideZoomProp
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [isZoomed, zoomLevel, isZoomable]);
+  }, [isZoomed, zoomLevel, isZoomable, containerSize]);
 
   const handleZoomToggle = () => {
     setIsZoomed(!isZoomed);
@@ -83,10 +122,11 @@ export default function SlideZoom({ children, isZoomable = true }: SlideZoomProp
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !isZoomed) return;
-    setPosition({
+    const newPosition = {
       x: e.clientX - dragStart.x,
       y: e.clientY - dragStart.y,
-    });
+    };
+    setPosition(constrainPosition(newPosition));
   };
 
   const handleMouseUp = () => {

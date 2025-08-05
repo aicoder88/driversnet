@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useId } from "react";
 import { Card } from "@/components/ui/card";
 
 interface InteractiveChartProps {
@@ -25,6 +25,7 @@ export default function InteractiveChart({
 }: InteractiveChartProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const uniqueId = useId();
 
   const circumference = 2 * Math.PI * 30;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
@@ -80,7 +81,7 @@ export default function InteractiveChart({
                 cx="40"
                 cy="40"
                 r="30"
-                stroke={`url(#gradient-${title.replace(/\s+/g, '')})`}
+                stroke={`url(#gradient-${uniqueId})`}
                 strokeWidth="6"
                 fill="none"
                 strokeDasharray={circumference}
@@ -105,7 +106,7 @@ export default function InteractiveChart({
           {/* SVG Gradients */}
           <svg width="0" height="0">
             <defs>
-              <linearGradient id={`gradient-${title.replace(/\s+/g, '')}`} x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id={`gradient-${uniqueId}`} x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor={color.includes('orange') ? '#ff6b35' : color.includes('blue') ? '#2563eb' : '#10b981'} />
                 <stop offset="100%" stopColor={color.includes('orange') ? '#f59e0b' : color.includes('blue') ? '#8b5cf6' : '#14b8a6'} />
               </linearGradient>

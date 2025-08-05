@@ -76,6 +76,7 @@ export default function SideNavigation({
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(1024);
 
   // Auto-play functionality
   useEffect(() => {
@@ -158,6 +159,18 @@ export default function SideNavigation({
 
   const progress = ((currentSlide + 1) / totalSlides) * 100;
 
+  // Handle window width for SSR safety
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    updateWindowWidth();
+    window.addEventListener('resize', updateWindowWidth);
+    
+    return () => window.removeEventListener('resize', updateWindowWidth);
+  }, []);
+
   const filteredSlides = slideData.filter((slide, index) =>
     slide.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -196,7 +209,7 @@ export default function SideNavigation({
       <motion.div
         initial={{ x: -300, opacity: 0 }}
         animate={{ 
-          x: isMobileMenuOpen || window.innerWidth >= 1024 ? 0 : -300, 
+          x: isMobileMenuOpen || windowWidth >= 1024 ? 0 : -300, 
           opacity: 1 
         }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -310,56 +323,63 @@ export default function SideNavigation({
           {/* Slide Navigation */}
           <div className="flex-1 overflow-y-auto">
             <div className="space-y-2">
-              {(searchQuery ? filteredSlides.map((slide, filteredIndex) => {
-                const originalIndex = slideData.findIndex(s => s.title === slide.title);
-                return { ...slide, originalIndex };
-              }) : slideData.map((slide, index) => ({ ...slide, originalIndex: index }))).map((slide, index) => {
-                const IconComponent = slideIcons[slide.originalIndex] || Home;
-                const isActive = currentSlide === slide.originalIndex;
+              {(() => {
+                // Process slides with original indices for cleaner mapping
+                const processedSlides = searchQuery 
+                  ? filteredSlides.map((slide) => {
+                      const originalIndex = slideData.findIndex(s => s.title === slide.title);
+                      return { ...slide, originalIndex };
+                    })
+                  : slideData.map((slide, index) => ({ ...slide, originalIndex: index }));
                 
-                return (
-                  <motion.div
-                    key={slide.originalIndex}
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card
-                      className={`p-4 cursor-pointer transition-all duration-300 hover:scale-105 ${
-                        isActive
-                          ? "glassmorphic border-2 border-drivers-orange bg-drivers-orange/20"
-                          : "glassmorphic-dark border border-gray-600 hover:border-drivers-orange/50"
-                      }`}
-                      onClick={() => onSlideChange(slide.originalIndex)}
+                return processedSlides.map((slide, index) => {
+                  const IconComponent = slideIcons[slide.originalIndex] || Home;
+                  const isActive = currentSlide === slide.originalIndex;
+                  
+                  return (
+                    <motion.div
+                      key={slide.originalIndex}
+                      initial={{ x: -50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
                     >
-                      <div className="flex items-center space-x-3">
-                        <div
-                          className={`p-2 rounded-lg bg-gradient-to-r ${
-                            slideColors[slide.originalIndex % slideColors.length]
-                          }`}
-                        >
-                          <IconComponent className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-white font-medium text-sm truncate">
-                            {slide.title}
+                      <Card
+                        className={`p-4 cursor-pointer transition-all duration-300 hover:scale-105 ${
+                          isActive
+                            ? "glassmorphic border-2 border-drivers-orange bg-drivers-orange/20"
+                            : "glassmorphic-dark border border-gray-600 hover:border-drivers-orange/50"
+                        }`}
+                        onClick={() => onSlideChange(slide.originalIndex)}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={`p-2 rounded-lg bg-gradient-to-r ${
+                              slideColors[slide.originalIndex % slideColors.length]
+                            }`}
+                          >
+                            <IconComponent className="w-5 h-5 text-white" />
                           </div>
-                          <div className="text-gray-400 text-xs">
-                            Slide {slide.originalIndex + 1}
+                          <div className="flex-1 min-w-0">
+                            <div className="text-white font-medium text-sm truncate">
+                              {slide.title}
+                            </div>
+                            <div className="text-gray-400 text-xs">
+                              Slide {slide.originalIndex + 1}
+                            </div>
                           </div>
+                          {isActive && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className="w-3 h-3 bg-drivers-orange rounded-full"
+                            />
+                          )}
                         </div>
-                        {isActive && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="w-3 h-3 bg-drivers-orange rounded-full"
-                          />
-                        )}
-                      </div>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+                      </Card>
+                    </motion.div>
+                  );
+                });
+              })()}
             </div>
           </div>
 
