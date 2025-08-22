@@ -1,0 +1,32 @@
+Category,Parameter,Current State,With DriversNet,Improvement,Notes
+Volume Metrics,Orders per Week,2000,2000,0%,EXAMPLE DATA - Pilot volume
+Volume Metrics,Markets Covered,3,3,0%,Austin Nashville Sacramento
+Volume Metrics,Carriers per Market,75,75,0%,Existing carrier network
+Operational Metrics,Exception Rate,25%,18%,-28%,Primary success metric
+Operational Metrics,On-time Delivery,78%,83%,+6.4%,Secondary success metric
+Operational Metrics,Manual Dispatch Time (min),4.2,0.8,-81%,Automation benefit
+Cost Metrics,Cost per Order,$12.50,$11.75,-6%,Direct operational savings
+Cost Metrics,Exception Handling Cost,$3.25,$2.10,-35%,Reduced manual intervention
+Cost Metrics,Customer Service Cost,$1.80,$1.25,-31%,Fewer inquiries
+Revenue Metrics,Customer Satisfaction Score,4.2,4.6,+9.5%,Improved service quality
+Revenue Metrics,Carrier Retention Rate,85%,91%,+7.1%,Better assignments
+Efficiency Metrics,Driver Utilization,72%,81%,+12.5%,Optimized routing
+Efficiency Metrics,Fuel Efficiency,8.2,8.9,+8.5%,Better route planning
+Financial Impact,Weekly Savings,$0,$1500,100%,Cost reduction x volume
+Financial Impact,Annual Projection,$0,$78000,100%,52 weeks x savings
+ROI Metrics,Implementation Cost,,$25000,,One-time integration
+ROI Metrics,Annual Platform Cost,,$120000,,Subscription model
+ROI Metrics,Total Annual Benefit,,$78000,,From cost reductions
+ROI Metrics,Net Annual Value,,$-67000,,Year 1 (setup costs)
+ROI Metrics,Break-even Period,,18 months,,Including ramp time
+Sensitivity Analysis,Low Case (-20%),,$62400,,Conservative estimate
+Sensitivity Analysis,Base Case,,$78000,,Expected outcome
+Sensitivity Analysis,High Case (+30%),,$101400,,Optimistic scenario
+Quality Metrics,Customer Complaint Rate,12%,7%,-42%,Service improvement
+Quality Metrics,Delivery Accuracy,94%,97%,+3.2%,Better matching
+Market Expansion,Additional Markets,0,5,,Scale opportunity
+Market Expansion,Volume Multiplier,1x,3x,,Network effects
+Long-term Projections,Year 2 Volume,2000,6000,+200%,Market expansion
+Long-term Projections,Year 2 Savings,$78000,$234000,+200%,Scale benefits
+Long-term Projections,Year 3 Volume,2000,10000,+400%,Full deployment
+Long-term Projections,Year 3 Savings,$78000,$390000,+400%,Network optimization
