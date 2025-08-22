@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DriversNet - The Future of Logistics Networks",
-  description: "Connecting drivers, optimizing routes, and revolutionizing freight management with cutting-edge AI technology.",
+  title: "Tempo - Modern SaaS Starter",
+  description: "A modern full-stack starter template powered by Next.js",
 };
 
 export default function RootLayout({
