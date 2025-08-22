@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tempo - Modern SaaS Starter",
-  description: "A modern full-stack starter template powered by Next.js",
+  title: "Driver's Net: The Uber Freight Partnership",
+  description: "Revolutionary AI-powered freight optimization that will transform Uber Freight into the most dominant logistics network in North America",
 };
 
 export default function RootLayout({
