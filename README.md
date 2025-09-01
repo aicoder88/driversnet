@@ -127,7 +127,7 @@ The application can be deployed on any platform that supports Next.js:
 
 - Modify `tailwind.config.js` for theme changes
 - Update `src/styles/globals.css` for global styles
-- Components use shadcn/ui pattern with Tailwind classes
+- Components use Tailwind classes
 
 ### Data & Charts
 

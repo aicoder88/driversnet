@@ -3,9 +3,25 @@ import { SlideProps } from '../slides/SlideTypes';
 
 // Lazy load all slide components
 const slideComponents = {
-  'agenda-overview': lazy(() => import('../slides/AgendaOverview').then(m => ({ default: m.AgendaOverview }))),
-  'performance-metrics': lazy(() => import('../slides/PerformanceMetrics').then(m => ({ default: m.PerformanceMetrics }))),
-  // Additional slides will be added here as they're created
+  'agenda-overview': lazy(() => import('../slides/AgendaOverview')),
+  'executive-summary': lazy(() => import('../slides/ExecutiveSummary')),
+  'company-evolution': lazy(() => import('../slides/CompanyEvolution')),
+  'service-divisions': lazy(() => import('../slides/ServiceDivisions')),
+  'performance-metrics': lazy(() => import('../slides/PerformanceMetrics')),
+  'case-study-instacart': lazy(() => import('../slides/CaseStudyInstacart')),
+  'case-study-tesla': lazy(() => import('../slides/CaseStudyTesla')),
+  'case-study-medical': lazy(() => import('../slides/CaseStudyMedical')),
+  'case-study-bmw': lazy(() => import('../slides/CaseStudyBmw')),
+  'driver-excellence': lazy(() => import('../slides/DriverExcellence')),
+  'technology-integration': lazy(() => import('../slides/TechnologyIntegration')),
+  'client-portfolio': lazy(() => import('../slides/ClientPortfolio')),
+  'rapid-deployment': lazy(() => import('../slides/RapidDeployment')),
+  'geographic-coverage': lazy(() => import('../slides/GeographicCoverage')),
+  'partnership-proposal': lazy(() => import('../slides/PartnershipProposal')),
+  'competitive-advantage': lazy(() => import('../slides/CompetitiveAdvantage')),
+  'service-integration': lazy(() => import('../slides/ServiceIntegration')),
+  'roi-projection': lazy(() => import('../slides/RoiProjection')),
+  'next-steps': lazy(() => import('../slides/NextSteps'))
 };
 
 interface SlideManagerProps extends SlideProps {

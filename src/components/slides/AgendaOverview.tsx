@@ -1,7 +1,7 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
 
-export const AgendaOverview: React.FC<SlideProps> = ({ className = '' }) => {
+const AgendaOverview: React.FC<SlideProps> = ({ className = '', isActive }) => {
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-24 ${className}`}>
       {/* Hero Section */}
@@ -71,7 +71,6 @@ export const AgendaOverview: React.FC<SlideProps> = ({ className = '' }) => {
           </div>
         </div>
         
-        
         {/* Call to Action */}
         <div className="text-center mt-16 pt-8 border-t border-red-200 dark:border-red-700">
           <p className="text-2xl font-bold text-red-800 dark:text-red-200 mb-6">
@@ -102,3 +101,5 @@ export const AgendaOverview: React.FC<SlideProps> = ({ className = '' }) => {
     </section>
   );
 };
+
+export default AgendaOverview;
