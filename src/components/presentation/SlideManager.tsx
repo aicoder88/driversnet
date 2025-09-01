@@ -11,6 +11,7 @@ const slideComponents = {
 interface SlideManagerProps extends SlideProps {
   activeSlideId: string;
   slideTransition: string;
+  fallbackToOriginal?: boolean;
 }
 
 const SlideLoadingFallback: React.FC = () => (
@@ -40,6 +41,7 @@ const SlideNotFound: React.FC<{ slideId: string }> = ({ slideId }) => (
 export const SlideManager: React.FC<SlideManagerProps> = ({
   activeSlideId,
   slideTransition,
+  fallbackToOriginal = true,
   ...props
 }) => {
   const SlideComponent = useMemo(() => {
@@ -52,7 +54,11 @@ export const SlideManager: React.FC<SlideManagerProps> = ({
     return `${baseClassName} ${transitionClassName} ${props.className || ''}`.trim();
   }, [slideTransition, props.className]);
 
+  // If no component exists and fallbackToOriginal is true, return null to let original content show
   if (!SlideComponent) {
+    if (fallbackToOriginal) {
+      return null;
+    }
     return <SlideNotFound slideId={activeSlideId} />;
   }
 

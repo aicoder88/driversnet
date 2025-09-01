@@ -5,7 +5,7 @@ import { Button } from '../src/components/ui/button';
 import { Badge } from '../src/components/ui/badge';
 import { Container } from '../src/components/ui/container';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts';
-import { SlideManager } from '../src/components/presentation/SlideManager';
+import { SlideRenderer } from '../src/components/presentation/SlideRenderer';
 import { OptimizedChart } from '../src/components/presentation/OptimizedChart';
 
 export default function DriverNetworkPresentation() {
@@ -1186,12 +1186,11 @@ export default function DriverNetworkPresentation() {
           onTouchEnd={handleTouchEnd}
         >
           <Container>
-            <SlideManager 
+            <SlideRenderer
               activeSlideId={activeTab}
               slideTransition={slideTransition}
-            />
-
-            {activeTab === 'executive-summary' && (
+            >
+              {activeTab === 'executive-summary' && (
               <section className="min-h-screen flex flex-col justify-center space-y-20">
                 {/* Problem Statement Hero */}
                 <div className="text-center space-y-12">
@@ -3110,6 +3109,7 @@ export default function DriverNetworkPresentation() {
                 </div>
               </section>
             )}
+            </SlideRenderer>
 
           </Container>
         </main>
