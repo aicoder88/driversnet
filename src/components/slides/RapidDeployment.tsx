@@ -143,7 +143,7 @@ const RapidDeployment: React.FC<SlideProps> = ({
             <div className="font-bold mb-2 text-lg text-gray-800 dark:text-gray-200">
               {stat.label}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-gray-700 dark:text-gray-300">
               {stat.description}
             </div>
           </div>

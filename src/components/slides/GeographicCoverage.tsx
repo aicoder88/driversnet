@@ -108,7 +108,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
               {metric.label}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-gray-700 dark:text-gray-300">
               {metric.description}
             </div>
           </div>
@@ -186,7 +186,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                     <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">
                       {market.name}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{market.state}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">{market.state}</p>
                   </div>
                   <div className={`bg-${market.color}-100 dark:bg-${market.color}-900/30 text-${market.color}-800 dark:text-${market.color}-200 px-3 py-1 rounded-full text-xs font-semibold`}>
                     {market.status}
@@ -246,7 +246,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                         {plan.markets.map((market, marketIndex) => (
                           <li key={marketIndex} className="flex items-center space-x-2">
                             <div className={`w-2 h-2 rounded-full bg-${plan.color}-500`}></div>
-                            <span className="text-gray-600 dark:text-gray-400 text-sm">{market}</span>
+                            <span className="text-gray-700 dark:text-gray-300 text-sm">{market}</span>
                           </li>
                         ))}
                       </ul>
@@ -257,12 +257,12 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                       <div className={`text-xl sm:text-2xl font-bold text-${plan.color}-600 dark:text-${plan.color}-400`}>
                         {plan.drivers}
                       </div>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">Additional network capacity</p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">Additional network capacity</p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Strategic Value:</h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">{plan.focus}</p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">{plan.focus}</p>
                     </div>
                   </div>
                 </div>
@@ -287,7 +287,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl">
               <div className="text-3xl mb-3">⚡</div>
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Speed</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Regional hubs enable same-day and next-day delivery across major corridors
               </p>
             </div>
@@ -295,7 +295,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl">
               <div className="text-3xl mb-3">🎯</div>
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Precision</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Local market knowledge and established driver relationships
               </p>
             </div>
@@ -303,7 +303,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl">
               <div className="text-3xl mb-3">🔄</div>
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Scalability</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Proven expansion model ready for rapid market entry
               </p>
             </div>

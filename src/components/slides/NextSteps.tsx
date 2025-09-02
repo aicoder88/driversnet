@@ -173,13 +173,13 @@ const NextSteps: React.FC<SlideProps> = ({
                   
                   <div className="space-y-3">
                     <div className="flex items-center space-x-2">
-                      <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Timeline:</span>
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Timeline:</span>
                       <span className={`text-sm font-bold text-${action.color}-600 dark:text-${action.color}-400`}>
                         {action.timeline}
                       </span>
                     </div>
                     <div>
-                      <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 block mb-1">Stakeholders:</span>
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 block mb-1">Stakeholders:</span>
                       <div className="flex flex-wrap gap-2">
                         {action.stakeholders.map((stakeholder, stakeholderIndex) => (
                           <span 
@@ -281,7 +281,7 @@ const NextSteps: React.FC<SlideProps> = ({
                   <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Options:</h4>
                   <ul className="space-y-1">
                     {decision.options.map((option, optionIndex) => (
-                      <li key={optionIndex} className="text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-2">
+                      <li key={optionIndex} className="text-sm text-gray-700 dark:text-gray-300 flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
                         <span>{option}</span>
                       </li>
@@ -290,7 +290,7 @@ const NextSteps: React.FC<SlideProps> = ({
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Impact:</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{decision.impact}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">{decision.impact}</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Decision Owner:</h4>
@@ -325,7 +325,7 @@ const NextSteps: React.FC<SlideProps> = ({
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">
                 {metric.metric}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 {metric.category}
               </p>
             </div>
@@ -357,7 +357,7 @@ const NextSteps: React.FC<SlideProps> = ({
               <div className="text-blue-600 dark:text-blue-400 font-semibold mb-4">
                 {contact.role}
               </div>
-              <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300 mb-4">
                 <div>{contact.email}</div>
                 {contact.phone ? (
                   <div>{contact.phone}</div>
@@ -372,7 +372,7 @@ const NextSteps: React.FC<SlideProps> = ({
                   </a>
                 )}
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+              <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                 {contact.focus}
               </p>
             </div>

@@ -176,8 +176,15 @@ export default function DriverNetworkPresentation() {
     const savedSlide = localStorage.getItem('dn-presentation-slide');
     if (savedSlide && tabs.includes(savedSlide)) {
       setActiveTab(savedSlide);
+      // Ensure we start at the top
+      setTimeout(() => scrollToTop(), 100);
     }
   }, [tabs]);
+
+  // Always scroll to top when slide changes
+  useEffect(() => {
+    scrollToTop();
+  }, [activeTab]);
 
   // Mobile detection and swipe indicator
   useEffect(() => {
@@ -427,6 +434,8 @@ export default function DriverNetworkPresentation() {
       
       // Restore original slide
       setActiveTab(currentSlide);
+      // Scroll to top after restoring
+      setTimeout(() => scrollToTop(), 100);
       
       // Save the complete PDF
       pdf.save('DriverNetwork-Complete-Presentation.pdf');

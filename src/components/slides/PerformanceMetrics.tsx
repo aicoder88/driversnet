@@ -108,7 +108,7 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
               <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
                 {metric.label}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-sm text-gray-700 dark:text-gray-300">
                 {metric.description}
               </div>
             </div>
@@ -141,7 +141,7 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
               
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Driver Network</span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">Driver Network</span>
                   <span className="font-bold text-green-600 dark:text-green-400">{item.us}%</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3">
@@ -152,8 +152,8 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Industry Average</span>
-                  <span className="font-bold text-gray-500 dark:text-gray-400">{item.industry}%</span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">Industry Average</span>
+                  <span className="font-bold text-gray-700 dark:text-gray-300">{item.industry}%</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3">
                   <div 

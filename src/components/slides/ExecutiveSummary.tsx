@@ -25,7 +25,7 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
             <br />
             <span className="text-red-600 dark:text-red-400">Everything</span>
             <br />
-            <span className="text-gray-600 dark:text-gray-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Yesterday</span>
+            <span className="text-gray-700 dark:text-gray-300 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Yesterday</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             Customers demand same-day delivery, zero damage, perfect tracking, 
@@ -112,7 +112,7 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
                 {metric.value}
               </div>
               <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">{metric.label}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">{metric.description}</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{metric.description}</div>
             </div>
           ))}
         </div>

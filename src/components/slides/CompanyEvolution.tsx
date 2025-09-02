@@ -27,7 +27,7 @@ const CompanyEvolution: React.FC<SlideProps> = ({
             <br />
             <span className="text-green-600 dark:text-green-400">What You Need</span>
             <br />
-            <span className="text-gray-600 dark:text-gray-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">12 Years Ago</span>
+            <span className="text-gray-700 dark:text-gray-300 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">12 Years Ago</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             While others struggle to build logistics networks, we perfected one

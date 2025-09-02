@@ -160,7 +160,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
             <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
               {stat.label}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-gray-700 dark:text-gray-300">
               {stat.description}
             </div>
           </div>
@@ -217,7 +217,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
                 <div className="grid grid-cols-1 gap-3">
                   {Object.entries(partner.details).map(([key, value], detailIndex) => (
                     <div key={detailIndex} className="flex justify-between items-center">
-                      <span className="text-gray-600 dark:text-gray-400 capitalize">
+                      <span className="text-gray-700 dark:text-gray-300 capitalize">
                         {key.replace(/([A-Z])/g, ' $1').trim()}:
                       </span>
                       <span className="font-semibold text-gray-800 dark:text-gray-200">
@@ -267,7 +267,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
                   {vertical.clients.map((client, clientIndex) => (
                     <li key={clientIndex} className="flex items-center space-x-3">
                       <div className={`w-2 h-2 rounded-full bg-${vertical.color}-500`}></div>
-                      <span className="text-gray-600 dark:text-gray-400">{client}</span>
+                      <span className="text-gray-700 dark:text-gray-300">{client}</span>
                     </li>
                   ))}
                 </ul>
@@ -308,7 +308,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
                 <div className="font-semibold text-gray-800 dark:text-gray-200">
                   {testimonial.author}
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-gray-700 dark:text-gray-300">
                   {testimonial.company}
                 </div>
                 <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium inline-block">

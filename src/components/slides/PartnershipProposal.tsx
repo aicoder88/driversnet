@@ -238,7 +238,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
                   {model.benefits.map((benefit, benefitIndex) => (
                     <li key={benefitIndex} className="flex items-start space-x-2">
                       <div className={`w-2 h-2 rounded-full bg-${model.color}-500 mt-2`}></div>
-                      <span className="text-gray-600 dark:text-gray-400 text-sm">{benefit}</span>
+                      <span className="text-gray-700 dark:text-gray-300 text-sm">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -317,7 +317,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
               <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-4">
                 {phase.title}
               </h3>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 {phase.tasks.map((task, taskIndex) => (
                   <li key={taskIndex} className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
@@ -350,7 +350,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
               <h3 className="font-bold text-gray-800 dark:text-gray-200 text-lg mb-3">
                 {item.term}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                 {item.detail}
               </p>
             </div>
@@ -388,7 +388,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
           </a>
         </div>
         
-        <div className="pt-8 text-gray-500 dark:text-gray-400">
+        <div className="pt-8 text-gray-700 dark:text-gray-300">
           <p>
             Questions? Contact our partnership team at
             {' '}<strong>{PARTNERSHIPS_EMAIL}</strong>
