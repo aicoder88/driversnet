@@ -55,6 +55,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.6-1.6-1.6h-1.4c-.2 0-.4.1-.5.3l-1.5 2.8c-.1.2-.3.3-.5.3H8c-.4 0-.8-.4-.8-.8V9.2c0-.4.3-.8.8-.8h8c.4 0 .8.4.8.8v1"/><path d="M5 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.6-1.6-1.6H5"/><path d="M2 9h1c.6 0 1 .4 1 1v6c0 .6-.4 1-1 1H2"/><path d="M4 4h16v1c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V4z"/></svg>') 12 12, auto;
+    cursor: url('/tesla trans.jpg') 12 12, auto;
   }
 }
