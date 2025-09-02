@@ -2,7 +2,6 @@ import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const PerformanceMetrics: React.FC<SlideProps> = ({ 
   className = '', 
@@ -43,12 +42,12 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-700 dark:to-emerald-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Performance That Matters
           </div>
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
             Numbers
             <br />
             <span className="text-green-600 dark:text-green-400">Don't Lie</span>
           </h1>
-          <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             While others make promises, we deliver measurable results
             <br />
             <strong className="text-green-600 dark:text-green-400">Every. Single. Day.</strong>
@@ -57,29 +56,29 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
       </div>
 
       {/* Core Performance Metrics */}
-      <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Core Performance Metrics
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             The metrics that define excellence in logistics
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12">
           {performanceData.map((metric, index) => (
             <div 
               key={index}
-              className="text-center bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl border border-gray-200 dark:border-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="text-center bg-gray-50 dark:bg-gray-700 p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div 
-                className="text-6xl font-bold mb-4"
+                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4"
                 style={{ color: metric.color }}
               >
                 {metric.value}%
               </div>
-              <div className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+              <div className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
                 {metric.name}
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
@@ -96,17 +95,17 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
         </div>
 
         {/* Value Delivered Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {valueMetrics.map((metric, index) => (
             <div 
               key={index}
-              className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-8 rounded-2xl border border-blue-200 dark:border-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 sm:p-8 rounded-2xl border border-blue-200 dark:border-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="text-4xl mb-4">{metric.icon}</div>
-              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-3">
+              <div className="text-3xl sm:text-4xl mb-4">{metric.icon}</div>
+              <div className="text-2xl sm:text-3xl md:text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-3">
                 {metric.value}
               </div>
-              <div className="font-bold mb-2 text-lg text-gray-800 dark:text-gray-200">
+              <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
                 {metric.label}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -118,9 +117,9 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
       </div>
 
       {/* Industry Comparison */}
-      <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-16 rounded-3xl border border-green-200 dark:border-green-700 shadow-2xl">
+      <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl border border-green-200 dark:border-green-700 shadow-2xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-green-800 dark:text-green-200 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 dark:text-green-200 mb-6">
             Industry Benchmark Comparison
           </h2>
           <p className="text-xl text-green-600 dark:text-green-300">
@@ -132,10 +131,10 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
           {industryComparison.map((item, index) => (
             <div key={index} className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200">
                   {item.metric}
                 </h3>
-                <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
                   {item.difference}
                 </div>
               </div>
@@ -168,7 +167,7 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
         </div>
 
         <div className="text-center mt-12 pt-8 border-t border-green-200 dark:border-green-700">
-          <h3 className="text-3xl font-bold text-green-800 dark:text-green-200 mb-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-green-800 dark:text-green-200 mb-4">
             The Driver Network Difference
           </h3>
           <p className="text-xl text-green-600 dark:text-green-300 max-w-4xl mx-auto">
@@ -180,14 +179,6 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

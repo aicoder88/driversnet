@@ -1,6 +1,5 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const TechnologyIntegration: React.FC<SlideProps> = ({ 
   className = '', 
@@ -103,7 +102,7 @@ ws.on('location_update', (data) => {
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Technology That Works
           </div>
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
             Seamless
             <br />
             <span className="text-blue-600 dark:text-blue-400">Integration</span>
@@ -215,14 +214,6 @@ ws.on('location_update', (data) => {
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

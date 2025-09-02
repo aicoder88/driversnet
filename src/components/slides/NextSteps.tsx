@@ -1,6 +1,5 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const NextSteps: React.FC<SlideProps> = ({ 
   className = '', 
@@ -421,14 +420,6 @@ const NextSteps: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

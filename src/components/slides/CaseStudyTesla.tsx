@@ -3,7 +3,6 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const CaseStudyTesla: React.FC<SlideProps> = ({ 
   className = '', 
@@ -17,12 +16,12 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
 }) => {
   return (
     <section className={`space-y-12 ${className}`}>
-      <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+      <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-6 sm:p-8 md:p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
         <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
-          <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
             🏆 SUCCESS STORY: TESLA
           </h2>
-          <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto px-4">
             Tesla's remarkable growth: $97.6B revenue (2024), 1.78M vehicles delivered
             <br/>Strong foundation for specialized transport partnerships
           </p>
@@ -157,14 +156,6 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

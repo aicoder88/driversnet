@@ -1,6 +1,5 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const RoiProjection: React.FC<SlideProps> = ({ 
@@ -120,14 +119,6 @@ const RoiProjection: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

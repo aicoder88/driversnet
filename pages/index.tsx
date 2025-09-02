@@ -91,6 +91,7 @@ export default function DriverNetworkPresentation() {
   }, []);
 
   const navigateTab = useCallback((direction: 'prev' | 'next', method: 'keyboard' | 'touch' | 'click' = 'click') => {
+    console.log('navigateTab called with direction:', direction, 'method:', method, 'activeTab:', activeTab);
     const currentIndex = tabs.indexOf(activeTab);
     let newIndex;
     
@@ -99,6 +100,8 @@ export default function DriverNetworkPresentation() {
     } else {
       newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
     }
+    
+    console.log('Navigation: currentIndex:', currentIndex, 'newIndex:', newIndex, 'newTab:', tabs[newIndex]);
     
     // Track analytics
     trackNavigation(method);
@@ -1460,6 +1463,42 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* Bottom Navigation - Spread Apart */}
+        {!isFullscreen && (
+          <div className="fixed bottom-6 left-0 right-0 z-50 px-6">
+            <div className="flex items-center justify-between">
+              {/* Previous Button */}
+              <button
+                onClick={() => navigateTab('prev')}
+                className={`px-6 py-3 rounded-lg shadow-lg border ${
+                  tabs.indexOf(activeTab) > 0
+                    ? 'bg-blue-500 text-white hover:bg-blue-600 border-blue-400' 
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed border-gray-300'
+                }`}
+              >
+                ← Previous
+              </button>
+
+              {/* Slide Counter */}
+              <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg border text-sm font-semibold text-gray-700 dark:text-gray-200">
+                {tabs.indexOf(activeTab) + 1} / {tabs.length}
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={() => navigateTab('next')}
+                className={`px-6 py-3 rounded-lg shadow-lg border ${
+                  tabs.indexOf(activeTab) < tabs.length - 1
+                    ? 'bg-blue-500 text-white hover:bg-blue-600 border-blue-400' 
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed border-gray-300'
+                }`}
+              >
+                Next →
+              </button>
             </div>
           </div>
         )}

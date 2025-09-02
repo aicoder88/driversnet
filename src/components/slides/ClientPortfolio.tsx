@@ -1,6 +1,5 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const ClientPortfolio: React.FC<SlideProps> = ({ 
   className = '', 
@@ -134,12 +133,12 @@ const ClientPortfolio: React.FC<SlideProps> = ({
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-purple-600 to-violet-600 dark:from-purple-700 dark:to-violet-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Trusted by Industry Leaders
           </div>
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
             Client
             <br />
             <span className="text-purple-600 dark:text-purple-400">Portfolio</span>
           </h1>
-          <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             From startups to Fortune 500 companies, we deliver results that matter
             <br />
             <strong className="text-purple-600 dark:text-purple-400">98% client retention rate</strong>
@@ -148,17 +147,17 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       </div>
 
       {/* Client Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {clientStats.map((stat, index) => (
           <div 
             key={index}
-            className="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+            className="text-center bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
-            <div className="text-5xl mb-4">{stat.icon}</div>
-            <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-3">
+            <div className="text-3xl sm:text-4xl md:text-5xl mb-4">{stat.icon}</div>
+            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-600 dark:text-purple-400 mb-3">
               {stat.value}
             </div>
-            <div className="font-bold mb-2 text-lg text-gray-800 dark:text-gray-200">
+            <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
               {stat.label}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -169,27 +168,27 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       </div>
 
       {/* Featured Partnerships */}
-      <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Featured Partnerships
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             Success stories that speak for themselves
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {partnerships.map((partner, index) => (
             <div 
               key={index}
-              className={`bg-gradient-to-br from-${partner.color}-50 to-${partner.color}-100 dark:from-${partner.color}-900/20 dark:to-${partner.color}-800/20 p-8 rounded-3xl border border-${partner.color}-200 dark:border-${partner.color}-700 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
+              className={`bg-gradient-to-br from-${partner.color}-50 to-${partner.color}-100 dark:from-${partner.color}-900/20 dark:to-${partner.color}-800/20 p-6 sm:p-8 rounded-3xl border border-${partner.color}-200 dark:border-${partner.color}-700 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-5xl">{partner.logo}</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl">{partner.logo}</div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200">
                       {partner.name}
                     </h3>
                     <p className={`text-${partner.color}-600 dark:text-${partner.color}-300`}>
@@ -230,24 +229,24 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       {/* Industry Verticals */}
       <div className="space-y-8">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Industry Expertise
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             Deep specialization across multiple verticals
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {industryVerticals.map((vertical, index) => (
             <div 
               key={index}
-              className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center space-x-4 mb-6">
-                <div className="text-4xl">{vertical.icon}</div>
+                <div className="text-3xl sm:text-4xl">{vertical.icon}</div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
                     {vertical.industry}
                   </h3>
                   <p className={`text-${vertical.color}-600 dark:text-${vertical.color}-300`}>
@@ -273,21 +272,21 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       </div>
 
       {/* Client Testimonials */}
-      <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900/50 dark:to-blue-900/20 p-16 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-2xl">
+      <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900/50 dark:to-blue-900/20 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-2xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             Real feedback from real partnerships
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white/90 dark:bg-gray-800/90 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300"
+              className="bg-white/90 dark:bg-gray-800/90 p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300"
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, starIndex) => (
@@ -316,14 +315,6 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

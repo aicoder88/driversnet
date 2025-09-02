@@ -1,6 +1,5 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const GeographicCoverage: React.FC<SlideProps> = ({ 
   className = '', 
@@ -82,12 +81,12 @@ const GeographicCoverage: React.FC<SlideProps> = ({
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Coast-to-Coast Network
           </div>
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
             Geographic
             <br />
             <span className="text-indigo-600 dark:text-indigo-400">Coverage</span>
           </h1>
-          <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             From Seattle to Miami, our network spans 19 major markets
             <br />
             <strong className="text-indigo-600 dark:text-indigo-400">1,000+ drivers ready to deliver</strong>
@@ -96,17 +95,17 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       </div>
 
       {/* Coverage Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {coverageMetrics.map((metric, index) => (
           <div 
             key={index}
-            className="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+            className="text-center bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
-            <div className="text-5xl mb-4">{metric.icon}</div>
-            <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-3">
+            <div className="text-3xl sm:text-4xl md:text-5xl mb-4">{metric.icon}</div>
+            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-3">
               {metric.value}
             </div>
-            <div className="font-bold mb-2 text-lg text-gray-800 dark:text-gray-200">
+            <div className="font-bold mb-2 text-base sm:text-lg text-gray-800 dark:text-gray-200">
               {metric.label}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -117,23 +116,23 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       </div>
 
       {/* Regional Breakdown */}
-      <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Regional Network Strength
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             Strategic coverage across three major regions
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {regionalStats.map((region, index) => (
             <div 
               key={index}
-              className={`bg-gradient-to-br from-${region.color}-50 to-${region.color}-100 dark:from-${region.color}-900/20 dark:to-${region.color}-800/20 p-8 rounded-3xl border border-${region.color}-200 dark:border-${region.color}-700 shadow-lg`}
+              className={`bg-gradient-to-br from-${region.color}-50 to-${region.color}-100 dark:from-${region.color}-900/20 dark:to-${region.color}-800/20 p-6 sm:p-8 rounded-3xl border border-${region.color}-200 dark:border-${region.color}-700 shadow-lg`}
             >
-              <h3 className={`text-2xl font-bold text-${region.color}-800 dark:text-${region.color}-200 mb-6 text-center`}>
+              <h3 className={`text-xl sm:text-2xl font-bold text-${region.color}-800 dark:text-${region.color}-200 mb-6 text-center`}>
                 {region.region}
               </h3>
               
@@ -172,11 +171,11 @@ const GeographicCoverage: React.FC<SlideProps> = ({
 
         {/* Market Grid */}
         <div className="space-y-6">
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-8">
             Active Markets & Driver Distribution
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {markets.map((market, index) => (
               <div 
                 key={index}
@@ -211,10 +210,10 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       {/* Expansion Plans */}
       <div className="space-y-8">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Expansion Roadmap
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
             Strategic growth into new markets and international opportunities
           </p>
         </div>
@@ -223,7 +222,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
           {expansionPlans.map((plan, index) => (
             <div 
               key={index}
-              className={`bg-gradient-to-r from-${plan.color}-50 to-${plan.color}-100 dark:from-${plan.color}-900/20 dark:to-${plan.color}-800/20 p-8 rounded-3xl border border-${plan.color}-200 dark:border-${plan.color}-700 shadow-xl`}
+              className={`bg-gradient-to-r from-${plan.color}-50 to-${plan.color}-100 dark:from-${plan.color}-900/20 dark:to-${plan.color}-800/20 p-6 sm:p-8 rounded-3xl border border-${plan.color}-200 dark:border-${plan.color}-700 shadow-xl`}
             >
               <div className="flex items-start space-x-6">
                 <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br from-${plan.color}-500 to-${plan.color}-600 rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg`}>
@@ -235,7 +234,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                     <div className={`bg-${plan.color}-200 dark:bg-${plan.color}-800 text-${plan.color}-800 dark:text-${plan.color}-200 px-4 py-2 rounded-full font-bold`}>
                       {plan.timeline}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200">
                       {plan.focus}
                     </h3>
                   </div>
@@ -255,7 +254,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                     
                     <div>
                       <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Driver Capacity:</h4>
-                      <div className={`text-2xl font-bold text-${plan.color}-600 dark:text-${plan.color}-400`}>
+                      <div className={`text-xl sm:text-2xl font-bold text-${plan.color}-600 dark:text-${plan.color}-400`}>
                         {plan.drivers}
                       </div>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">Additional network capacity</p>
@@ -274,9 +273,9 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       </div>
 
       {/* Coverage Summary */}
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-16 rounded-3xl border border-indigo-200 dark:border-indigo-700 shadow-2xl">
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-6 sm:p-8 md:p-12 lg:p-16 rounded-3xl border border-indigo-200 dark:border-indigo-700 shadow-2xl">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-indigo-800 dark:text-indigo-200 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-800 dark:text-indigo-200 mb-6">
             Network Advantage
           </h2>
           <p className="text-xl text-indigo-600 dark:text-indigo-300 max-w-4xl mx-auto mb-8">
@@ -284,7 +283,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             for maximum efficiency and reliability.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl">
               <div className="text-3xl mb-3">⚡</div>
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Speed</h3>
@@ -313,14 +312,6 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };

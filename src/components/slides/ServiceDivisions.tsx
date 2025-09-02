@@ -2,7 +2,6 @@ import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
-import SlideNavigation from '../shared/SlideNavigation';
 
 const ServiceDivisions: React.FC<SlideProps> = ({ 
   className = '', 
@@ -16,26 +15,26 @@ const ServiceDivisions: React.FC<SlideProps> = ({
 }) => {
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-12 ${className}`}>
-      <div className="backdrop-blur-lg bg-gradient-to-br from-blue-50/90 via-indigo-50/90 to-purple-50/90 dark:from-gray-800/95 dark:via-gray-800/95 dark:to-gray-700/95 p-12 rounded-3xl border border-blue-200/50 dark:border-gray-600/30 shadow-2xl">
+      <div className="backdrop-blur-lg bg-gradient-to-br from-blue-50/90 via-indigo-50/90 to-purple-50/90 dark:from-gray-800/95 dark:via-gray-800/95 dark:to-gray-700/95 p-6 sm:p-8 md:p-12 rounded-3xl border border-blue-200/50 dark:border-gray-600/30 shadow-2xl">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white rounded-full font-semibold text-lg mb-6">
             Strategic Service Portfolio
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
             🎯 Three Pillars of Excellence
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
             Our diversified service portfolio ensures stability, growth, and unmatched reliability across every sector
           </p>
         </div>
         {/* Interactive Service Showcase */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {/* Automotive Transport - Main Revenue Driver */}
-          <div className="group relative bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 p-8 rounded-2xl border border-green-300/50 dark:border-green-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+          <div className="group relative bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 p-6 sm:p-8 rounded-2xl border border-green-300/50 dark:border-green-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🚛</div>
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">40%</div>
-              <div className="text-lg font-bold text-green-800 dark:text-green-200 mb-2">Automotive Transport</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🚛</div>
+              <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">40%</div>
+              <div className="text-base sm:text-lg font-bold text-green-800 dark:text-green-200 mb-2">Automotive Transport</div>
               <div className="text-green-700 dark:text-green-300 text-sm">Our strongest division</div>
             </div>
             <div className="space-y-3">
@@ -55,11 +54,11 @@ const ServiceDivisions: React.FC<SlideProps> = ({
           </div>
 
           {/* Valet & Traffic Management */}
-          <div className="group relative bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-8 rounded-2xl border border-blue-300/50 dark:border-blue-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+          <div className="group relative bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-6 sm:p-8 rounded-2xl border border-blue-300/50 dark:border-blue-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🚗</div>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">35%</div>
-              <div className="text-lg font-bold text-blue-800 dark:text-blue-200 mb-2">Valet & Traffic Mgmt</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🚗</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">35%</div>
+              <div className="text-base sm:text-lg font-bold text-blue-800 dark:text-blue-200 mb-2">Valet & Traffic Mgmt</div>
               <div className="text-blue-700 dark:text-blue-300 text-sm">Steady growth sector</div>
             </div>
             <div className="space-y-3">
@@ -79,11 +78,11 @@ const ServiceDivisions: React.FC<SlideProps> = ({
           </div>
 
           {/* Courier & Last-Mile */}
-          <div className="group relative bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 p-8 rounded-2xl border border-amber-300/50 dark:border-amber-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+          <div className="group relative bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 p-6 sm:p-8 rounded-2xl border border-amber-300/50 dark:border-amber-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="text-center mb-6">
-              <div className="text-6xl mb-4">📦</div>
-              <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">25%</div>
-              <div className="text-lg font-bold text-amber-800 dark:text-amber-200 mb-2">Courier & Last-Mile</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-4">📦</div>
+              <div className="text-2xl sm:text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">25%</div>
+              <div className="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-200 mb-2">Courier & Last-Mile</div>
               <div className="text-amber-700 dark:text-amber-300 text-sm">Rapid expansion focus</div>
             </div>
             <div className="space-y-3">
@@ -104,8 +103,8 @@ const ServiceDivisions: React.FC<SlideProps> = ({
         </div>
 
         {/* Performance Metrics Bar */}
-        <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl border border-gray-200/50 dark:border-gray-600/50">
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center">
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6 sm:p-8 rounded-2xl border border-gray-200/50 dark:border-gray-600/50">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center">
             📊 Division Performance Metrics
           </h3>
           <OptimizedChart 
@@ -164,11 +163,11 @@ const ServiceDivisions: React.FC<SlideProps> = ({
         </div>
 
         {/* Key Insight */}
-        <div className="text-center mt-8 p-6 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-700/20 dark:to-indigo-700/20 rounded-2xl border border-blue-300/30 dark:border-blue-600/30">
-          <h4 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-4">
+        <div className="text-center mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-700/20 dark:to-indigo-700/20 rounded-2xl border border-blue-300/30 dark:border-blue-600/30">
+          <h4 className="text-xl sm:text-2xl font-bold text-blue-800 dark:text-blue-200 mb-4">
             🎯 Strategic Advantage
           </h4>
-          <p className="text-lg text-blue-700 dark:text-blue-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-blue-700 dark:text-blue-300 max-w-3xl mx-auto px-4">
             Our diversified portfolio creates stability while automotive transport drives growth. 
             <strong className="font-bold"> This balance ensures consistent performance </strong>
             regardless of market fluctuations in any single sector.
@@ -177,14 +176,6 @@ const ServiceDivisions: React.FC<SlideProps> = ({
       </div>
 
       {/* Slide Navigation */}
-      <SlideNavigation
-        onPrevious={onPrevious}
-        onNext={onNext}
-        hasPrevious={hasPrevious}
-        hasNext={hasNext}
-        currentSlide={currentSlide}
-        totalSlides={totalSlides}
-      />
     </section>
   );
 };
