@@ -103,25 +103,32 @@ const ClientPortfolio: React.FC<SlideProps> = ({
 
   const testimonials = [
     {
-      quote: "Driver Network transformed our delivery operations. Their reliability is unmatched.",
-      author: "Operations Director",
-      company: "Major E-commerce Platform",
+      quote: "DriversNet's last-mile delivery network helped us scale our grocery operations across 6 metropolitan markets seamlessly.",
+      author: "Logistics Director",
+      company: "Instacart",
       rating: 5,
-      metric: "40% faster deliveries"
+      metric: "180+ certified drivers deployed"
     },
     {
-      quote: "The only logistics partner we trust with our high-value automotive shipments.",
+      quote: "Their luxury vehicle transport and white-glove service perfectly matches our brand standards for high-end retail deliveries.",
       author: "Supply Chain Manager",
-      company: "Luxury Auto Manufacturer",
+      company: "Burberry",
       rating: 5,
-      metric: "Zero damage claims"
+      metric: "100% damage-free luxury shipments"
     },
     {
-      quote: "Their technology integration was seamless. We were up and running in 48 hours.",
-      author: "CTO",
-      company: "Healthcare Technology Company",
+      quote: "The valet and shuttle services transformed our customer experience at our flagship showrooms nationwide.",
+      author: "Operations Manager",
+      company: "Divan",
       rating: 5,
-      metric: "2-day implementation"
+      metric: "95% customer satisfaction score"
+    },
+    {
+      quote: "DriversNet's AI-integrated logistics platform optimized our service center operations and parts delivery network.",
+      author: "Service Operations Director",
+      company: "Tesla",
+      rating: 5,
+      metric: "24/7 coverage with 99.2% reliability"
     }
   ];
 
