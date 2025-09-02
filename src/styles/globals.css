@@ -55,6 +55,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: url('/tesla-cursor.png') 16 16, auto;
+    cursor: url('/Cybertruck_cursor2.png') 16 16, auto;
   }
 }
