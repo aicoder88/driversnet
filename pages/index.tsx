@@ -718,6 +718,35 @@ export default function DriverNetworkPresentation() {
             content: 'noindex, nofollow, noarchive, nosnippet, noimageindex',
           },
         ]}
+        additionalLinkTags={[
+          {
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon.ico',
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: '/favicon-32x32.png',
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: '/favicon-16x16.png',
+          },
+          {
+            rel: 'apple-touch-icon',
+            sizes: '180x180',
+            href: '/apple-touch-icon.png',
+          },
+          {
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: '/favicon.svg',
+          },
+        ]}
       />
 
       <div className={`min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 ${isFullscreen ? 'fullscreen-mode' : ''}`}>

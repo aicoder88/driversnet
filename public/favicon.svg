@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#000000"/>
+  
+  <!-- Uber-style geometric pattern -->
+  <g transform="translate(6, 6)">
+    <!-- Main geometric shape inspired by Uber's design -->
+    <path d="M10 2 L18 6 L18 14 L10 18 L2 14 L2 6 Z" fill="#FFFFFF" stroke="none"/>
+    
+    <!-- Inner accent -->
+    <circle cx="10" cy="10" r="3" fill="#000000"/>
+    
+    <!-- Driver Network dot pattern -->
+    <circle cx="6" cy="6" r="1" fill="#FFFFFF"/>
+    <circle cx="14" cy="6" r="1" fill="#FFFFFF"/>
+    <circle cx="6" cy="14" r="1" fill="#FFFFFF"/>
+    <circle cx="14" cy="14" r="1" fill="#FFFFFF"/>
+  </g>
+</svg>
