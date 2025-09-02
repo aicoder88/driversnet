@@ -1,11 +1,29 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const AgendaOverview: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const AgendaOverview: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   return (
-    <section className={`min-h-screen flex flex-col justify-center space-y-24 ${className}`}>
+    <section className={`min-h-screen flex flex-col space-y-16 ${className}`}>
+      {/* Scroll Down Indicator - Above the fold */}
+      <div className="text-center pt-8 pb-4">
+        <div className="animate-bounce text-gray-500 dark:text-gray-400">
+          <div className="text-sm mb-2">Scroll down to explore</div>
+          <div className="text-2xl">⬇️</div>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <div className="text-center space-y-8">
+      <div className="text-center space-y-8 flex-1 flex flex-col justify-center">
         <div className="space-y-6">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Strategic Partnership Opportunity
@@ -45,6 +63,23 @@ const AgendaOverview: React.FC<SlideProps> = ({ className = '', isActive }) => {
           <h2 className="text-4xl font-bold text-red-800 dark:text-red-200 mb-6">
             The $2.8 Trillion Problem
           </h2>
+          
+          {/* Graphic illustration */}
+          <div className="mb-8 mx-auto max-w-2xl">
+            <div className="relative bg-gradient-to-r from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 p-8 rounded-2xl border border-red-300/50 dark:border-red-600/50">
+              <div className="flex items-center justify-center space-x-4 mb-4">
+                <div className="text-6xl">📦</div>
+                <div className="text-4xl animate-pulse">💸</div>
+                <div className="text-6xl">🚛</div>
+                <div className="text-4xl animate-pulse">📉</div>
+                <div className="text-6xl">😤</div>
+              </div>
+              <div className="text-sm text-red-700 dark:text-red-300 font-medium">
+                Customer Orders → Lost Revenue → Failed Delivery → Declining Market Share → Frustrated Stakeholders
+              </div>
+            </div>
+          </div>
+          
           <p className="text-xl text-red-600 dark:text-red-300 max-w-3xl mx-auto">
             Every day, freight companies lose millions because they can't deliver what customers expect
           </p>
@@ -87,17 +122,15 @@ const AgendaOverview: React.FC<SlideProps> = ({ className = '', isActive }) => {
         </div>
       </div>
       
-      {/* Navigation Hint */}
-      <div className="text-center space-y-4">
-        <p className="text-gray-500 dark:text-gray-400">Navigate with keyboard arrows, space, or swipe</p>
-        <div className="flex justify-center space-x-2">
-          <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-        </div>
-      </div>
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

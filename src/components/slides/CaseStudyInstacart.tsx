@@ -3,30 +3,41 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const CaseStudyInstacart: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const performanceData = [
-    { name: 'Launch', value: 0, month: 'Launch', drivers: 0, deliveries: 0, satisfaction: 0 },
-    { name: 'Month 2', value: 45, month: 'Month 2', drivers: 45, deliveries: 2800, satisfaction: 4.6 },
-    { name: 'Month 6', value: 120, month: 'Month 6', drivers: 120, deliveries: 8200, satisfaction: 4.8 },
-    { name: 'Month 12', value: 180, month: 'Month 12', drivers: 180, deliveries: 13500, satisfaction: 4.9 },
-    { name: 'Month 18', value: 195, month: 'Month 18', drivers: 195, deliveries: 15600, satisfaction: 4.9 }
+    { name: '2019', value: 735, month: '2019', revenue: 735, users: 5.5, gmv: 7.5, growth: 0 },
+    { name: '2020', value: 1500, month: '2020', revenue: 1500, users: 9.6, gmv: 35, growth: 104 },
+    { name: '2021', value: 1830, month: '2021', revenue: 1830, users: 11.1, gmv: 28, growth: 22 },
+    { name: '2022', value: 2550, month: '2022', revenue: 2550, users: 13.7, gmv: 29, growth: 39 },
+    { name: '2023', value: 3040, month: '2023', revenue: 3040, users: 14.0, gmv: 29.4, growth: 19 },
+    { name: '2024', value: 3380, month: '2024', revenue: 3380, users: 14.4, gmv: 33.4, growth: 11 }
   ];
 
   const keyMetrics = [
-    { key: 'Daily Deliveries', value: '425 avg' },
-    { key: 'Peak Capacity', value: '1,200/day' },
-    { key: 'Driver Utilization', value: '89%' },
-    { key: 'Cost Per Delivery', value: '$8.40' }
+    { key: 'Revenue 2024', value: '$3.38B' },
+    { key: 'Active Users', value: '14.4M' },
+    { key: 'Market Share', value: '21.6%' },
+    { key: 'Orders/Year', value: '294M' }
   ];
 
   const results = [
-    '100% on-time delivery rate across all 6 markets (industry benchmark: 87%)',
-    '$847K annual cost reduction through optimized routing and driver utilization',
-    '45% faster market penetration vs. Instacart\'s historical expansion timeline',
-    'Zero service interruptions during peak holiday seasons (Black Friday, Christmas)',
-    '4.9/5.0 customer satisfaction score (exceeding Instacart corporate average)',
-    '68,000+ successful deliveries in Year 1, 94,000+ in Year 2'
+    'Revenue growth from $735M (2019) to $3.38B (2024) - 360% total growth',
+    'User base expansion: 5.5M to 14.4M active users (+162% growth)',
+    'Market leadership: 21.6% online grocery share, 72.5% delivery market share',
+    'Scale achievement: 294M orders annually across 5,500+ cities',
+    'Profitability milestone: First profitable year in 2024 ($457M net income)',
+    'Partnership network: 25,000+ stores from 350+ retail partners'
   ];
 
   return (
@@ -37,8 +48,8 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
             🚀 THE SOLUTION IN ACTION
           </h2>
           <p className="text-2xl text-green-100 dark:text-green-200 max-w-5xl mx-auto font-medium">
-            When Instacart faced the same struggle, they didn't build. They partnered. 
-            <br/><span className="text-green-200 dark:text-green-300">In 30 days, not 30 months.</span>
+            Instacart's explosive growth: +104% revenue (2020), 14.4M users, 294M orders
+            <br/><span className="text-green-200 dark:text-green-300">They chose partnership. So can you.</span>
           </p>
         </div>
       </div>
@@ -48,7 +59,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
         <div className="bg-gradient-to-r from-emerald-600 to-green-700 dark:from-emerald-700 dark:to-green-800 p-8 rounded-2xl text-white dark:text-gray-50 mb-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <span className="text-5xl text-white dark:text-gray-50 mr-6">⚡</span>
+              <img src="/Instacart-Logo.jpg" alt="Instacart" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
                 <h3 className="text-4xl text-white dark:text-gray-50 font-bold mb-2">The Day Everything Changed</h3>
                 <p className="text-xl text-white dark:text-white opacity-90 font-medium">E-Commerce Logistics Partnership • 6 Metropolitan Areas • $2.3M Annual Contract</p>
@@ -131,7 +142,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="drivers" 
+                      dataKey="revenue" 
                       stroke="#276EF1" 
                       strokeWidth={4}
                       dot={{ r: 8, fill: '#276EF1', strokeWidth: 2, stroke: '#fff' }}
@@ -139,7 +150,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="deliveries" 
+                      dataKey="users" 
                       stroke="#10B981" 
                       strokeWidth={4}
                       dot={{ r: 8, fill: '#10B981', strokeWidth: 2, stroke: '#fff' }}
@@ -147,7 +158,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="satisfaction" 
+                      dataKey="gmv" 
                       stroke="#F59E0B" 
                       strokeWidth={4}
                       dot={{ r: 8, fill: '#F59E0B', strokeWidth: 2, stroke: '#fff' }}
@@ -160,6 +171,16 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({ className = '', isActive }) 
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

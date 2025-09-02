@@ -1,6 +1,12 @@
 export interface SlideProps {
   isActive?: boolean;
   className?: string;
+  onPrevious?: () => void;
+  onNext?: () => void;
+  hasPrevious?: boolean;
+  hasNext?: boolean;
+  currentSlide?: number;
+  totalSlides?: number;
 }
 
 export interface ChartDataPoint {

@@ -1210,25 +1210,158 @@ export default function DriverNetworkPresentation() {
               activeSlideId={activeTab}
               slideTransition={slideTransition}
             >
-              {activeTab === 'agenda-overview' && <AgendaOverview />}
-              {activeTab === 'executive-summary' && <ExecutiveSummary />}
-              {activeTab === 'company-evolution' && <CompanyEvolution />}
-              {activeTab === 'service-divisions' && <ServiceDivisions />}
-              {activeTab === 'performance-metrics' && <PerformanceMetrics />}
-              {activeTab === 'case-study-instacart' && <CaseStudyInstacart />}
-              {activeTab === 'case-study-tesla' && <CaseStudyTesla />}
-              {activeTab === 'case-study-medical' && <CaseStudyMedical />}
-              {activeTab === 'case-study-bmw' && <CaseStudyBmw />}
-              {activeTab === 'driver-excellence' && <DriverExcellence />}
-              {activeTab === 'technology-integration' && <TechnologyIntegration />}
-              {activeTab === 'client-portfolio' && <ClientPortfolio />}
-              {activeTab === 'rapid-deployment' && <RapidDeployment />}
-              {activeTab === 'geographic-coverage' && <GeographicCoverage />}
-              {activeTab === 'partnership-proposal' && <PartnershipProposal />}
-              {activeTab === 'competitive-advantage' && <CompetitiveAdvantage />}
-              {activeTab === 'service-integration' && <ServiceIntegration />}
-              {activeTab === 'roi-projection' && <RoiProjection />}
-              {activeTab === 'next-steps' && <NextSteps />}
+              {activeTab === 'agenda-overview' && <AgendaOverview 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'executive-summary' && <ExecutiveSummary 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'company-evolution' && <CompanyEvolution 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'service-divisions' && <ServiceDivisions 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'performance-metrics' && <PerformanceMetrics 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'case-study-instacart' && <CaseStudyInstacart 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'case-study-tesla' && <CaseStudyTesla 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'case-study-medical' && <CaseStudyMedical 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'case-study-bmw' && <CaseStudyBmw 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'driver-excellence' && <DriverExcellence 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'technology-integration' && <TechnologyIntegration 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'client-portfolio' && <ClientPortfolio 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'rapid-deployment' && <RapidDeployment 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'geographic-coverage' && <GeographicCoverage 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'partnership-proposal' && <PartnershipProposal 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'competitive-advantage' && <CompetitiveAdvantage 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'service-integration' && <ServiceIntegration 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'roi-projection' && <RoiProjection 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
+              {activeTab === 'next-steps' && <NextSteps 
+                onPrevious={() => navigateTab('prev')}
+                onNext={() => navigateTab('next')}
+                hasPrevious={tabs.indexOf(activeTab) > 0}
+                hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+                currentSlide={tabs.indexOf(activeTab) + 1}
+                totalSlides={tabs.length}
+              />}
             </SlideRenderer>
           </Container>
         </main>

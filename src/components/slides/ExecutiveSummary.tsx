@@ -1,8 +1,18 @@
 
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const ExecutiveSummary: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const ExecutiveSummary: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
       {/* Problem Statement Hero */}
@@ -125,6 +135,16 @@ const ExecutiveSummary: React.FC<SlideProps> = ({ className = '', isActive }) =>
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

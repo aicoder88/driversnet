@@ -3,8 +3,18 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const CaseStudyTesla: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   return (
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
@@ -13,7 +23,8 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
             🏆 SUCCESS STORY: TESLA
           </h2>
           <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
-            Precision Automotive Transport Excellence • Luxury Vehicle Transport • White-Glove Service • $1.8M Annual Contract
+            Tesla's remarkable growth: $97.6B revenue (2024), 1.78M vehicles delivered
+            <br/>Strong foundation for specialized transport partnerships
           </p>
         </div>
       </div>
@@ -22,7 +33,7 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
         <div className="bg-gradient-to-r from-[#E31937] to-[#CC1530] p-8 rounded-2xl text-white dark:text-white mb-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <span className="text-5xl text-white dark:text-white mr-6">⚡</span>
+              <img src="/Tesla_logo.png" alt="Tesla" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
                 <h3 className="text-4xl text-white dark:text-white font-bold mb-2">Tesla: Precision Automotive Transport Excellence</h3>
                 <p className="text-xl text-white dark:text-white opacity-90 font-medium">Luxury Vehicle Transport • White-Glove Service • $1.8M Annual Contract</p>
@@ -36,10 +47,10 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { key: 'Vehicles/Month', value: '356 avg' },
-              { key: 'Avg Vehicle Value', value: '$87,000' },
-              { key: 'Damage Rate', value: '0.03%' },
-              { key: 'Insurance Claims', value: '$4,200 total' }
+              { key: '2024 Revenue', value: '$97.6B' },
+              { key: 'Vehicles Delivered', value: '1.78M' },
+              { key: 'Market Position', value: 'EV Leader' },
+              { key: 'Manufacturing', value: '1.77M' }
             ].map(({ key, value }, i) => (
               <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg">
                 <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{value}</div>
@@ -90,16 +101,18 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
           </h4>
           <div className="h-80">
             <OptimizedChart data={[
-              { name: 'Q1 2021', value: 850, quarter: 'Q1 2021', vehicles: 850, damageRate: 0.08, satisfaction: 4.7 },
-              { name: 'Q3 2021', value: 1050, quarter: 'Q3 2021', vehicles: 1050, damageRate: 0.05, satisfaction: 4.8 },
-              { name: 'Q1 2022', value: 1180, quarter: 'Q1 2022', vehicles: 1180, damageRate: 0.03, satisfaction: 4.9 },
-              { name: 'Q4 2023', value: 1285, quarter: 'Q4 2023', vehicles: 1285, damageRate: 0.02, satisfaction: 4.9 }
+              { name: '2019', value: 24.6, year: '2019', revenue: 24.6, deliveries: 0.37, margin: 1.1 },
+              { name: '2020', value: 31.5, year: '2020', revenue: 31.5, deliveries: 0.50, margin: 2.0 },
+              { name: '2021', value: 53.8, year: '2021', revenue: 53.8, deliveries: 0.94, margin: 7.5 },
+              { name: '2022', value: 81.5, year: '2022', revenue: 81.5, deliveries: 1.31, margin: 15.0 },
+              { name: '2023', value: 96.8, year: '2023', revenue: 96.8, deliveries: 1.81, margin: 15.5 },
+              { name: '2024', value: 97.6, year: '2024', revenue: 97.6, deliveries: 1.78, margin: 7.3 }
             ]}>
               {(chartData) => (
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-                    <XAxis dataKey="quarter" stroke="#4b5563" fontSize={12} />
+                    <XAxis dataKey="year" stroke="#4b5563" fontSize={12} />
                     <YAxis stroke="#4b5563" fontSize={12} />
                     <Tooltip 
                       contentStyle={{ 
@@ -113,7 +126,7 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="vehicles" 
+                      dataKey="revenue" 
                       stroke="#276EF1" 
                       strokeWidth={4}
                       dot={{ r: 8, fill: '#276EF1', strokeWidth: 2, stroke: '#fff' }}
@@ -121,11 +134,19 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="satisfaction" 
+                      dataKey="deliveries" 
                       stroke="#10B981" 
                       strokeWidth={4}
                       dot={{ r: 8, fill: '#10B981', strokeWidth: 2, stroke: '#fff' }}
                       activeDot={{ r: 10, fill: '#10B981' }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="margin" 
+                      stroke="#F59E0B" 
+                      strokeWidth={4}
+                      dot={{ r: 8, fill: '#F59E0B', strokeWidth: 2, stroke: '#fff' }}
+                      activeDot={{ r: 10, fill: '#F59E0B' }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -134,6 +155,16 @@ const CaseStudyTesla: React.FC<SlideProps> = ({ className = '', isActive }) => {
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

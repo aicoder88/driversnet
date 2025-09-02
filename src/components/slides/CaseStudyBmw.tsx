@@ -22,7 +22,7 @@ const CaseStudyBmw: React.FC<SlideProps> = ({ className = '', isActive }) => {
         <div className="bg-gradient-to-r from-gray-800 to-black p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">🚗</span>
+              <img src="/BMW.svg.png" alt="BMW" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
                 <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">BMW Group: Premium Automotive Logistics</h3>
                 <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">White-Glove Transport • Event & Dealership Services • $1.2M Annual Contract</p>

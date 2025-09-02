@@ -22,7 +22,7 @@ const CaseStudyMedical: React.FC<SlideProps> = ({ className = '', isActive }) =>
         <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">🏥</span>
+              <img src="/sds logo.svg" alt="SDSRX Medical" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
                 <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">SDSRX Medical: Mission-Critical Healthcare Logistics</h3>
                 <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">HIPAA-Compliant Medical Courier • Life-Critical Deliveries • $950K Annual Contract</p>
