@@ -17,7 +17,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       category: 'Gig Economy',
       markets: 6, 
       achievement: '100% on-time delivery',
-      logo: '🛒',
+      logo: '/Instacart-Logo.jpg',
       color: 'green',
       details: {
         volume: '10,000+ orders/month',
@@ -29,7 +29,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       name: 'Tesla', 
       category: 'Automotive',
       achievement: '99.9% damage-free record',
-      logo: '⚡',
+      logo: '/Tesla_logo.png',
       color: 'red',
       details: {
         volume: '$2M+ transported',
@@ -41,7 +41,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       name: 'BMW', 
       category: 'Luxury Automotive',
       achievement: 'White-glove service standard',
-      logo: '🚗',
+      logo: '/BMW.svg.png',
       color: 'blue',
       details: {
         volume: '500+ vehicles/month',
@@ -53,7 +53,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       name: 'SDSRX Medical', 
       category: 'Healthcare',
       achievement: '18+ months zero incidents',
-      logo: '⚕️',
+      logo: '/sds logo.svg',
       color: 'purple',
       details: {
         volume: 'Temperature-controlled',
@@ -67,7 +67,7 @@ const ClientPortfolio: React.FC<SlideProps> = ({
     { label: 'Enterprise Clients', value: '50+', icon: '🏢', description: 'Spanning multiple industries' },
     { label: 'Client Retention', value: '98%', icon: '🤝', description: 'Year-over-year renewal rate' },
     { label: 'Average Partnership', value: '3.2yr', icon: '⏱️', description: 'Long-term relationships' },
-    { label: 'Portfolio Value', value: '$50M+', icon: '💎', description: 'Combined client value' }
+    { label: 'Portfolio Value', value: '$47.3M', icon: '💎', description: 'Active contracts value' }
   ];
 
   const industryVerticals = [
@@ -186,7 +186,13 @@ const ClientPortfolio: React.FC<SlideProps> = ({
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-3xl sm:text-4xl md:text-5xl">{partner.logo}</div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} logo`}
+                      className="w-full h-full object-contain rounded-lg bg-white p-2 shadow-md"
+                    />
+                  </div>
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200">
                       {partner.name}

@@ -19,10 +19,10 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
         <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
           <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-            🏆 SUCCESS STORY: SDSRX MEDICAL
+            🏆 HEALTHCARE EXCELLENCE
           </h2>
           <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
-            Mission-Critical Healthcare Logistics • HIPAA-Compliant Medical Courier • Life-Critical Deliveries • $950K Annual Contract
+            When lives depend on precision delivery, we deliver perfection
           </p>
         </div>
       </div>
@@ -33,8 +33,8 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
             <div className="flex items-center">
               <img src="/sds logo.svg" alt="SDSRX Medical" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
-                <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">SDSRX Medical: Mission-Critical Healthcare Logistics</h3>
-                <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">HIPAA-Compliant Medical Courier • Life-Critical Deliveries • $950K Annual Contract</p>
+                <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">SDSRX Medical Partnership</h3>
+                <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">Four-year partnership delivering mission-critical healthcare logistics with zero tolerance for error</p>
               </div>
             </div>
             <div className="text-right text-gray-800 dark:text-gray-100">

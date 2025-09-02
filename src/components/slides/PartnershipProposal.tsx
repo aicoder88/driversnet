@@ -143,7 +143,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
 
   const keyTerms = [
     { term: 'Geographic Scope', detail: '19 major markets, expandable to 30+ by 2025' },
-    { term: 'Service Levels', detail: '100% on-time delivery, 99.9% damage-free transport' },
+    { term: 'Service Levels', detail: 'Enterprise-grade SLA with guaranteed performance metrics' },
     { term: 'Technology', detail: 'Full API integration with real-time tracking and analytics' },
     { term: 'Pricing', detail: 'Competitive rates with volume discounts and performance bonuses' },
     { term: 'Exclusivity', detail: 'Strategic partnership terms with defined market protections' },

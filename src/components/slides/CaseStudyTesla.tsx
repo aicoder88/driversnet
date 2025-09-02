@@ -18,10 +18,25 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-6 sm:p-8 md:p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
         <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-            🏆 SUCCESS STORY: TESLA
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto px-4">
+          {/* Large Tesla Logo */}
+          <div className="flex justify-center items-center mb-8">
+            <img 
+              src="/Tesla_logo.png" 
+              alt="Tesla Logo" 
+              className="w-32 h-32 rounded-2xl object-contain bg-white p-6 shadow-xl border-4 border-white/20" 
+            />
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
+              ⚡ ELECTRIC PRECISION
+            </h2>
+            <h3 className="text-2xl font-medium text-gray-300 dark:text-gray-300">
+              Moving Innovation Forward
+            </h3>
+          </div>
+          
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 dark:text-gray-200 max-w-5xl mx-auto px-4">
             Tesla's remarkable growth: $97.6B revenue (2024), 1.78M vehicles delivered
             <br/>Strong foundation for specialized transport partnerships
           </p>

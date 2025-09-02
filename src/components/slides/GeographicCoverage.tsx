@@ -89,7 +89,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             From Seattle to Miami, our network spans 19 major markets
             <br />
-            <strong className="text-indigo-600 dark:text-indigo-400">1,000+ drivers ready to deliver</strong>
+            <strong className="text-indigo-600 dark:text-indigo-400">Coast-to-coast coverage built for enterprise scale</strong>
           </p>
         </div>
       </div>

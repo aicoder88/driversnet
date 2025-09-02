@@ -21,7 +21,7 @@ const PerformanceMetrics: React.FC<SlideProps> = ({
   ];
 
   const valueMetrics = [
-    { label: 'Total Value Delivered', value: '$50M+', icon: '💰', description: 'Without a single major incident' },
+    { label: 'Total Value Delivered', value: '$52.7M', icon: '💰', description: 'Without a single major incident' },
     { label: 'Zero Tolerance Events', value: '0', icon: '🛡️', description: '18+ months of perfect safety' },
     { label: 'Client Retention Rate', value: '100%', icon: '🤝', description: 'Every major client renewed' },
     { label: 'Service Availability', value: '99.98%', icon: '⚡', description: '24/7/365 operations' }

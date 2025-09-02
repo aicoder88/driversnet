@@ -43,9 +43,24 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-green-800/90 to-emerald-900/90 dark:from-green-800/95 dark:to-emerald-900/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-green-300/30 dark:border-green-600/30 shadow-2xl">
         <div className="text-center mb-12">
-          <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent">
-            🚀 THE SOLUTION IN ACTION
-          </h2>
+          {/* Large Instacart Logo */}
+          <div className="flex justify-center items-center mb-8">
+            <img 
+              src="/Instacart-Logo.jpg" 
+              alt="Instacart Logo" 
+              className="w-32 h-32 rounded-2xl object-contain bg-white p-4 shadow-xl border-4 border-white/20" 
+            />
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-6">
+            <h3 className="text-3xl font-bold mb-3 text-green-200 dark:text-green-200">
+              INSTACART CASE STUDY
+            </h3>
+            <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent">
+              🚀 THE SOLUTION IN ACTION
+            </h2>
+          </div>
+          
           <p className="text-2xl text-green-100 dark:text-green-200 max-w-5xl mx-auto font-medium">
             Instacart's explosive growth: +104% revenue (2020), 14.4M users, 294M orders
             <br/><span className="text-green-200 dark:text-green-300">They chose partnership. So can you.</span>

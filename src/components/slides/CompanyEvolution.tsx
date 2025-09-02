@@ -32,7 +32,7 @@ const CompanyEvolution: React.FC<SlideProps> = ({
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             While others struggle to build logistics networks, we perfected one
             <br />
-            <strong className="text-green-600 dark:text-green-400">1,000+ drivers. 19 markets. Battle-tested and ready.</strong>
+            <strong className="text-green-600 dark:text-green-400">A decade of organic growth creating what competitors struggle to build.</strong>
           </p>
         </div>
       </div>

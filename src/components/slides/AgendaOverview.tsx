@@ -13,13 +13,6 @@ const AgendaOverview: React.FC<SlideProps> = ({
 }) => {
   return (
     <section className={`min-h-screen flex flex-col space-y-16 ${className}`}>
-      {/* Scroll Down Indicator - Above the fold */}
-      <div className="text-center pt-8 pb-4">
-        <div className="animate-bounce text-gray-500 dark:text-gray-400">
-          <div className="text-sm mb-2">Scroll down to explore</div>
-          <div className="text-2xl">⬇️</div>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <div className="text-center space-y-8 flex-1 flex flex-col justify-center">

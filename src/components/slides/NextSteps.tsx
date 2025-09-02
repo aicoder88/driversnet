@@ -111,7 +111,7 @@ const NextSteps: React.FC<SlideProps> = ({
 
   const successMetrics = [
     { metric: 'Partnership Launch', target: '30 days', category: 'Timeline' },
-    { metric: 'API Integration', target: '48 hours', category: 'Technical' },
+    { metric: 'API Integration', target: '2-3 days', category: 'Technical' },
     { metric: 'Driver Onboarding', target: '500+ drivers', category: 'Capacity' },
     { metric: 'Service Performance', target: '99%+ reliability', category: 'Quality' },
     { metric: 'Client Satisfaction', target: '95%+ rating', category: 'Experience' },

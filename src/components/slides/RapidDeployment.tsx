@@ -124,7 +124,7 @@ const RapidDeployment: React.FC<SlideProps> = ({
           <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
             While others spend months building, we deliver results in days
             <br />
-            <strong className="text-orange-600 dark:text-orange-400">48 hours to full operations</strong>
+            <strong className="text-orange-600 dark:text-orange-400">Same week deployment to full scale</strong>
           </p>
         </div>
       </div>
