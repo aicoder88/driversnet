@@ -57,20 +57,51 @@ const AgendaOverview: React.FC<SlideProps> = ({
             The $2.8 Trillion Problem
           </h2>
           
-          {/* Graphic illustration */}
-          <div className="mb-8 mx-auto max-w-2xl">
-            <div className="relative bg-gradient-to-r from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 p-8 rounded-2xl border border-red-300/50 dark:border-red-600/50">
-              <div className="flex items-center justify-center mb-6">
-                <Image 
-                  src="/supply-chain-containers.jpg" 
-                  alt="Shipping containers at port terminal illustrating supply chain complexity"
-                  width={400}
-                  height={160}
-                  className="w-full max-w-md h-40 object-cover rounded-xl shadow-lg"
-                />
-              </div>
-              <div className="text-sm text-red-700 dark:text-red-300 font-medium">
-                Customer Orders → Lost Revenue → Failed Delivery → Declining Market Share → Frustrated Stakeholders
+          {/* Enhanced Graphic illustration with dramatic visual impact */}
+          <div className="mb-8 mx-auto max-w-4xl">
+            <div className="relative bg-gradient-to-r from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 p-8 rounded-2xl border border-red-300/50 dark:border-red-600/50 shadow-2xl">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                {/* Left: Visual Impact */}
+                <div className="flex flex-col items-center space-y-4">
+                  <div className="relative">
+                    <Image 
+                      src="/supply-chain-containers.jpg" 
+                      alt="Shipping containers at port terminal illustrating supply chain complexity"
+                      width={400}
+                      height={240}
+                      className="w-full h-60 object-cover rounded-xl shadow-lg border-4 border-white/50"
+                    />
+                    {/* Overlay with crisis indicators */}
+                    <div className="absolute inset-0 bg-red-600/20 rounded-xl flex items-center justify-center">
+                      <div className="bg-red-600/90 text-white px-4 py-2 rounded-lg font-bold text-lg">
+                        💸 Daily Losses: $7.67B
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-red-700 dark:text-red-300 font-medium text-center">
+                    Global freight industry loses $2.8 trillion annually to inefficiencies
+                  </div>
+                </div>
+                
+                {/* Right: The Crisis Chain */}
+                <div className="space-y-4">
+                  <h4 className="text-xl font-bold text-red-800 dark:text-red-200 mb-4">The Crisis Chain:</h4>
+                  <div className="space-y-3">
+                    {[
+                      { icon: '📦', text: 'Customer Orders', impact: '+47% annually' },
+                      { icon: '⚠️', text: 'Infrastructure Gaps', impact: 'Critical shortage' },
+                      { icon: '💸', text: 'Lost Revenue', impact: '$2.8T/year' },
+                      { icon: '📉', text: 'Failed Deliveries', impact: '28% failure rate' },
+                      { icon: '😤', text: 'Frustrated Customers', impact: 'Brand damage' }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-3 p-3 bg-white/70 dark:bg-gray-800/70 rounded-lg">
+                        <span className="text-2xl">{item.icon}</span>
+                        <span className="flex-1 font-semibold text-red-800 dark:text-red-200">{item.text}</span>
+                        <span className="text-sm text-red-600 dark:text-red-300 font-medium">{item.impact}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

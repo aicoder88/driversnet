@@ -101,11 +101,27 @@ const RoiProjection: React.FC<SlideProps> = ({
                       boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
                     }} 
                   />
-                  <Area type="monotone" dataKey="inHouse" stackId="1" stroke="#F59E0B" fill="#F59E0B" fillOpacity={0.6} />
-                  <Area type="monotone" dataKey="partnership" stackId="2" stroke="#276EF1" fill="#276EF1" fillOpacity={0.6} />
+                  <Area type="monotone" dataKey="inHouse" stackId="1" stroke="#EF4444" fill="#EF4444" fillOpacity={0.6} />
+                  <Area type="monotone" dataKey="partnership" stackId="2" stroke="#3B82F6" fill="#3B82F6" fillOpacity={0.6} />
                   <Area type="monotone" dataKey="savings" stroke="#10B981" fillOpacity={1} fill="url(#savingsGradient)" />
                 </AreaChart>
               </ResponsiveContainer>
+            </div>
+            
+            {/* Chart Legend */}
+            <div className="flex justify-center space-x-8 mt-4 text-sm">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-red-500 rounded"></div>
+                <span className="text-gray-600 dark:text-gray-300">In-House Cost</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                <span className="text-gray-600 dark:text-gray-300">Partnership Cost</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-500 rounded"></div>
+                <span className="text-gray-600 dark:text-gray-300">Cost Savings</span>
+              </div>
             </div>
           </div>
           

@@ -153,7 +153,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
 
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
-      {/* Hero Section */}
+      {/* Hero Section with Partnership Visual */}
       <div className="text-center space-y-12">
         <div className="space-y-6">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-700 dark:to-teal-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
@@ -169,6 +169,87 @@ const PartnershipProposal: React.FC<SlideProps> = ({
             <br />
             <strong className="text-emerald-600 dark:text-emerald-400">Ready to start today</strong>
           </p>
+        </div>
+        
+        {/* Partnership Ecosystem Visual */}
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 p-12 rounded-3xl border border-emerald-200 dark:border-emerald-700 shadow-2xl max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-emerald-800 dark:text-emerald-200 mb-4">
+              🤝 Strategic Partnership Ecosystem
+            </h2>
+            <p className="text-emerald-600 dark:text-emerald-300">
+              Two powerhouses, one unstoppable logistics network
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Uber Freight */}
+            <div className="relative">
+              <div className="bg-black text-white p-8 rounded-2xl shadow-2xl border-4 border-gray-800">
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-4">
+                    <img src="/uber-logo.jpg" alt="Uber Freight" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">UBER FREIGHT</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-gray-800 px-3 py-2 rounded-lg">🌐 Global Platform</div>
+                    <div className="bg-gray-800 px-3 py-2 rounded-lg">📱 Technology Leadership</div>
+                    <div className="bg-gray-800 px-3 py-2 rounded-lg">💼 Enterprise Customers</div>
+                    <div className="bg-gray-800 px-3 py-2 rounded-lg">🚀 Brand Power</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Partnership Connection */}
+            <div className="relative">
+              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-8 md:block hidden">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+                  <div className="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                  <div className="w-8 h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+                </div>
+              </div>
+              
+              {/* Driver Network */}
+              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 rounded-2xl shadow-2xl border-4 border-blue-500">
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-4">
+                    <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">DRIVER NETWORK</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-blue-800 px-3 py-2 rounded-lg">👥 1,000+ Drivers</div>
+                    <div className="bg-blue-800 px-3 py-2 rounded-lg">🗺️ 19 Markets</div>
+                    <div className="bg-blue-800 px-3 py-2 rounded-lg">⚡ Instant Capacity</div>
+                    <div className="bg-blue-800 px-3 py-2 rounded-lg">🎯 100% Reliability</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Partnership Results */}
+          <div className="mt-12 text-center">
+            <div className="text-3xl mb-4">⚡ = 🚀</div>
+            <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-200 mb-4">
+              Partnership = Market Domination
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl border border-emerald-300 dark:border-emerald-600">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">$50M+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">Immediate Market Access</div>
+              </div>
+              <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl border border-emerald-300 dark:border-emerald-600">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">1000%</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">Faster Expansion</div>
+              </div>
+              <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl border border-emerald-300 dark:border-emerald-600">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">Zero</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">Infrastructure Investment</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

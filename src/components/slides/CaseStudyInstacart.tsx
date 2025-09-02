@@ -43,12 +43,14 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-green-800/90 to-emerald-900/90 dark:from-green-800/95 dark:to-emerald-900/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-green-300/30 dark:border-green-600/30 shadow-2xl">
         <div className="text-center mb-12">
-          {/* Large Instacart Logo */}
-          <div className="flex justify-center items-center mb-8">
+          {/* Logo Partnership in Header Section */}
+          <div className="flex items-center justify-center space-x-8 mb-8">
+            <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" />
+            <div className="text-4xl">🤝</div>
             <img 
               src="/Instacart-Logo.jpg" 
               alt="Instacart Logo" 
-              className="w-32 h-32 rounded-2xl object-contain bg-white p-4 shadow-xl border-4 border-white/20" 
+              className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" 
             />
           </div>
           

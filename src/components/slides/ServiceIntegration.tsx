@@ -38,22 +38,73 @@ const ServiceIntegration: React.FC<SlideProps> = ({
 
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
-      {/* Hero Section */}
+      {/* Enhanced Hero Section with Clear Value Proposition */}
       <div className="text-center space-y-12">
         <div className="space-y-6">
-          <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#276EF1] to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
-            Seamless Integration
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-full font-semibold text-lg">
+            🔗 Seamless Uber Freight Integration
           </div>
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-            Perfect
+          <h1 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+            🚀 Uber Freight
             <br />
-            <span className="text-[#276EF1] dark:text-blue-400">Harmony</span>
+            <span className="text-black dark:text-white">Integration</span>
           </h1>
           <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-            Your Uber Freight platform + Our driver network
+            Instant network expansion without infrastructure investment
             <br />
-            <strong className="text-[#276EF1] dark:text-blue-400">Seamless integration from day one</strong>
+            <strong className="text-black dark:text-white">Ready to deploy in 48 hours</strong>
           </p>
+        </div>
+        
+        {/* Clear Value Proposition Visual */}
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-3xl border border-gray-200 dark:border-gray-600 shadow-2xl max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            {/* Uber Freight */}
+            <div className="text-center">
+              <div className="bg-black p-6 rounded-2xl shadow-lg mb-4">
+                <img src="/uber-logo.jpg" alt="Uber Freight" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
+              </div>
+              <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">UBER FREIGHT</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Your existing platform</p>
+            </div>
+            
+            {/* Integration Arrow */}
+            <div className="text-center">
+              <div className="flex items-center justify-center space-x-2 mb-4">
+                <div className="w-8 h-1 bg-gradient-to-r from-black to-blue-600"></div>
+                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs animate-pulse">⚡</div>
+                <div className="w-8 h-1 bg-gradient-to-r from-blue-600 to-black"></div>
+              </div>
+              <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                48-HOUR INTEGRATION
+              </div>
+            </div>
+            
+            {/* Driver Network */}
+            <div className="text-center">
+              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-2xl shadow-lg mb-4">
+                <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
+              </div>
+              <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">DRIVER NETWORK</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">1,000+ drivers ready</p>
+            </div>
+          </div>
+          
+          {/* Immediate Benefits */}
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            <div className="bg-green-100 dark:bg-green-900/30 p-4 rounded-xl text-center">
+              <div className="text-2xl font-bold text-green-600 mb-1">$0</div>
+              <div className="text-xs text-green-800 dark:text-green-200">Infrastructure Investment</div>
+            </div>
+            <div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-xl text-center">
+              <div className="text-2xl font-bold text-blue-600 mb-1">100%</div>
+              <div className="text-xs text-blue-800 dark:text-blue-200">API Compatibility</div>
+            </div>
+            <div className="bg-purple-100 dark:bg-purple-900/30 p-4 rounded-xl text-center">
+              <div className="text-2xl font-bold text-purple-600 mb-1">24/7</div>
+              <div className="text-xs text-purple-800 dark:text-purple-200">Support Coverage</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -132,6 +183,81 @@ const ServiceIntegration: React.FC<SlideProps> = ({
               <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">💡 Custom Solutions Available</h4>
               <p className="text-blue-700 dark:text-blue-300 text-sm">Bespoke service packages tailored to specific Uber Freight requirements and volume commitments.</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Clear Next Steps Section */}
+      <div className="bg-gradient-to-r from-black to-gray-800 text-white p-12 rounded-3xl shadow-2xl">
+        <div className="text-center mb-12">
+          <div className="inline-block px-6 py-3 bg-white/20 rounded-full font-semibold text-lg mb-6">
+            🎯 Next Steps
+          </div>
+          <h2 className="text-4xl font-bold mb-6">Ready to Integrate with Uber Freight?</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Three simple steps to transform your logistics capacity
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {/* Step 1 */}
+          <div className="text-center">
+            <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mb-6 mx-auto">
+              1
+            </div>
+            <h3 className="text-xl font-bold mb-4">Schedule Integration Call</h3>
+            <p className="text-gray-300 mb-6 text-sm">
+              30-minute technical discussion to review your requirements and integration approach
+            </p>
+            <div className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition cursor-pointer">
+              Book Call Now
+            </div>
+          </div>
+          
+          {/* Step 2 */}
+          <div className="text-center">
+            <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center text-3xl font-bold mb-6 mx-auto">
+              2
+            </div>
+            <h3 className="text-xl font-bold mb-4">48-Hour Integration</h3>
+            <p className="text-gray-300 mb-6 text-sm">
+              Our technical team implements the API integration and conducts comprehensive testing
+            </p>
+            <div className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold">
+              Fast Implementation
+            </div>
+          </div>
+          
+          {/* Step 3 */}
+          <div className="text-center">
+            <div className="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-3xl font-bold mb-6 mx-auto">
+              3
+            </div>
+            <h3 className="text-xl font-bold mb-4">Go Live & Scale</h3>
+            <p className="text-gray-300 mb-6 text-sm">
+              Launch with immediate access to 1,000+ drivers across 19 markets with 24/7 support
+            </p>
+            <div className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold">
+              Launch Ready
+            </div>
+          </div>
+        </div>
+        
+        {/* Call to Action */}
+        <div className="text-center mt-12 pt-8 border-t border-white/20">
+          <p className="text-lg text-gray-300 mb-6">
+            <strong>Ready to get started?</strong> Our integration specialists are standing by.
+          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
+            <div className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 transition cursor-pointer">
+              📞 Schedule Integration Call
+            </div>
+            <div className="bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition cursor-pointer">
+              📧 Email Integration Team
+            </div>
+          </div>
+          <div className="mt-6 text-sm text-gray-400">
+            Questions? Contact our integration team at <strong>integrations@driversnet.io</strong>
           </div>
         </div>
       </div>

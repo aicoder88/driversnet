@@ -18,12 +18,14 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-6 sm:p-8 md:p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
         <div className="text-center text-white dark:text-gray-100 mb-12">
-          {/* Large Tesla Logo */}
-          <div className="flex justify-center items-center mb-8">
+          {/* Logo Partnership in Header Section */}
+          <div className="flex items-center justify-center space-x-8 mb-8">
+            <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" />
+            <div className="text-4xl">🤝</div>
             <img 
               src="/Tesla_logo.png" 
               alt="Tesla Logo" 
-              className="w-32 h-32 rounded-2xl object-contain bg-white p-6 shadow-xl border-4 border-white/20" 
+              className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" 
             />
           </div>
           

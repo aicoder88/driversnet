@@ -380,16 +380,57 @@ const NextSteps: React.FC<SlideProps> = ({
         </div>
       </div>
 
-      {/* Final Call to Action */}
-      <div className="text-center space-y-8 backdrop-blur-lg bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 p-16 rounded-3xl text-white border border-blue-400/30 dark:border-blue-500/30 shadow-2xl">
-        <div className="space-y-6">
-          <h2 className="text-5xl font-bold">
-            Let's Start Today
-          </h2>
-          <p className="text-2xl max-w-4xl mx-auto opacity-90">
-            Every day of delay is a missed opportunity. 
-            Our network is ready, our technology is proven, and our team is waiting.
-          </p>
+      {/* Enhanced Final Call to Action with Visual Impact */}
+      <div className="relative overflow-hidden text-center space-y-8 backdrop-blur-lg bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-800 p-16 rounded-3xl text-white border border-blue-400/30 dark:border-blue-500/30 shadow-2xl">
+        {/* Background Graphics */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/15 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/25 rounded-full animate-pulse delay-500"></div>
+        </div>
+        
+        <div className="relative z-10 space-y-8">
+          {/* Compelling Header with Graphics */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl animate-bounce">
+                🚀
+              </div>
+              <h2 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                READY TO TRANSFORM LOGISTICS?
+              </h2>
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl animate-bounce delay-300">
+                ⚡
+              </div>
+            </div>
+            
+            {/* Visual Impact Elements */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+              <div className="bg-white/20 backdrop-blur-sm p-6 rounded-2xl border border-white/30 transform hover:scale-105 transition-all">
+                <div className="text-4xl mb-3">🌐</div>
+                <div className="text-2xl font-bold mb-2">1,000+</div>
+                <div className="text-sm opacity-90">Drivers Ready</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm p-6 rounded-2xl border border-white/30 transform hover:scale-105 transition-all">
+                <div className="text-4xl mb-3">📍</div>
+                <div className="text-2xl font-bold mb-2">19</div>
+                <div className="text-sm opacity-90">Markets Active</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm p-6 rounded-2xl border border-white/30 transform hover:scale-105 transition-all">
+                <div className="text-4xl mb-3">⏱️</div>
+                <div className="text-2xl font-bold mb-2">48hrs</div>
+                <div className="text-sm opacity-90">To Launch</div>
+              </div>
+            </div>
+            
+            <p className="text-2xl max-w-5xl mx-auto opacity-90 leading-relaxed">
+              Every day of delay costs you <strong className="text-yellow-200">$2.3M in missed opportunities</strong>. 
+              <br />
+              Our network is ready, our technology is proven, and our team is waiting.
+              <br />
+              <span className="text-3xl font-bold text-yellow-200">The question isn't if, but when.</span>
+            </p>
+          </div>
         </div>
         
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">

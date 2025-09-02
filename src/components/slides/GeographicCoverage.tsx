@@ -94,6 +94,82 @@ const GeographicCoverage: React.FC<SlideProps> = ({
         </div>
       </div>
 
+      {/* Visual Map Representation */}
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-3xl border border-blue-200 dark:border-gray-600 shadow-2xl mb-12">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            🗺️ National Coverage Network
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Coast-to-coast presence with strategic regional hubs
+          </p>
+        </div>
+        
+        {/* Stylized US Map Visualization */}
+        <div className="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-600">
+          <div className="grid grid-cols-3 gap-8 h-80">
+            {/* West Coast */}
+            <div className="relative bg-gradient-to-b from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-2xl p-4 border-2 border-blue-300 dark:border-blue-600">
+              <div className="text-center text-blue-800 dark:text-blue-200 font-bold mb-2">WEST COAST</div>
+              <div className="space-y-2 text-sm">
+                <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">LA • 180 drivers</div>
+                <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">SF • 165 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Seattle • 85 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">San Diego • 95 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Phoenix • 75 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Las Vegas • 68 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Portland • 52 drivers</div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">645 drivers</div>
+            </div>
+            
+            {/* Central Region */}
+            <div className="relative bg-gradient-to-b from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 rounded-2xl p-4 border-2 border-orange-300 dark:border-orange-600">
+              <div className="text-center text-orange-800 dark:text-orange-200 font-bold mb-2">CENTRAL</div>
+              <div className="space-y-2 text-sm">
+                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Chicago • 89 drivers</div>
+                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Dallas • 78 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Houston • 72 drivers</div>
+                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Denver • 64 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Austin • 56 drivers</div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-orange-600 text-white px-2 py-1 rounded-full text-xs font-bold">359 drivers</div>
+            </div>
+            
+            {/* East Coast */}
+            <div className="relative bg-gradient-to-b from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 rounded-2xl p-4 border-2 border-green-300 dark:border-green-600">
+              <div className="text-center text-green-800 dark:text-green-200 font-bold mb-2">EAST COAST</div>
+              <div className="space-y-2 text-sm">
+                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">NYC • 125 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Miami • 74 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">DC • 71 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Atlanta • 67 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Philadelphia • 62 drivers</div>
+                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Boston • 58 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Orlando • 45 drivers</div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold">457 drivers</div>
+            </div>
+          </div>
+          
+          {/* Legend */}
+          <div className="flex justify-center space-x-8 mt-6 text-sm">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+              <span className="text-gray-600 dark:text-gray-300">Primary Hubs</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+              <span className="text-gray-600 dark:text-gray-300">Active Markets</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-orange-600 rounded-full"></div>
+              <span className="text-gray-600 dark:text-gray-300">Expanding Markets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Coverage Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {coverageMetrics.map((metric, index) => (
