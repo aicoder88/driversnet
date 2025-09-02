@@ -98,26 +98,26 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
           {/* Challenge/Solution/Results Grid */}
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚠️</span>Challenge
               </h4>
               <p className="text-red-100 dark:text-red-200 leading-relaxed">Instacart needed to rapidly scale last-mile delivery operations across 6 Midwest markets within 8 months while maintaining their signature delivery speed and reliability. Required 24/7 coverage, peak demand surge capacity (300%+ volume spikes), and seamless integration with their existing dispatch system.</p>
             </div>
             <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚙️</span>Solution
               </h4>
               <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Deployed 180+ rigorously trained drivers with Instacart-certified protocols. Implemented real-time API integration with their dispatch system, established dedicated surge capacity pools, and created market-specific operational centers. Each driver underwent 40-hour training on Instacart standards, customer interaction protocols, and temperature-sensitive delivery requirements.</p>
             </div>
             <div className="backdrop-blur-sm bg-[#43B02A]/20 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">🎯</span>Results
               </h4>
-              <ul className="text-gray-800 dark:text-gray-200 space-y-2">
+              <ul className="text-white dark:text-gray-200 space-y-2">
                 {results.map((result, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-[#43B02A] dark:text-[#43B02A] mr-2 text-lg">•</span>
-                    <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{result}</span>
+                    <span className="text-sm text-gray-200 dark:text-gray-300 leading-relaxed">{result}</span>
                   </li>
                 ))}
               </ul>

@@ -17,7 +17,7 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
   return (
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-6 sm:p-8 md:p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
-        <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
+        <div className="text-center text-white dark:text-gray-100 mb-12">
           {/* Large Tesla Logo */}
           <div className="flex justify-center items-center mb-8">
             <img 
@@ -75,22 +75,22 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
 
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚠️</span>Challenge
               </h4>
               <p className="text-red-100 dark:text-red-200 leading-relaxed">Tesla required zero-damage transport for high-value vehicles ($40K-$150K each) from their Chicago distribution center to 47 dealer locations across the Midwest. Any damage, scratches, or delays would result in massive financial losses and brand reputation damage. Required specialized equipment, insurance, and meticulous documentation.</p>
             </div>
             <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚙️</span>Solution
               </h4>
               <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Recruited and trained 25 elite automotive transport specialists with clean 10-year driving records. Invested in specialized enclosed trailers, GPS tracking systems, and comprehensive photo documentation protocols. Implemented Tesla-specific loading/unloading procedures, battery safety protocols, and real-time damage prevention systems.</p>
             </div>
             <div className="backdrop-blur-sm bg-[#E31937]/20 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">🎯</span>Results
               </h4>
-              <ul className="text-gray-800 dark:text-gray-200 space-y-2">
+              <ul className="text-white dark:text-gray-200 space-y-2">
                 {[
                   '99.97% damage-free delivery record (3 minor incidents in 12,000+ transports)',
                   '$2.1M+ in damage prevention vs. industry standard performance',
@@ -101,7 +101,7 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
                 ].map((result, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-[#E31937] dark:text-[#E31937] mr-2 text-lg">•</span>
-                    <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{result}</span>
+                    <span className="text-sm text-gray-200 dark:text-gray-300 leading-relaxed">{result}</span>
                   </li>
                 ))}
               </ul>

@@ -17,11 +17,11 @@ const DriverExcellence: React.FC<SlideProps> = ({
   return (
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
-        <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
+        <div className="text-center text-white dark:text-gray-100 mb-12">
           <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
             🏆 DRIVER EXCELLENCE
           </h2>
-          <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
+          <p className="text-2xl text-gray-200 dark:text-gray-200 max-w-5xl mx-auto">
             Our drivers are not just contractors, they are brand ambassadors.
           </p>
         </div>

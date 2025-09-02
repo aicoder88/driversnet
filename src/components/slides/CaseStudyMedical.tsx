@@ -17,11 +17,11 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
   return (
     <section className={`space-y-12 ${className}`}>
       <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
-        <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
+        <div className="text-center text-white dark:text-gray-100 mb-12">
           <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
             🏆 HEALTHCARE EXCELLENCE
           </h2>
-          <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
+          <p className="text-2xl text-gray-200 dark:text-gray-200 max-w-5xl mx-auto">
             When lives depend on precision delivery, we deliver perfection
           </p>
         </div>
@@ -33,13 +33,13 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
             <div className="flex items-center">
               <img src="/sds logo.svg" alt="SDSRX Medical" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
-                <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">SDSRX Medical Partnership</h3>
-                <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">Four-year partnership delivering mission-critical healthcare logistics with zero tolerance for error</p>
+                <h3 className="text-4xl text-white dark:text-gray-50 font-bold mb-2">SDSRX Medical Partnership</h3>
+                <p className="text-xl text-white dark:text-gray-200 opacity-90 font-medium">Four-year partnership delivering mission-critical healthcare logistics with zero tolerance for error</p>
               </div>
             </div>
-            <div className="text-right text-gray-800 dark:text-gray-100">
-              <div className="text-lg text-gray-600 dark:text-gray-300 font-bold mb-1">4-year ongoing partnership (2020-present)</div>
-              <div className="text-sm text-gray-600 dark:text-gray-300 opacity-80">Chicago metro + 6 satellite medical facilities</div>
+            <div className="text-right text-white dark:text-gray-100">
+              <div className="text-lg text-white dark:text-gray-300 font-bold mb-1">4-year ongoing partnership (2020-present)</div>
+              <div className="text-sm text-white dark:text-gray-300 opacity-80">Chicago metro + 6 satellite medical facilities</div>
             </div>
           </div>
 
@@ -59,19 +59,19 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
 
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚠️</span>Challenge
               </h4>
               <p className="text-red-100 dark:text-red-200 leading-relaxed">SDSRX needed ultra-reliable medical courier services for time-sensitive laboratory samples, temperature-controlled pharmaceuticals, and confidential patient records. Any security breach, temperature deviation, or delivery delay could compromise patient care and result in massive HIPAA violations and litigation.</p>
             </div>
             <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">⚙️</span>Solution
               </h4>
               <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Implemented military-grade security protocols with HIPAA-certified drivers, real-time temperature monitoring, blockchain-verified chain-of-custody documentation, and redundant delivery systems. All drivers underwent FBI background checks, 80-hour medical courier certification, and quarterly HIPAA compliance audits.</p>
             </div>
             <div className="backdrop-blur-sm bg-green-500/30 p-6 rounded-xl">
-              <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
+              <h4 className="font-bold text-2xl text-white dark:text-gray-100 mb-3 flex items-center">
                 <span className="mr-3">🎯</span>Results
               </h4>
               <ul className="text-green-100 dark:text-green-200 space-y-2">
@@ -85,7 +85,7 @@ const CaseStudyMedical: React.FC<SlideProps> = ({
                 ].map((result, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-green-300 dark:text-green-400 mr-2 text-lg">•</span>
-                    <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{result}</span>
+                    <span className="text-sm text-white dark:text-gray-300 leading-relaxed">{result}</span>
                   </li>
                 ))}
               </ul>

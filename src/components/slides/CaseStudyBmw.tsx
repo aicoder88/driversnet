@@ -48,13 +48,13 @@ const CaseStudyBmw: React.FC<SlideProps> = ({
             <div className="flex items-center">
               <img src="/BMW.svg.png" alt="BMW" className="w-16 h-16 mr-6 rounded-lg object-contain bg-white p-2" />
               <div>
-                <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">BMW Group: Premium Automotive Logistics</h3>
-                <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">White-Glove Transport • Event & Dealership Services • $1.2M Annual Contract</p>
+                <h3 className="text-4xl text-white dark:text-gray-50 font-bold mb-2">BMW Group: Premium Automotive Logistics</h3>
+                <p className="text-xl text-gray-200 dark:text-gray-200 opacity-90 font-medium">White-Glove Transport • Event & Dealership Services • $1.2M Annual Contract</p>
               </div>
             </div>
-            <div className="text-right text-gray-800 dark:text-gray-100">
-              <div className="text-lg text-gray-600 dark:text-gray-300 font-bold mb-1">5-year partnership (2019-present)</div>
-              <div className="text-sm text-gray-600 dark:text-gray-300 opacity-80">Illinois, Wisconsin, Indiana</div>
+            <div className="text-right text-white dark:text-gray-100">
+              <div className="text-lg text-gray-200 dark:text-gray-300 font-bold mb-1">5-year partnership (2019-present)</div>
+              <div className="text-sm text-gray-300 dark:text-gray-300 opacity-80">Illinois, Wisconsin, Indiana</div>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ const CaseStudyBmw: React.FC<SlideProps> = ({
                 ].map((result, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-green-300 dark:text-green-400 mr-2 text-lg">•</span>
-                    <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{result}</span>
+                    <span className="text-sm text-gray-100 dark:text-gray-300 leading-relaxed">{result}</span>
                   </li>
                 ))}
               </ul>
