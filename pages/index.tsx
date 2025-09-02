@@ -1566,19 +1566,6 @@ export default function DriverNetworkPresentation() {
                   ))}
                 </div>
               </div>
-              
-              {analytics.searchQueries.length > 0 && (
-                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2">Search Queries</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {generateAnalyticsReport().searchAnalytics.queries.map((query, index) => (
-                      <span key={index} className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded-full">
-                        {query}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         )}

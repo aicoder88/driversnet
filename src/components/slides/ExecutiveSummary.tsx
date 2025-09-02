@@ -17,17 +17,17 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
       {/* Problem Statement Hero */}
       <div className="text-center space-y-12">
         <div className="space-y-6">
-          <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-700 dark:to-orange-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-700 dark:to-orange-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg content-fade-in">
             The Brutal Reality
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight content-fade-in content-stagger-1">
             Everyone Wants
             <br />
             <span className="text-red-600 dark:text-red-400">Everything</span>
             <br />
             <span className="text-gray-700 dark:text-gray-300 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Yesterday</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4 content-fade-in content-stagger-2">
             Customers demand same-day delivery, zero damage, perfect tracking, 
             and prices that make no economic sense
             <br />
@@ -36,22 +36,22 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
         </div>
         
         {/* Interactive Pain Point Calculator */}
-        <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
+        <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto content-fade-in content-stagger-3">
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 sm:mb-8 text-center">
             Calculate Your Reality Check
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-            <div className="space-y-4">
+            <div className="space-y-4 card-stagger content-stagger-4">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">Customer Expectations</div>
               <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-600 dark:text-blue-400">↑ 400%</div>
               <div className="text-gray-600 dark:text-gray-300">Since 2020</div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 card-stagger content-stagger-5">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">Infrastructure Costs</div>
               <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-red-600 dark:text-red-400">↑ 250%</div>
               <div className="text-gray-600 dark:text-gray-300">Same period</div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 card-stagger content-stagger-6">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">Your Profit Margin</div>
               <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-orange-600 dark:text-orange-400">↓ 60%</div>
               <div className="text-gray-600 dark:text-gray-300">If you're lucky</div>
