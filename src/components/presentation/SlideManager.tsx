@@ -65,7 +65,7 @@ export const SlideManager: React.FC<SlideManagerProps> = ({
   }, [activeSlideId]);
 
   const slideClassName = useMemo(() => {
-    const baseClassName = 'slide-content';
+    const baseClassName = 'slide-content presentation-slide';
     const transitionClassName = slideTransition ? `transition-${slideTransition}` : '';
     return `${baseClassName} ${transitionClassName} ${props.className || ''}`.trim();
   }, [slideTransition, props.className]);

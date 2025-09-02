@@ -1,6 +1,8 @@
 
 import { NextSeo } from 'next-seo';
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { Card, CardContent, CardHeader, CardTitle } from '../src/components/ui/card';
 import { Button } from '../src/components/ui/button';
 import { Badge } from '../src/components/ui/badge';
@@ -281,9 +283,36 @@ export default function DriverNetworkPresentation() {
   const exportToPDF = async () => {
     setIsExporting(true);
     try {
-      // Note: In a real implementation, you would use libraries like jsPDF or Puppeteer
-      // For now, we'll simulate the export process
-      alert('PDF export functionality would be implemented here using jsPDF or similar library');
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: 'a4'
+      });
+
+      const slideElement = document.querySelector('.presentation-slide');
+      if (!slideElement) {
+        throw new Error('Slide element not found');
+      }
+
+      // Create canvas from current slide
+      const canvas = await html2canvas(slideElement as HTMLElement, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff'
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 297; // A4 landscape width in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      
+      // Save the PDF
+      pdf.save(`DriverNetwork-Presentation-Slide-${tabs.indexOf(activeTab) + 1}.pdf`);
+      
+      // Show success message
+      alert('PDF exported successfully!');
     } catch (error) {
       console.error('Export failed:', error);
       alert('Export failed. Please try again.');
@@ -295,8 +324,36 @@ export default function DriverNetworkPresentation() {
   const exportToImages = async () => {
     setIsExporting(true);
     try {
-      // Note: In a real implementation, you would use html2canvas or similar
-      alert('Image export functionality would be implemented here using html2canvas');
+      const slideElement = document.querySelector('.presentation-slide');
+      if (!slideElement) {
+        throw new Error('Slide element not found');
+      }
+
+      // Create high-quality canvas from current slide
+      const canvas = await html2canvas(slideElement as HTMLElement, {
+        scale: 3,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: slideElement.scrollWidth,
+        height: slideElement.scrollHeight
+      });
+
+      // Convert to blob and download
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.download = `DriverNetwork-Slide-${tabs.indexOf(activeTab) + 1}.png`;
+          link.href = url;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          
+          alert('Image exported successfully!');
+        }
+      }, 'image/png', 1.0);
     } catch (error) {
       console.error('Export failed:', error);
       alert('Export failed. Please try again.');
@@ -907,10 +964,30 @@ export default function DriverNetworkPresentation() {
 
         {/* Enhanced Header with Presentation Controls */} 
         <div className={`fixed top-0 left-0 right-0 z-50 bg-black/90 dark:bg-gray-900/95 backdrop-blur-md border-b border-white/20 dark:border-gray-700/30 no-print transition-transform duration-300 ${isFullscreen ? 'hidden' : ''} ${!isHeaderVisible ? '-translate-y-full' : 'translate-y-0'}`}> 
+          {/* Navigation buttons at screen edges */}
+          <div className="absolute left-0 top-0 bottom-0 flex items-center pl-4">
+            <button
+              onClick={() => navigateTab('prev')}
+              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded-full transition-all backdrop-blur-md bg-black/20"
+              title="Previous slide (←)"
+            >
+              ←
+            </button>
+          </div>
+          <div className="absolute right-0 top-0 bottom-0 flex items-center pr-4">
+            <button
+              onClick={() => navigateTab('next')}
+              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded-full transition-all backdrop-blur-md bg-black/20"
+              title="Next slide (→)"
+            >
+              →
+            </button>
+          </div>
+          
           <Container>
             <div className="flex justify-between items-center py-3">
               {/* Left Controls */} 
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 ml-16">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-[#276EF1] rounded-lg flex items-center justify-center">
                     <span className="text-white dark:text-white dark:text-white dark:text-white font-bold text-sm">DN</span>
@@ -919,24 +996,6 @@ export default function DriverNetworkPresentation() {
                     <div className="text-sm font-bold">Driver Network Inc.</div>
                     <div className="text-xs text-gray-300 dark:text-gray-400">Partnership Proposal</div>
                   </div>
-                </div>
-                
-                <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1 space-x-3">
-                  <button
-                    onClick={() => navigateTab('prev')}
-                    className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
-                    title="Previous slide (←)"
-                  >
-                    ←
-                  </button>
-                  <div className="w-px h-6 bg-white/20 dark:bg-gray-500/30"></div>
-                  <button
-                    onClick={() => navigateTab('next')}
-                    className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
-                    title="Next slide (→)"
-                  >
-                    →
-                  </button>
                 </div>
               </div>
               
@@ -985,7 +1044,7 @@ export default function DriverNetworkPresentation() {
               </div>
               
               {/* Right Controls */} 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 mr-16">
                 <button
                   onClick={() => setShowThumbnails(!showThumbnails)}
                   className={`p-2 rounded transition-all ${showThumbnails 
@@ -1226,7 +1285,7 @@ export default function DriverNetworkPresentation() {
 
         {/* Main Content with Slide Transitions */} 
         <main 
-          className={`${isFullscreen ? 'pt-8 pb-16' : 'pt-20 pb-8'} ${showSpeakerNotes && !isMobile ? 'pb-48' : showSpeakerNotes ? 'pb-32' : ''} ${showThumbnails && isMobile ? 'pb-64' : ''} slide-container ${slideTransition} ${showThumbnails && !isFullscreen && !isMobile ? 'ml-80' : ''} transition-all duration-300`}
+          className={`presentation-slide ${isFullscreen ? 'pt-8 pb-16' : 'pt-20 pb-8'} ${showSpeakerNotes && !isMobile ? 'pb-48' : showSpeakerNotes ? 'pb-32' : ''} ${showThumbnails && isMobile ? 'pb-64' : ''} slide-container ${slideTransition} ${showThumbnails && !isFullscreen && !isMobile ? 'ml-80' : ''} transition-all duration-300`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
