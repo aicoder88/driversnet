@@ -968,7 +968,7 @@ export default function DriverNetworkPresentation() {
           <div className="absolute left-0 top-0 bottom-0 flex items-center pl-4">
             <button
               onClick={() => navigateTab('prev')}
-              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded-full transition-all backdrop-blur-md bg-black/20"
+              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/70 rounded-lg transition-all backdrop-blur-md bg-black/40 border-2 border-white/30 dark:border-gray-500/50 shadow-lg"
               title="Previous slide (←)"
             >
               ←
@@ -977,7 +977,7 @@ export default function DriverNetworkPresentation() {
           <div className="absolute right-0 top-0 bottom-0 flex items-center pr-4">
             <button
               onClick={() => navigateTab('next')}
-              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded-full transition-all backdrop-blur-md bg-black/20"
+              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/70 rounded-lg transition-all backdrop-blur-md bg-black/40 border-2 border-white/30 dark:border-gray-500/50 shadow-lg"
               title="Next slide (→)"
             >
               →
