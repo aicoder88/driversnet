@@ -6,6 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:auto": "next start -H 127.0.0.1 -p 0",
+    "start:fixed": "next start -H 127.0.0.1 -p 60123",
+    "check:ctas": "node scripts/validate-ctas.js",
+    "preview": "npm run build && npm run start:auto",
     "lint": "eslint"
   },
   "dependencies": {

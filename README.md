@@ -38,10 +38,16 @@ cd dn
 # Install dependencies
 npm install
 
-# Run development server
+# Run development server (default port 3000)
 npm run dev
 
-# Open http://localhost:3000 in your browser
+# Alternatively, production preview on a free port
+npm run preview
+
+# Or start production on a fixed port (60123)
+npm run start:fixed
+
+# After starting, open the printed URL in your browser
 ```
 
 ### Build for Production
@@ -50,8 +56,20 @@ npm run dev
 # Build the application
 npm run build
 
-# Start production server
-npm run start
+# Start production server (auto-select port)
+npm run start:auto
+
+# Start on a fixed port (60123)
+npm run start:fixed
+
+# One-shot build + start on a free port
+npm run preview
+
+### Local Server Ports
+
+- start:auto: picks an available high port to avoid conflicts.
+- start:fixed: binds to `127.0.0.1:60123` for a predictable URL.
+- dev: runs on `http://localhost:3000` unless the port is taken.
 ```
 
 ## Deployment
@@ -168,3 +186,18 @@ For questions or support, please open an issue in the GitHub repository.
 ---
 
 Built with ❤️ using Next.js and modern web technologies.
+
+## Troubleshooting
+
+- Port denied (EPERM): use a high port or auto-port.
+  - Fix: `npm run start:auto` or `npm run start:fixed` (60123).
+- Port in use (EADDRINUSE): free or change the port.
+  - Find/kill: `lsof -i :60123` then `kill <pid>` or `pkill -f "next start"`.
+- NPM cache perms (EEXIST/EACCES): use a local cache.
+  - `npm ci --cache ./.npm-cache --no-audit`.
+- Build fails fetching fonts/images: ensure network or use local fonts.
+  - Swap to `next/font/local` or run on a networked machine.
+- Workspace root warning: we set `next.config.js` `outputFileTracingRoot`.
+  - If moving the app, update that path accordingly.
+- Stale build: clear and reinstall.
+  - `rm -rf .next node_modules && npm ci && npm run build`.

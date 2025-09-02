@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import { CONTACTS, CALENDLY_URL, CONTACT_EMAIL } from '@/lib/contact';
 
 const NextSteps: React.FC<SlideProps> = ({ 
   className = '', 
@@ -118,32 +119,7 @@ const NextSteps: React.FC<SlideProps> = ({
     { metric: 'Revenue Impact', target: '25%+ increase', category: 'Business' }
   ];
 
-  const contacts = [
-    {
-      role: 'Partnership Lead',
-      name: 'Sarah Chen',
-      email: 'sarah.chen@drivernetwork.com',
-      phone: '+1 (555) 123-4567',
-      focus: 'Strategic partnerships & business development',
-      icon: '🤝'
-    },
-    {
-      role: 'Technical Integration',
-      name: 'Mike Rodriguez',
-      email: 'mike.rodriguez@drivernetwork.com',
-      phone: '+1 (555) 234-5678',
-      focus: 'API integration & technical implementation',
-      icon: '⚙️'
-    },
-    {
-      role: 'Operations Director',
-      name: 'Jennifer Kim',
-      email: 'jennifer.kim@drivernetwork.com',
-      phone: '+1 (555) 345-6789',
-      focus: 'Network operations & deployment',
-      icon: '🚚'
-    }
-  ];
+  const contacts = CONTACTS;
 
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
@@ -383,7 +359,18 @@ const NextSteps: React.FC<SlideProps> = ({
               </div>
               <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
                 <div>{contact.email}</div>
-                <div>{contact.phone}</div>
+                {contact.phone ? (
+                  <div>{contact.phone}</div>
+                ) : (
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block text-blue-600 dark:text-blue-400 underline"
+                  >
+                    Schedule a call
+                  </a>
+                )}
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400 italic">
                 {contact.focus}
@@ -406,16 +393,26 @@ const NextSteps: React.FC<SlideProps> = ({
         </div>
         
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
-          <div className="bg-white text-blue-600 px-12 py-6 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300 cursor-pointer hover:shadow-2xl hover:-translate-y-1">
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-white text-blue-600 px-12 py-6 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+          >
             Schedule Partnership Meeting
-          </div>
-          <div className="bg-transparent border-2 border-white text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-white hover:text-blue-600 transition-all duration-300 cursor-pointer">
-            Call: +1 (555) 123-4567
-          </div>
+          </a>
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-transparent border-2 border-white text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-white hover:text-blue-600 transition-all duration-300"
+          >
+            Schedule a Call
+          </a>
         </div>
         
         <div className="pt-8 opacity-75">
-          <p>Available 24/7 for partnership discussions • partnerships@drivernetwork.com</p>
+          <p>Available for partnership discussions • {CONTACT_EMAIL}</p>
         </div>
       </div>
 
