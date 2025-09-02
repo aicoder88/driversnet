@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const PartnershipProposal: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const PartnershipProposal: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const proposalHighlights = [
     {
       title: 'Immediate Network Access',
@@ -372,6 +382,16 @@ const PartnershipProposal: React.FC<SlideProps> = ({ className = '', isActive })
           <p>Questions? Contact our partnership team at <strong>partnerships@drivernetwork.com</strong></p>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

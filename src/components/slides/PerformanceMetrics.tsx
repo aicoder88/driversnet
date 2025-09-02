@@ -2,8 +2,18 @@ import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const PerformanceMetrics: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const PerformanceMetrics: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const performanceData = [
     { name: 'On-Time Delivery', value: 100, color: '#10B981' },
     { name: 'Damage-Free Rate', value: 99.9, color: '#3B82F6' },
@@ -168,6 +178,16 @@ const PerformanceMetrics: React.FC<SlideProps> = ({ className = '', isActive }) 
           </p>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

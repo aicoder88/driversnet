@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const RapidDeployment: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const RapidDeployment: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const deploymentTimeline = [
     {
       phase: 'Day 1',
@@ -306,6 +316,16 @@ const RapidDeployment: React.FC<SlideProps> = ({ className = '', isActive }) => 
           </p>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

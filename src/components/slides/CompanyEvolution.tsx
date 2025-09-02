@@ -3,8 +3,18 @@ import React from 'react';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { OptimizedChart } from '../presentation/OptimizedChart';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const CompanyEvolution: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const CompanyEvolution: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
       {/* Solution Hero */}
@@ -123,6 +133,16 @@ const CompanyEvolution: React.FC<SlideProps> = ({ className = '', isActive }) =>
           </p>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

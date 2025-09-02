@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const CompetitiveAdvantage: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const CompetitiveAdvantage: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   // Competitive advantage matrix data
   const competitiveMatrix = [
     { capability: 'Market Entry Speed', us: '7 days', traditional: '3-6 months', gig: '2-4 weeks' },
@@ -72,6 +82,16 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({ className = '', isActive }
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

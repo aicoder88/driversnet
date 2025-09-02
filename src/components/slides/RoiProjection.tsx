@@ -1,8 +1,18 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
-const RoiProjection: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const RoiProjection: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   // ROI projection data for 5-year cost comparison
   const costComparisonData = [
     { year: 'Year 1', inHouse: 2800, partnership: 1680, savings: 1120 },
@@ -108,6 +118,16 @@ const RoiProjection: React.FC<SlideProps> = ({ className = '', isActive }) => {
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const NextSteps: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const NextSteps: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const immediateActions = [
     {
       action: 'Schedule Partnership Meeting',
@@ -409,6 +419,16 @@ const NextSteps: React.FC<SlideProps> = ({ className = '', isActive }) => {
           <p>Available 24/7 for partnership discussions • partnerships@drivernetwork.com</p>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

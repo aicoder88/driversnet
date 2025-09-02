@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import SlideNavigation from '../shared/SlideNavigation';
 
-const GeographicCoverage: React.FC<SlideProps> = ({ className = '', isActive }) => {
+const GeographicCoverage: React.FC<SlideProps> = ({ 
+  className = '', 
+  isActive, 
+  onPrevious, 
+  onNext, 
+  hasPrevious, 
+  hasNext, 
+  currentSlide, 
+  totalSlides 
+}) => {
   const markets = [
     { name: 'Los Angeles', state: 'CA', drivers: 180, status: 'Primary Hub', region: 'West', color: 'blue' },
     { name: 'San Francisco', state: 'CA', drivers: 165, status: 'Primary Hub', region: 'West', color: 'blue' },
@@ -301,6 +311,16 @@ const GeographicCoverage: React.FC<SlideProps> = ({ className = '', isActive }) 
           </div>
         </div>
       </div>
+
+      {/* Slide Navigation */}
+      <SlideNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        currentSlide={currentSlide}
+        totalSlides={totalSlides}
+      />
     </section>
   );
 };

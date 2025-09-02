@@ -55,6 +55,8 @@ export default function DriverNetworkPresentation() {
     keyboardShortcuts: 0,
     touchGestures: 0
   });
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -234,6 +236,26 @@ export default function DriverNetworkPresentation() {
       document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
     };
   }, []);
+
+  // Header scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const startPresentation = () => {
     setPresentationStartTime(new Date());
@@ -881,7 +903,7 @@ export default function DriverNetworkPresentation() {
         )}
 
         {/* Enhanced Header with Presentation Controls */} 
-        <div className={`fixed top-0 left-0 right-0 z-50 bg-black/90 dark:bg-gray-900/95 backdrop-blur-md border-b border-white/20 dark:border-gray-700/30 no-print ${isFullscreen ? 'hidden' : ''}`}> 
+        <div className={`fixed top-0 left-0 right-0 z-50 bg-black/90 dark:bg-gray-900/95 backdrop-blur-md border-b border-white/20 dark:border-gray-700/30 no-print transition-transform duration-300 ${isFullscreen ? 'hidden' : ''} ${!isHeaderVisible ? '-translate-y-full' : 'translate-y-0'}`}> 
           <Container>
             <div className="flex justify-between items-center py-3">
               {/* Left Controls */} 
@@ -896,17 +918,18 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
                 
-                <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1">
+                <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1 space-x-3">
                   <button
                     onClick={() => navigateTab('prev')}
-                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Previous slide (←)"
                   >
                     ←
                   </button>
+                  <div className="w-px h-6 bg-white/20 dark:bg-gray-500/30"></div>
                   <button
                     onClick={() => navigateTab('next')}
-                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Next slide (→)"
                   >
                     →
