@@ -110,9 +110,9 @@ const ServiceDivisions: React.FC<SlideProps> = ({
           </h3>
           <OptimizedChart 
             data={[
-              { name: 'Automotive', onTime: 99.8, satisfaction: 98.5, safety: 100, revenue: 2800 },
-              { name: 'Valet/Traffic', onTime: 99.2, satisfaction: 97.8, safety: 99.5, revenue: 2450 },
-              { name: 'Courier', onTime: 98.9, satisfaction: 98.2, safety: 99.8, revenue: 1750 }
+              { name: 'Automotive', value: 2800, onTime: 99.8, satisfaction: 98.5, safety: 100, revenue: 2800 },
+              { name: 'Valet/Traffic', value: 2450, onTime: 99.2, satisfaction: 97.8, safety: 99.5, revenue: 2450 },
+              { name: 'Courier', value: 1750, onTime: 98.9, satisfaction: 98.2, safety: 99.8, revenue: 1750 }
             ]}
           >
             {(chartData) => (

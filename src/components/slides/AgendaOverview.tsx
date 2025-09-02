@@ -28,7 +28,7 @@ const AgendaOverview: React.FC<SlideProps> = ({
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
             Strategic Partnership Opportunity
           </div>
-          <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent leading-tight">
             The Last Mile
             <br />
             <span className="text-blue-600 dark:text-blue-400">Solved</span>

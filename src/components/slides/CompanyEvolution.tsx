@@ -42,7 +42,7 @@ const CompanyEvolution: React.FC<SlideProps> = ({ className = '', isActive }) =>
         {/* Growth Metrics Visual */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           <div className="text-center space-y-4">
-            <div className="text-8xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+            <div className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
               85x
             </div>
             <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Revenue Growth</div>
@@ -50,7 +50,7 @@ const CompanyEvolution: React.FC<SlideProps> = ({ className = '', isActive }) =>
           </div>
           
           <div className="text-center space-y-4">
-            <div className="text-8xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
+            <div className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
               200x
             </div>
             <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Driver Network</div>
@@ -58,7 +58,7 @@ const CompanyEvolution: React.FC<SlideProps> = ({ className = '', isActive }) =>
           </div>
           
           <div className="text-center space-y-4">
-            <div className="text-8xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 dark:from-purple-400 dark:to-violet-400 bg-clip-text text-transparent">
+            <div className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 dark:from-purple-400 dark:to-violet-400 bg-clip-text text-transparent">
               19
             </div>
             <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Major Markets</div>
