@@ -1,4 +1,5 @@
 import React from 'react';
+import { PARTNERSHIPS_EMAIL, CALENDLY_URL } from '@/lib/contact';
 import { SlideProps } from './SlideTypes';
 
 const PartnershipProposal: React.FC<SlideProps> = ({ 
@@ -369,16 +370,31 @@ const PartnershipProposal: React.FC<SlideProps> = ({
         </div>
         
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
-          <div className="bg-emerald-600 dark:bg-emerald-700 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all duration-300 cursor-pointer hover:shadow-2xl hover:-translate-y-1">
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-emerald-600 dark:bg-emerald-700 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+          >
             Start Strategic Partnership
-          </div>
-          <div className="bg-white dark:bg-gray-800 border-2 border-emerald-600 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400 px-12 py-6 rounded-full text-xl font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300 cursor-pointer hover:shadow-xl">
+          </a>
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-white dark:bg-gray-800 border-2 border-emerald-600 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400 px-12 py-6 rounded-full text-xl font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300 hover:shadow-xl"
+          >
             Schedule Pilot Program
-          </div>
+          </a>
         </div>
         
         <div className="pt-8 text-gray-500 dark:text-gray-400">
-          <p>Questions? Contact our partnership team at <strong>partnerships@drivernetwork.com</strong></p>
+          <p>
+            Questions? Contact our partnership team at
+            {' '}<strong>{PARTNERSHIPS_EMAIL}</strong>
+            {' '}or schedule a call via
+            {' '}<a href={CALENDLY_URL} target="_blank" rel="noreferrer" className="underline">Calendly</a>.
+          </p>
         </div>
       </div>
 
