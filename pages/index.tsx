@@ -280,39 +280,158 @@ export default function DriverNetworkPresentation() {
     window.print();
   };
 
-  const exportToPDF = async () => {
+  const exportSingleSlideToPDF = async () => {
     setIsExporting(true);
     try {
+      // Use 16:9 aspect ratio for widescreen format
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'mm',
-        format: 'a4'
+        format: [297, 167] // 16:9 ratio, width 297mm
       });
 
-      const slideElement = document.querySelector('.presentation-slide');
+      const slideElement = document.querySelector('.presentation-slide main');
       if (!slideElement) {
         throw new Error('Slide element not found');
       }
 
-      // Create canvas from current slide
+      // Temporarily hide navigation elements for clean export
+      const elementsToHide = document.querySelectorAll('.no-print');
+      elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
+
+      // Create canvas with optimized settings for presentations
       const canvas = await html2canvas(slideElement as HTMLElement, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        width: slideElement.scrollWidth,
+        height: slideElement.scrollHeight,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight
       });
 
+      // Restore hidden elements
+      elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
+
       const imgData = canvas.toDataURL('image/png');
-      const imgWidth = 297; // A4 landscape width in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const pdfWidth = 297;
+      const pdfHeight = 167;
       
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      // Calculate dimensions to fit the slide properly
+      const canvasAspectRatio = canvas.width / canvas.height;
+      const pdfAspectRatio = pdfWidth / pdfHeight;
+      
+      let finalWidth = pdfWidth;
+      let finalHeight = pdfHeight;
+      let xOffset = 0;
+      let yOffset = 0;
+      
+      if (canvasAspectRatio > pdfAspectRatio) {
+        // Canvas is wider than PDF
+        finalHeight = pdfWidth / canvasAspectRatio;
+        yOffset = (pdfHeight - finalHeight) / 2;
+      } else {
+        // Canvas is taller than PDF
+        finalWidth = pdfHeight * canvasAspectRatio;
+        xOffset = (pdfWidth - finalWidth) / 2;
+      }
+      
+      pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight);
       
       // Save the PDF
-      pdf.save(`DriverNetwork-Presentation-Slide-${tabs.indexOf(activeTab) + 1}.pdf`);
+      const slideNumber = tabs.indexOf(activeTab) + 1;
+      pdf.save(`DriverNetwork-Slide-${slideNumber}.pdf`);
       
       // Show success message
       alert('PDF exported successfully!');
+    } catch (error) {
+      console.error('Export failed:', error);
+      alert('Export failed. Please try again.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const exportAllSlidesToPDF = async () => {
+    setIsExporting(true);
+    try {
+      // Use 16:9 aspect ratio for widescreen format
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: [297, 167] // 16:9 ratio, width 297mm
+      });
+
+      const currentSlide = activeTab;
+      let addedFirstPage = false;
+
+      // Hide navigation elements
+      const elementsToHide = document.querySelectorAll('.no-print');
+      elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
+
+      for (let i = 0; i < tabs.length; i++) {
+        const slideId = tabs[i];
+        
+        // Navigate to the slide
+        setActiveTab(slideId);
+        
+        // Wait for slide to render
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        const slideElement = document.querySelector('.presentation-slide main');
+        if (!slideElement) continue;
+
+        // Create canvas for this slide
+        const canvas = await html2canvas(slideElement as HTMLElement, {
+          scale: 1.5,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          width: slideElement.scrollWidth,
+          height: slideElement.scrollHeight
+        });
+
+        const imgData = canvas.toDataURL('image/png');
+        
+        // Add new page if not the first slide
+        if (addedFirstPage) {
+          pdf.addPage();
+        }
+        addedFirstPage = true;
+        
+        // Calculate dimensions to fit the slide properly
+        const pdfWidth = 297;
+        const pdfHeight = 167;
+        const canvasAspectRatio = canvas.width / canvas.height;
+        const pdfAspectRatio = pdfWidth / pdfHeight;
+        
+        let finalWidth = pdfWidth;
+        let finalHeight = pdfHeight;
+        let xOffset = 0;
+        let yOffset = 0;
+        
+        if (canvasAspectRatio > pdfAspectRatio) {
+          finalHeight = pdfWidth / canvasAspectRatio;
+          yOffset = (pdfHeight - finalHeight) / 2;
+        } else {
+          finalWidth = pdfHeight * canvasAspectRatio;
+          xOffset = (pdfWidth - finalWidth) / 2;
+        }
+        
+        pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight);
+      }
+      
+      // Restore navigation elements
+      elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
+      
+      // Restore original slide
+      setActiveTab(currentSlide);
+      
+      // Save the complete PDF
+      pdf.save('DriverNetwork-Complete-Presentation.pdf');
+      
+      alert(`Complete presentation exported successfully! (${tabs.length} slides)`);
     } catch (error) {
       console.error('Export failed:', error);
       alert('Export failed. Please try again.');
@@ -1102,28 +1221,35 @@ export default function DriverNetworkPresentation() {
                   >
                     {isExporting ? '⏳' : '📤'} Export
                   </button>
-                  <div className="absolute right-0 top-full mt-1 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="absolute right-0 top-full mt-1 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <div className="p-1">
                       <button
                         onClick={printPresentation}
                         className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
                         disabled={isExporting}
                       >
-                        🖨️ Print
+                        🖨️ Print All Slides
                       </button>
                       <button
-                        onClick={exportToPDF}
+                        onClick={exportSingleSlideToPDF}
                         className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
                         disabled={isExporting}
                       >
-                        📄 PDF
+                        📄 PDF - Current Slide
+                      </button>
+                      <button
+                        onClick={exportAllSlidesToPDF}
+                        className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
+                        disabled={isExporting}
+                      >
+                        📑 PDF - Full Presentation
                       </button>
                       <button
                         onClick={exportToImages}
                         className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
                         disabled={isExporting}
                       >
-                        🖼️ Images
+                        🖼️ Image - Current Slide
                       </button>
                     </div>
                   </div>

@@ -37,11 +37,28 @@ const ServiceIntegration: React.FC<SlideProps> = ({
   ];
 
   return (
-    <section className={`space-y-12 ${className}`}>
+    <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
+      {/* Hero Section */}
+      <div className="text-center space-y-12">
+        <div className="space-y-6">
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#276EF1] to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+            Seamless Integration
+          </div>
+          <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+            Perfect
+            <br />
+            <span className="text-[#276EF1] dark:text-blue-400">Harmony</span>
+          </h1>
+          <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+            Your Uber Freight platform + Our driver network
+            <br />
+            <strong className="text-[#276EF1] dark:text-blue-400">Seamless integration from day one</strong>
+          </p>
+        </div>
+      </div>
+
+      {/* Integration Details */}
       <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-        <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
-          🔗 Seamless Uber Freight Integration
-        </h2>
         
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Integration Architecture */}
@@ -118,8 +135,6 @@ const ServiceIntegration: React.FC<SlideProps> = ({
           </div>
         </div>
       </div>
-
-      {/* Slide Navigation */}
     </section>
   );
 };

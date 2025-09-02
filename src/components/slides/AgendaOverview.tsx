@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { SlideProps } from './SlideTypes';
 
 const AgendaOverview: React.FC<SlideProps> = ({ 
@@ -59,12 +60,14 @@ const AgendaOverview: React.FC<SlideProps> = ({
           {/* Graphic illustration */}
           <div className="mb-8 mx-auto max-w-2xl">
             <div className="relative bg-gradient-to-r from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 p-8 rounded-2xl border border-red-300/50 dark:border-red-600/50">
-              <div className="flex items-center justify-center space-x-4 mb-4">
-                <div className="text-6xl">📦</div>
-                <div className="text-4xl animate-pulse">💸</div>
-                <div className="text-6xl">🚛</div>
-                <div className="text-4xl animate-pulse">📉</div>
-                <div className="text-6xl">😤</div>
+              <div className="flex items-center justify-center mb-6">
+                <Image 
+                  src="/supply-chain-containers.jpg" 
+                  alt="Shipping containers at port terminal illustrating supply chain complexity"
+                  width={400}
+                  height={160}
+                  className="w-full max-w-md h-40 object-cover rounded-xl shadow-lg"
+                />
               </div>
               <div className="text-sm text-red-700 dark:text-red-300 font-medium">
                 Customer Orders → Lost Revenue → Failed Delivery → Declining Market Share → Frustrated Stakeholders

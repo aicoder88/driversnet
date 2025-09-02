@@ -200,7 +200,7 @@ const NextSteps: React.FC<SlideProps> = ({
       </div>
 
       {/* Implementation Phases */}
-      <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-16 rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600/30">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Implementation Roadmap
@@ -303,7 +303,7 @@ const NextSteps: React.FC<SlideProps> = ({
       </div>
 
       {/* Success Metrics */}
-      <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-16 rounded-3xl border border-green-200 dark:border-green-700 shadow-2xl">
+      <div className="backdrop-blur-lg bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-16 rounded-3xl border border-green-200 dark:border-green-700 shadow-2xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-green-800 dark:text-green-200 mb-6">
             Success Metrics & Targets
@@ -381,7 +381,7 @@ const NextSteps: React.FC<SlideProps> = ({
       </div>
 
       {/* Final Call to Action */}
-      <div className="text-center space-y-8 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 p-16 rounded-3xl text-white">
+      <div className="text-center space-y-8 backdrop-blur-lg bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 p-16 rounded-3xl text-white border border-blue-400/30 dark:border-blue-500/30 shadow-2xl">
         <div className="space-y-6">
           <h2 className="text-5xl font-bold">
             Let's Start Today
