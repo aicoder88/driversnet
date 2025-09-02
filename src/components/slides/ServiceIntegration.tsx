@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import { CALENDLY_URL, PARTNERSHIPS_EMAIL } from '@/lib/contact';
 
 const ServiceIntegration: React.FC<SlideProps> = ({ 
   className = '', 
@@ -209,9 +210,14 @@ const ServiceIntegration: React.FC<SlideProps> = ({
             <p className="text-gray-300 mb-6 text-sm">
               30-minute technical discussion to review your requirements and integration approach
             </p>
-            <div className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition cursor-pointer">
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition cursor-pointer"
+            >
               Book Call Now
-            </div>
+            </a>
           </div>
           
           {/* Step 2 */}
@@ -249,15 +255,29 @@ const ServiceIntegration: React.FC<SlideProps> = ({
             <strong>Ready to get started?</strong> Our integration specialists are standing by.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-            <div className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 transition cursor-pointer">
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 transition cursor-pointer"
+            >
               📞 Schedule Integration Call
-            </div>
-            <div className="bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition cursor-pointer">
+            </a>
+            <a
+              href={`mailto:${PARTNERSHIPS_EMAIL}?subject=Integration Team Contact&body=Hi Driver Network Team,%0D%0A%0D%0AI'm interested in discussing integration opportunities with Uber Freight.%0D%0A%0D%0APlease contact me to schedule a technical integration call.%0D%0A%0D%0AThanks!`}
+              className="inline-block bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition cursor-pointer"
+            >
               📧 Email Integration Team
-            </div>
+            </a>
           </div>
           <div className="mt-6 text-sm text-gray-400">
-            Questions? Contact our integration team at <strong>integrations@driversnet.io</strong>
+            Questions? Contact our integration team at{' '}
+            <a 
+              href={`mailto:${PARTNERSHIPS_EMAIL}?subject=Integration Questions`}
+              className="font-bold text-blue-400 hover:text-blue-300 underline"
+            >
+              {PARTNERSHIPS_EMAIL}
+            </a>
           </div>
         </div>
       </div>

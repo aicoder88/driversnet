@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideProps } from './SlideTypes';
+import { CALENDLY_URL, PARTNERSHIPS_EMAIL } from '@/lib/contact';
 
 const CompetitiveAdvantage: React.FC<SlideProps> = ({ 
   className = '', 
@@ -279,10 +280,15 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
           Join industry leaders who've already transformed their logistics operations
         </p>
-        <div className="flex justify-center items-center gap-2 text-[#276EF1] font-semibold">
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex justify-center items-center gap-2 text-[#276EF1] font-semibold hover:text-blue-700 transition-colors duration-300 cursor-pointer"
+        >
           <span>Let's discuss your specific requirements</span>
           <span className="text-2xl">→</span>
-        </div>
+        </a>
       </div>
     </section>
   );

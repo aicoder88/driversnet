@@ -43,15 +43,11 @@ export default function DriverNetworkPresentation() {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [showSwipeIndicator, setShowSwipeIndicator] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<string[]>([]);
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [analytics, setAnalytics] = useState({
     slideViews: {} as { [key: string]: number },
     timeOnSlide: {} as { [key: string]: number },
     navigationActions: 0,
-    searchQueries: [] as string[],
     sessionStartTime: new Date(),
     totalPresentationTime: 0,
     keyboardShortcuts: 0,
@@ -111,7 +107,7 @@ export default function DriverNetworkPresentation() {
     
     // Add slide transition effect
     setSlideTransition(direction === 'next' ? 'slide-left' : 'slide-right');
-    setTimeout(() => setSlideTransition(''), 300);
+    setTimeout(() => setSlideTransition(''), 400);
     
     setActiveTab(tabs[newIndex]);
     scrollToTop();
@@ -126,7 +122,7 @@ export default function DriverNetworkPresentation() {
     trackSlideView(slideId);
     
     setSlideTransition('fade');
-    setTimeout(() => setSlideTransition(''), 300);
+    setTimeout(() => setSlideTransition(''), 500);
     setActiveTab(slideId);
     scrollToTop();
     localStorage.setItem('dn-presentation-slide', slideId);
@@ -153,11 +149,6 @@ export default function DriverNetworkPresentation() {
       } else if (event.key === 'n' || event.key === 'N') {
         event.preventDefault();
         setShowSpeakerNotes(!showSpeakerNotes);
-      } else if (event.key === 's' || event.key === 'S') {
-        if (!event.ctrlKey && !event.metaKey) {
-          event.preventDefault();
-          setShowSearch(!showSearch);
-        }
       } else if (event.key === 'Home') {
         event.preventDefault();
         goToSlide('agenda-overview', 'keyboard');
@@ -169,7 +160,7 @@ export default function DriverNetworkPresentation() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [navigateTab, goToSlide, showThumbnails, showSearch, showSpeakerNotes]);
+  }, [navigateTab, goToSlide, showThumbnails, showSpeakerNotes]);
 
   // Load saved progress
   useEffect(() => {
@@ -514,97 +505,6 @@ export default function DriverNetworkPresentation() {
     }
   };
 
-  // Search content mapping for slides
-  const slideContent: { [key: string]: string[] } = useMemo(() => ({
-    'agenda-overview': ['agenda', 'overview', 'presentation', 'driver network', 'strategic partnership', 'uber freight'],
-    'executive-summary': ['proven scale', 'proven results', '1000 drivers', '19 markets', 'logistics solutions'],
-    'company-evolution': ['revenue growth', 'evolution', '12 years', 'timeline', 'expansion'],
-    'service-divisions': ['automotive transport', 'courier', 'last mile', 'medical logistics'],
-    'performance-metrics': ['100% on-time', '99.9% damage-free', 'safety record', 'performance'],
-    'case-study-instacart': ['instacart', 'gig economy', 'grocery delivery', 'zero delays'],
-    'case-study-tesla': ['tesla', 'automotive', 'electric vehicles', 'premium transport'],
-    'case-study-medical': ['medical', 'healthcare', 'zero incidents', 'temperature controlled'],
-    'case-study-bmw': ['bmw', 'luxury vehicles', 'white glove service', 'premium'],
-    'driver-excellence': ['driver training', 'excellence', 'certification', 'background checks'],
-    'technology-integration': ['API integration', 'real-time tracking', 'technology stack'],
-    'client-portfolio': ['partnerships', 'enterprise clients', 'portfolio'],
-    'rapid-deployment': ['deployment', 'scaling', 'rapid expansion'],
-    'geographic-coverage': ['coverage map', 'markets', 'locations', 'geographic'],
-    'partnership-proposal': ['partnership', 'proposal', 'strategic alliance', 'mutual benefit'],
-    'competitive-advantage': ['competitive', 'advantage', 'differentiators', 'unique value'],
-    'service-integration': ['integration', 'workflow', 'seamless', 'API'],
-    'roi-projection': ['ROI', 'return on investment', 'financial projections', 'cost savings'],
-    'next-steps': ['next steps', 'implementation', 'timeline', 'action plan']
-  }), []);
-
-  // Search functionality
-  const performSearch = useCallback((query: string) => {
-    if (!query.trim()) {
-      setSearchResults([]);
-      return;
-    }
-    
-    const results: string[] = [];
-    const lowerQuery = query.toLowerCase();
-    
-    // Search through slide content
-    Object.entries(slideContent).forEach(([slideId, content]) => {
-      const hasMatch = content.some(term => 
-        term.toLowerCase().includes(lowerQuery) ||
-        lowerQuery.includes(term.toLowerCase())
-      );
-      
-      if (hasMatch) {
-        results.push(slideId);
-      }
-    });
-    
-    // Search through slide names
-    const slideNames = {
-      'agenda-overview': 'Agenda & Overview',
-      'executive-summary': 'Executive Summary',
-      'company-evolution': 'Company Evolution',
-      'service-divisions': 'Service Divisions',
-      'performance-metrics': 'Performance Metrics',
-      'case-study-instacart': 'Case Study: Instacart',
-      'case-study-tesla': 'Case Study: Tesla',
-      'case-study-medical': 'Case Study: Medical',
-      'case-study-bmw': 'Case Study: BMW',
-      'driver-excellence': 'Driver Excellence',
-      'technology-integration': 'Technology Integration',
-      'client-portfolio': 'Client Portfolio',
-      'rapid-deployment': 'Rapid Deployment',
-      'geographic-coverage': 'Geographic Coverage',
-      'partnership-proposal': 'Partnership Proposal',
-      'competitive-advantage': 'Competitive Advantage',
-      'service-integration': 'Service Integration',
-      'roi-projection': 'ROI Projection',
-      'next-steps': 'Next Steps'
-    };
-    
-    Object.entries(slideNames).forEach(([slideId, name]) => {
-      if (name.toLowerCase().includes(lowerQuery) && !results.includes(slideId)) {
-        results.push(slideId);
-      }
-    });
-    
-    setSearchResults(results);
-  }, [slideContent]);
-
-  // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    performSearch(query);
-    
-    // Track search query
-    if (query.trim() && query.length > 2) {
-      setAnalytics(prev => ({
-        ...prev,
-        searchQueries: [...prev.searchQueries, query.trim()]
-      }));
-    }
-  };
 
   const trackTimeOnSlide = useCallback((slideId: string, timeSpent: number) => {
     setAnalytics(prev => ({
@@ -629,7 +529,6 @@ export default function DriverNetworkPresentation() {
         navigationActions: analytics.navigationActions,
         keyboardShortcuts: analytics.keyboardShortcuts,
         touchGestures: analytics.touchGestures,
-        searchQueries: analytics.searchQueries.length
       },
       slideAnalytics: Object.entries(analytics.slideViews).map(([slideId, views]) => ({
         slideId,
@@ -637,10 +536,6 @@ export default function DriverNetworkPresentation() {
         timeSpent: Math.round(analytics.timeOnSlide[slideId] || 0),
         averageTime: Math.round((analytics.timeOnSlide[slideId] || 0) / views)
       })).sort((a, b) => b.views - a.views),
-      searchAnalytics: {
-        queries: analytics.searchQueries,
-        uniqueQueries: [...new Set(analytics.searchQueries)].length
-      }
     };
     
     return report;
@@ -757,47 +652,141 @@ export default function DriverNetworkPresentation() {
           }
           
           .slide-transition {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
           
           .slide-left {
-            animation: slideLeft 0.3s ease-out;
+            animation: slideLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
           
           .slide-right {
-            animation: slideRight 0.3s ease-out;
+            animation: slideRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
           
           .fade {
-            animation: slideFade 0.3s ease-out;
+            animation: slideFade 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          
+          .slide-container {
+            transform: translateZ(0);
+            backface-visibility: hidden;
           }
           
           @keyframes slideLeft {
             0% { 
-              transform: translateX(100%); 
+              transform: translateX(120%) scale(0.95); 
               opacity: 0;
+              filter: blur(2px);
+            }
+            60% {
+              opacity: 0.8;
             }
             100% { 
-              transform: translateX(0); 
+              transform: translateX(0) scale(1); 
               opacity: 1;
+              filter: blur(0);
             }
           }
           
           @keyframes slideRight {
             0% { 
-              transform: translateX(-100%); 
+              transform: translateX(-120%) scale(0.95); 
               opacity: 0;
+              filter: blur(2px);
+            }
+            60% {
+              opacity: 0.8;
             }
             100% { 
-              transform: translateX(0); 
+              transform: translateX(0) scale(1); 
               opacity: 1;
+              filter: blur(0);
             }
           }
           
           @keyframes slideFade {
             0% { 
               opacity: 0; 
-              transform: translateY(20px) scale(0.98);
+              transform: translateY(30px) scale(0.95);
+              filter: blur(3px);
+            }
+            60% {
+              opacity: 0.7;
+              filter: blur(1px);
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateY(0) scale(1);
+              filter: blur(0);
+            }
+          }
+          
+          /* Content Fade-In Animations */
+          .content-fade-in {
+            animation: contentFadeIn 0.6s ease-out forwards;
+            opacity: 0;
+          }
+          
+          .content-stagger-1 {
+            animation-delay: 0.1s;
+          }
+          
+          .content-stagger-2 {
+            animation-delay: 0.2s;
+          }
+          
+          .content-stagger-3 {
+            animation-delay: 0.3s;
+          }
+          
+          .content-stagger-4 {
+            animation-delay: 0.4s;
+          }
+          
+          .content-stagger-5 {
+            animation-delay: 0.5s;
+          }
+          
+          .content-stagger-6 {
+            animation-delay: 0.6s;
+          }
+          
+          .list-stagger {
+            opacity: 0;
+            animation: listStagger 0.5s ease-out forwards;
+          }
+          
+          .card-stagger {
+            opacity: 0;
+            animation: cardStagger 0.6s ease-out forwards;
+          }
+          
+          @keyframes contentFadeIn {
+            0% { 
+              opacity: 0; 
+              transform: translateY(20px);
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateY(0);
+            }
+          }
+          
+          @keyframes listStagger {
+            0% { 
+              opacity: 0; 
+              transform: translateX(-20px);
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateX(0);
+            }
+          }
+          
+          @keyframes cardStagger {
+            0% { 
+              opacity: 0; 
+              transform: translateY(30px) scale(0.95);
             }
             100% { 
               opacity: 1; 
@@ -1092,13 +1081,6 @@ export default function DriverNetworkPresentation() {
                 📝
               </button>
               
-              <button
-                onClick={() => setShowSearch(!showSearch)}
-                className={`p-2 rounded-full transition-all ${showSearch ? 'bg-green-500/30' : 'hover:bg-white/20'}`}
-                title="Search slides (S)"
-              >
-                🔍
-              </button>
               
               <button
                 onClick={() => setShowAnalytics(!showAnalytics)}
@@ -1222,15 +1204,6 @@ export default function DriverNetworkPresentation() {
                   📝
                 </button>
                 
-                <button
-                  onClick={() => setShowSearch(!showSearch)}
-                  className={`p-2 rounded transition-all ${showSearch 
-                    ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
-                  title="Search slides (S)"
-                >
-                  🔍
-                </button>
                 
                 <button
                   onClick={() => setShowAnalytics(!showAnalytics)}
@@ -1251,6 +1224,16 @@ export default function DriverNetworkPresentation() {
                 >
                   ⛶
                 </button>
+                
+                {activeTab !== 'agenda-overview' && (
+                  <button
+                    onClick={() => goToSlide('agenda-overview')}
+                    className="px-3 py-1.5 text-xs bg-blue-600/20 dark:bg-blue-700/30 text-blue-300 dark:text-blue-200 rounded-lg font-semibold hover:bg-blue-600/30 dark:hover:bg-blue-700/40 transition-all flex items-center border border-blue-500/30 dark:border-blue-600/40"
+                    title="Back to agenda overview"
+                  >
+                    🏠 Overview
+                  </button>
+                )}
                 
                 <div className="relative group">
                   <button
@@ -1305,117 +1288,6 @@ export default function DriverNetworkPresentation() {
           </Container>
         </div>
 
-        {/* Search Panel */} 
-        {showSearch && (
-          <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-xl min-w-96 max-w-2xl no-print">
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center">
-                  <span className="mr-2">🔍</span>
-                  Search Slides
-                </h3>
-                <button
-                  onClick={() => setShowSearch(false)}
-                  className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-              
-              <div className="mb-4">
-                <input
-                  type="text"
-                  placeholder="Search slides by content, keywords, or slide names..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-                  autoFocus
-                />
-              </div>
-              
-              {searchQuery && (
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {searchResults.length > 0 ? (
-                    <>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                        Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}:
-                      </div>
-                      {searchResults.map((slideId) => {
-                        const slideNames = {
-                          'agenda-overview': 'Agenda & Overview',
-                          'executive-summary': 'Executive Summary',
-                          'company-evolution': 'Company Evolution',
-                          'service-divisions': 'Service Divisions',
-                          'performance-metrics': 'Performance Metrics',
-                          'case-study-instacart': 'Case Study: Instacart',
-                          'case-study-tesla': 'Case Study: Tesla',
-                          'case-study-medical': 'Case Study: Medical',
-                          'case-study-bmw': 'Case Study: BMW',
-                          'driver-excellence': 'Driver Excellence',
-                          'technology-integration': 'Technology Integration',
-                          'client-portfolio': 'Client Portfolio',
-                          'rapid-deployment': 'Rapid Deployment',
-                          'geographic-coverage': 'Geographic Coverage',
-                          'partnership-proposal': 'Partnership Proposal',
-                          'competitive-advantage': 'Competitive Advantage',
-                          'service-integration': 'Service Integration',
-                          'roi-projection': 'ROI Projection',
-                          'next-steps': 'Next Steps'
-                        };
-                        
-                        return (
-                          <div
-                            key={slideId}
-                            onClick={() => {
-                              goToSlide(slideId);
-                              setShowSearch(false);
-                            }}
-                            className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer transition-colors"
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${ 
-                                activeTab === slideId 
-                                  ? 'bg-blue-600 text-white dark:text-white' 
-                                  : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
-                              }`}>
-                                {tabs.indexOf(slideId) + 1}
-                              </div>
-                              <div>
-                                <div className="font-medium text-gray-900 dark:text-gray-100">
-                                  {slideNames[slideId as keyof typeof slideNames] || slideId}
-                                </div>
-                                <div className="text-sm text-gray-500 dark:text-gray-400">
-                                  {slideContent[slideId]?.slice(0, 3).join(', ') || 'No keywords'}
-                                </div>
-                              </div>
-                            </div>
-                            {activeTab === slideId && (
-                              <span className="text-blue-600 dark:text-blue-400 text-sm">Current</span>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                      <div className="text-4xl mb-2">🔍</div>
-                      <div>No slides found matching "{searchQuery}"</div>
-                      <div className="text-sm mt-1">Try searching for keywords like "performance", "instacart", or "partnership"</div>
-                    </div>
-                  )}
-                </div>
-              )}
-              
-              {!searchQuery && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                  <div className="text-4xl mb-2">🔍</div>
-                  <div>Start typing to search through all slides</div>
-                  <div className="text-sm mt-1">Search by keywords, slide names, or content topics</div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* Speaker Notes Panel */} 
         {showSpeakerNotes && (
@@ -1615,6 +1487,31 @@ export default function DriverNetworkPresentation() {
           </Container>
         </main>
 
+        {/* Slide Progress Dots */}
+        {!isFullscreen && (
+          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 no-print">
+            <div className="flex items-center space-x-3 bg-black/80 dark:bg-gray-900/90 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 dark:border-gray-600/30 shadow-lg">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => goToSlide(tab)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 hover:scale-150 ${ 
+                    activeTab === tab 
+                      ? 'bg-[#276EF1] w-4 scale-125' 
+                      : index <= tabs.indexOf(activeTab)
+                        ? 'bg-white/60 dark:bg-gray-400/60 hover:bg-white/80 dark:hover:bg-gray-300/80'
+                        : 'bg-white/30 dark:bg-gray-600/60 hover:bg-white/50 dark:hover:bg-gray-500/60'
+                  }`}
+                  title={`Go to slide ${index + 1}`}
+                />
+              ))}
+              <div className="ml-3 text-white/80 dark:text-gray-300 text-xs font-medium">
+                {tabs.indexOf(activeTab) + 1} / {tabs.length}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Analytics Panel */} 
         {showAnalytics && (
           <div className="fixed top-0 right-0 bottom-0 z-50 bg-white dark:bg-gray-900 shadow-2xl w-96 p-6 border-l border-gray-200 dark:border-gray-700 overflow-y-auto no-print">
@@ -1646,10 +1543,6 @@ export default function DriverNetworkPresentation() {
                   <div>
                     <div className="text-gray-500 dark:text-gray-400">Navigations</div>
                     <div className="text-lg font-bold text-gray-900 dark:text-gray-100">{analytics.navigationActions}</div>
-                  </div>
-                  <div>
-                    <div className="text-gray-500 dark:text-gray-400">Searches</div>
-                    <div className="text-lg font-bold text-gray-900 dark:text-gray-100">{analytics.searchQueries.length}</div>
                   </div>
                 </div>
               </div>

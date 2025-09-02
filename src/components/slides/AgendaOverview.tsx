@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { SlideProps } from './SlideTypes';
+import { CALENDLY_URL } from '@/lib/contact';
 
 const AgendaOverview: React.FC<SlideProps> = ({ 
   className = '', 
@@ -141,10 +142,13 @@ const AgendaOverview: React.FC<SlideProps> = ({
             One that doesn't require years of building, millions in investment, or prayers that it works
           </p>
           
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-lg sm:text-xl">
+          <button 
+            onClick={onNext}
+            className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-lg sm:text-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+          >
             <span>See the solution</span>
             <span className="text-2xl">→</span>
-          </div>
+          </button>
         </div>
       </div>
     </section>
