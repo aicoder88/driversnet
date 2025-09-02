@@ -55,6 +55,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: url('/tesla trans.jpg') 12 12, auto;
+    cursor: url('/tesla-cursor.png') 16 16, auto;
   }
 }
