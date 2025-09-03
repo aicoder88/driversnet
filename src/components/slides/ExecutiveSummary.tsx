@@ -128,10 +128,13 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
             while your competitors are driving Formula 1 cars
           </p>
           
-          <div className="mt-8 sm:mt-12 inline-flex items-center space-x-4 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-700 dark:to-emerald-700 text-white dark:text-gray-50 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-lg sm:text-xl">
+          <button 
+            onClick={onNext}
+            className="mt-8 sm:mt-12 inline-flex items-center space-x-4 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-700 dark:to-emerald-700 text-white dark:text-gray-50 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-lg sm:text-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+          >
             <span>But what if there was another way?</span>
             <span className="text-2xl">🤔</span>
-          </div>
+          </button>
         </div>
       </div>
 

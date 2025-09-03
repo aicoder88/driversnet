@@ -80,7 +80,16 @@ export const SlideManager: React.FC<SlideManagerProps> = ({
 
   return (
     <Suspense fallback={<SlideLoadingFallback />}>
-      <SlideComponent {...props} className={slideClassName} />
+      <SlideComponent 
+        {...props} 
+        className={slideClassName}
+        onNext={props.onNext}
+        onPrevious={props.onPrevious}
+        hasPrevious={props.hasPrevious}
+        hasNext={props.hasNext}
+        currentSlide={props.currentSlide}
+        totalSlides={props.totalSlides}
+      />
     </Suspense>
   );
 };
