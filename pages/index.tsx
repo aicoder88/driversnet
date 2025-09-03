@@ -1330,6 +1330,12 @@ export default function DriverNetworkPresentation() {
             <SlideRenderer
               activeSlideId={activeTab}
               slideTransition={slideTransition}
+              onPrevious={() => navigateTab('prev')}
+              onNext={() => navigateTab('next')}
+              hasPrevious={tabs.indexOf(activeTab) > 0}
+              hasNext={tabs.indexOf(activeTab) < tabs.length - 1}
+              currentSlide={tabs.indexOf(activeTab) + 1}
+              totalSlides={tabs.length}
             >
               {activeTab === 'agenda-overview' && <AgendaOverview 
                 onPrevious={() => navigateTab('prev')}
