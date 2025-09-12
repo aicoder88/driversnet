@@ -33,8 +33,8 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       color: 'red',
       details: {
         volume: '$2M+ transported',
-        retention: '2+ years',
-        expansion: 'West Coast coverage'
+        retention: '6+ years',
+        expansion: 'US & Canada footprint'
       }
     },
     { 

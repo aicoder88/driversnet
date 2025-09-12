@@ -13,19 +13,17 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
 }) => {
   const techStack = [
     {
-      category: 'API Integration',
+      category: '3rd‑Party APIs & Webhooks',
       technologies: [
-        { name: 'RESTful APIs', description: 'Real-time order management', icon: '🔌', status: 'Live' },
-        { name: 'Webhooks', description: 'Instant status updates', icon: '⚡', status: 'Live' },
-        { name: 'GraphQL', description: 'Flexible data queries', icon: '🎯', status: 'Live' },
-        { name: 'OAuth 2.0', description: 'Secure authentication', icon: '🔐', status: 'Live' }
+        { name: 'Onfleet', description: 'Routing, dispatch, driver app', icon: '🧭', status: 'Live' },
+        { name: 'Dropcar', description: 'Vehicle logistics orchestration', icon: '🚘', status: 'Live' },
+        { name: 'Webhooks', description: 'Instant status updates', icon: '⚡', status: 'Live' }
       ]
     },
     {
       category: 'Real-time Tracking',
       technologies: [
         { name: 'GPS Tracking', description: 'Sub-meter accuracy', icon: '📍', status: 'Live' },
-        { name: 'WebSocket Streams', description: 'Live location updates', icon: '📡', status: 'Live' },
         { name: 'Mobile SDKs', description: 'iOS & Android ready', icon: '📱', status: 'Live' },
         { name: 'Geofencing', description: 'Automated notifications', icon: '🎯', status: 'Live' }
       ]
@@ -33,22 +31,13 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
     {
       category: 'Data & Analytics',
       technologies: [
-        { name: 'Machine Learning', description: 'Predictive routing', icon: '🤖', status: 'Live' },
         { name: 'Real-time Analytics', description: 'Performance insights', icon: '📊', status: 'Live' },
-        { name: 'Business Intelligence', description: 'Custom dashboards', icon: '📈', status: 'Live' },
-        { name: 'Data Warehouse', description: 'Historical analysis', icon: '🗄️', status: 'Live' }
+        { name: 'Historical Reporting', description: 'Audit trails and KPIs', icon: '🗄️', status: 'Live' }
       ]
     }
   ];
 
   const integrationFeatures = [
-    {
-      title: 'Plug & Play Integration',
-      description: 'Deploy in hours, not months',
-      features: ['Pre-built connectors', 'Standard protocols', 'Zero downtime setup', 'Live documentation'],
-      icon: '🔌',
-      color: 'blue'
-    },
     {
       title: 'Real-time Visibility',
       description: 'Every package, every second',
@@ -57,9 +46,9 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
       color: 'green'
     },
     {
-      title: 'Scalable Architecture',
-      description: 'Built for enterprise scale',
-      features: ['Auto-scaling', 'Load balancing', '99.99% uptime', 'Global CDN'],
+      title: 'Operational Reliability',
+      description: 'Vendor-backed SLAs and redundancy',
+      features: ['SLA-backed uptime', 'Redundant dispatch workflows', 'Proven incident response', 'Audit trails & alerts'],
       icon: '⚡',
       color: 'purple'
     },
@@ -72,35 +61,13 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
     }
   ];
 
-  const apiExample = `// Real-time order tracking with our API
-const track = async (orderId) => {
-  const response = await fetch(\`/api/v2/orders/\${orderId}/track\`, {
-    headers: { 'Authorization': 'Bearer <token>' }
-  });
-  
-  const data = await response.json();
-  return {
-    location: data.currentLocation,
-    eta: data.estimatedArrival,
-    status: data.status,
-    driver: data.driver
-  };
-};
-
-// WebSocket for live updates
-const ws = new WebSocket('wss://api.drivernetwork.com/live');
-ws.on('location_update', (data) => {
-  updateMap(data.coordinates);
-  updateETA(data.eta);
-});`;
-
   return (
     <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
       {/* Hero Section */}
       <div className="text-center space-y-12">
         <div className="space-y-6">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
-            Technology That Works
+            Technology That Works With Partners
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
             Seamless
@@ -108,7 +75,7 @@ ws.on('location_update', (data) => {
             <span className="text-blue-600 dark:text-blue-400">Integration</span>
           </h1>
           <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-            Our technology stack is designed for one thing: making your life easier
+            We orchestrate best‑in‑class platforms like Onfleet and Dropcar
             <br />
             <strong className="text-blue-600 dark:text-blue-400">Deploy in hours, not months</strong>
           </p>
@@ -188,29 +155,15 @@ ws.on('location_update', (data) => {
         ))}
       </div>
 
-      {/* Code Example */}
-      <div className="bg-gray-900 dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-700">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Simple Integration Example
-          </h2>
-          <p className="text-xl text-gray-300">
-            Get started with just a few lines of code
-          </p>
+      {/* Vendor Integrations Summary */}
+      <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700">
+        <div className="text-center mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Vendor Integrations</h2>
         </div>
-        
-        <div className="bg-gray-800 dark:bg-gray-900 p-8 rounded-xl overflow-x-auto">
-          <pre className="text-green-400 text-sm leading-relaxed font-mono">
-            {apiExample}
-          </pre>
-        </div>
-        
-        <div className="text-center mt-8">
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg">
-            <span>Ready to integrate?</span>
-            <span className="text-2xl">🚀</span>
-          </div>
-        </div>
+        <p className="text-gray-700 dark:text-gray-300 text-center max-w-3xl mx-auto">
+          We configure and operate Onfleet and Dropcar to deliver real-time visibility and operational reliability. 
+          Integrations are managed via vendor APIs and webhooks; no proprietary SDKs or custom code required from your team.
+        </p>
       </div>
 
       {/* Slide Navigation */}

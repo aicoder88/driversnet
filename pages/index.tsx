@@ -565,7 +565,7 @@ export default function DriverNetworkPresentation() {
     'executive-summary': [
       'Open with confidence - emphasize our proven track record',
       'Highlight 1,000+ drivers as key differentiator',
-      '19 markets shows we understand scale Uber needs',
+      '21 markets show we understand scale Uber needs',
       'Focus on reliability metrics - this is what matters to Uber'
     ],
     'company-evolution': [

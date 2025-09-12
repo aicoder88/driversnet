@@ -56,8 +56,9 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
               </div>
             </div>
             <div className="text-right text-white dark:text-white">
-              <div className="text-lg text-white dark:text-white font-bold mb-1">3-year exclusive partnership (2021-2024)</div>
-              <div className="text-sm text-white dark:text-white opacity-80">Chicago hub serving 8-state distribution network</div>
+              <div className="text-lg text-white dark:text-white font-bold mb-1">Partnership since 2018–present</div>
+              <div className="text-sm text-white dark:text-white opacity-80">Launched in 13+ cities across the US & Canada</div>
+              <div className="text-sm text-white dark:text-white opacity-80">Hundreds of vehicles per city/day on 24–48 hrs notice</div>
             </div>
           </div>
 

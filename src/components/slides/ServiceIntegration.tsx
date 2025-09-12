@@ -241,7 +241,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
             </div>
             <h3 className="text-xl font-bold mb-4">Go Live & Scale</h3>
             <p className="text-gray-300 mb-6 text-sm">
-              Launch with immediate access to 1,000+ drivers across 19 markets with 24/7 support
+              Launch with immediate access to 1,000+ drivers across 21 markets with 24/7 support
             </p>
             <div className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold">
               Launch Ready

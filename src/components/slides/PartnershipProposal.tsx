@@ -15,7 +15,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
   const proposalHighlights = [
     {
       title: 'Immediate Network Access',
-      description: '1,000+ drivers across 19 markets ready to deploy',
+      description: '1,000+ drivers across 21 markets ready to deploy',
       value: '$50M+ proven capacity',
       icon: '🌐',
       color: 'blue'
@@ -220,7 +220,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
                   <h3 className="text-2xl font-bold mb-4">DRIVER NETWORK</h3>
                   <div className="space-y-2 text-sm">
                     <div className="bg-blue-800 px-3 py-2 rounded-lg">👥 1,000+ Drivers</div>
-                    <div className="bg-blue-800 px-3 py-2 rounded-lg">🗺️ 19 Markets</div>
+                    <div className="bg-blue-800 px-3 py-2 rounded-lg">🗺️ 21 Markets</div>
                     <div className="bg-blue-800 px-3 py-2 rounded-lg">⚡ Instant Capacity</div>
                     <div className="bg-blue-800 px-3 py-2 rounded-lg">🎯 100% Reliability</div>
                   </div>

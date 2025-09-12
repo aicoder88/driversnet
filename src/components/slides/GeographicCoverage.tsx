@@ -17,8 +17,8 @@ const GeographicCoverage: React.FC<SlideProps> = ({
     { name: 'San Diego', state: 'CA', drivers: 95, status: 'Active', region: 'West', color: 'green' },
     { name: 'Phoenix', state: 'AZ', drivers: 75, status: 'Active', region: 'West', color: 'green' },
     { name: 'Las Vegas', state: 'NV', drivers: 68, status: 'Active', region: 'West', color: 'green' },
-    { name: 'Seattle', state: 'WA', drivers: 85, status: 'Active', region: 'West', color: 'green' },
-    { name: 'Portland', state: 'OR', drivers: 52, status: 'Active', region: 'West', color: 'green' },
+    { name: 'Salt Lake City', state: 'UT', drivers: 60, status: 'Active', region: 'West', color: 'green' },
+    { name: 'Vancouver', state: 'BC', drivers: 80, status: 'Active', region: 'West', color: 'green' },
     { name: 'Denver', state: 'CO', drivers: 64, status: 'Expanding', region: 'Central', color: 'orange' },
     { name: 'Dallas', state: 'TX', drivers: 78, status: 'Expanding', region: 'Central', color: 'orange' },
     { name: 'Austin', state: 'TX', drivers: 56, status: 'Active', region: 'Central', color: 'green' },
@@ -30,17 +30,19 @@ const GeographicCoverage: React.FC<SlideProps> = ({
     { name: 'New York', state: 'NY', drivers: 125, status: 'Expanding', region: 'East', color: 'orange' },
     { name: 'Boston', state: 'MA', drivers: 58, status: 'Expanding', region: 'East', color: 'orange' },
     { name: 'Philadelphia', state: 'PA', drivers: 62, status: 'Active', region: 'East', color: 'green' },
-    { name: 'Washington DC', state: 'DC', drivers: 71, status: 'Active', region: 'East', color: 'green' }
+    { name: 'Washington DC', state: 'DC', drivers: 71, status: 'Active', region: 'East', color: 'green' },
+    { name: 'Toronto', state: 'ON', drivers: 110, status: 'Active', region: 'East', color: 'green' },
+    { name: 'Montreal', state: 'QC', drivers: 90, status: 'Active', region: 'East', color: 'green' }
   ];
 
   const regionalStats = [
-    { region: 'West Coast', markets: 7, drivers: 645, coverage: '100%', color: 'blue' },
-    { region: 'Central', markets: 6, drivers: 359, coverage: '85%', color: 'orange' },
-    { region: 'East Coast', markets: 6, drivers: 457, coverage: '90%', color: 'green' }
+    { region: 'West Coast', markets: 7, drivers: 723, coverage: '100%', color: 'blue' },
+    { region: 'Central', markets: 5, drivers: 359, coverage: '85%', color: 'orange' },
+    { region: 'East Coast', markets: 9, drivers: 702, coverage: '90%', color: 'green' }
   ];
 
   const coverageMetrics = [
-    { label: 'Total Markets', value: '19', icon: '🌍', description: 'Major metropolitan areas' },
+    { label: 'Total Markets', value: '21', icon: '🌍', description: 'Major metropolitan areas' },
     { label: 'Network Drivers', value: '1,000+', icon: '👥', description: 'Active delivery professionals' },
     { label: 'Population Coverage', value: '45M+', icon: '🏙️', description: 'People within delivery range' },
     { label: 'Daily Capacity', value: '25K+', icon: '📦', description: 'Packages per day capacity' }
@@ -49,7 +51,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
   const expansionPlans = [
     {
       timeline: 'Q1 2024',
-      markets: ['Sacramento', 'Salt Lake City', 'Kansas City'],
+      markets: ['Sacramento', 'Kansas City'],
       drivers: '150+',
       focus: 'Regional connector hubs',
       icon: '🎯',
@@ -62,14 +64,6 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       focus: 'Strategic market expansion',
       icon: '🚀',
       color: 'indigo'
-    },
-    {
-      timeline: '2024-2025',
-      markets: ['International: Toronto', 'Vancouver', 'Montreal'],
-      drivers: '300+',
-      focus: 'Cross-border capabilities',
-      icon: '🌎',
-      color: 'emerald'
     }
   ];
 
@@ -87,7 +81,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <span className="text-indigo-600 dark:text-indigo-400">Coverage</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
-            From Seattle to Miami, our network spans 19 major markets
+            Across the US and Canada, our network spans 21 major markets
             <br />
             <strong className="text-indigo-600 dark:text-indigo-400">Coast-to-coast coverage built for enterprise scale</strong>
           </p>
@@ -114,13 +108,13 @@ const GeographicCoverage: React.FC<SlideProps> = ({
               <div className="space-y-2 text-sm">
                 <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">LA • 180 drivers</div>
                 <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">SF • 165 drivers</div>
-                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Seattle • 85 drivers</div>
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">San Diego • 95 drivers</div>
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Phoenix • 75 drivers</div>
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Las Vegas • 68 drivers</div>
-                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Portland • 52 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Salt Lake City • 60 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Vancouver • 80 drivers</div>
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">645 drivers</div>
+              <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">723 drivers</div>
             </div>
             
             {/* Central Region */}
@@ -147,8 +141,10 @@ const GeographicCoverage: React.FC<SlideProps> = ({
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Philadelphia • 62 drivers</div>
                 <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Boston • 58 drivers</div>
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Orlando • 45 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Toronto • 110 drivers</div>
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Montreal • 90 drivers</div>
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold">457 drivers</div>
+              <div className="absolute -bottom-2 -right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold">702 drivers</div>
             </div>
           </div>
           
@@ -168,6 +164,13 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Canada Presence Callout */}
+      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 p-6 rounded-2xl border border-emerald-200 dark:border-emerald-700 text-center">
+        <p className="text-emerald-800 dark:text-emerald-200 text-base sm:text-lg">
+          Canada Presence: Active in Toronto, Montreal, and Vancouver. Current programs include OEM support such as Ford Canada.
+        </p>
       </div>
 
       {/* Coverage Metrics */}

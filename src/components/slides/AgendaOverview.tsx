@@ -30,7 +30,7 @@ const AgendaOverview: React.FC<SlideProps> = ({
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed px-4">
             How Driver Network Inc. delivers what others promise
             <br />
-            <strong className="text-gray-900 dark:text-gray-100">1,000+ drivers. 19 markets. Zero excuses.</strong>
+            <strong className="text-gray-900 dark:text-gray-100">1,000+ drivers. 21 markets. Zero excuses.</strong>
           </p>
         </div>
         

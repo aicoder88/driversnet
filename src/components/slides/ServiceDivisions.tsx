@@ -53,12 +53,12 @@ const ServiceDivisions: React.FC<SlideProps> = ({
             </div>
           </div>
 
-          {/* Valet & Traffic Management */}
+          {/* Parking, Valet & Traffic Management */}
           <div className="group relative bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-6 sm:p-8 rounded-2xl border border-blue-300/50 dark:border-blue-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer card-stagger content-stagger-4">
             <div className="text-center mb-6">
               <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🚗</div>
               <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">35%</div>
-              <div className="text-base sm:text-lg font-bold text-blue-800 dark:text-blue-200 mb-2">Valet & Traffic Mgmt</div>
+              <div className="text-base sm:text-lg font-bold text-blue-800 dark:text-blue-200 mb-2">Parking, Valet & Traffic Mgmt</div>
               <div className="text-blue-700 dark:text-blue-300 text-sm">Steady growth sector</div>
             </div>
             <div className="space-y-3">
@@ -69,6 +69,10 @@ const ServiceDivisions: React.FC<SlideProps> = ({
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 <span className="text-sm text-blue-700 dark:text-blue-300">Accounting services</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-sm text-blue-700 dark:text-blue-300">Parking operations & revenue mgmt</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
@@ -110,7 +114,7 @@ const ServiceDivisions: React.FC<SlideProps> = ({
           <OptimizedChart 
             data={[
               { name: 'Automotive', value: 2800, onTime: 99.8, satisfaction: 98.5, safety: 100, revenue: 2800 },
-              { name: 'Valet/Traffic', value: 2450, onTime: 99.2, satisfaction: 97.8, safety: 99.5, revenue: 2450 },
+              { name: 'Parking/Valet/Traffic', value: 2450, onTime: 99.2, satisfaction: 97.8, safety: 99.5, revenue: 2450 },
               { name: 'Courier', value: 1750, onTime: 98.9, satisfaction: 98.2, safety: 99.8, revenue: 1750 }
             ]}
           >
