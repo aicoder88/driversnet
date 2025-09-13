@@ -23,7 +23,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
     { name: 'Dallas', state: 'TX', drivers: 78, status: 'Expanding', region: 'Central', color: 'orange' },
     { name: 'Austin', state: 'TX', drivers: 56, status: 'Active', region: 'Central', color: 'green' },
     { name: 'Houston', state: 'TX', drivers: 72, status: 'Active', region: 'Central', color: 'green' },
-    { name: 'Chicago', state: 'IL', drivers: 89, status: 'Expanding', region: 'Central', color: 'orange' },
+    { name: 'Chicago', state: 'IL', drivers: 89, status: 'Primary Hub', region: 'Central', color: 'blue' },
     { name: 'Atlanta', state: 'GA', drivers: 67, status: 'Active', region: 'East', color: 'green' },
     { name: 'Miami', state: 'FL', drivers: 74, status: 'Active', region: 'East', color: 'green' },
     { name: 'Orlando', state: 'FL', drivers: 45, status: 'Active', region: 'East', color: 'green' },
@@ -121,7 +121,10 @@ const GeographicCoverage: React.FC<SlideProps> = ({
             <div className="relative bg-gradient-to-b from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 rounded-2xl p-4 border-2 border-orange-300 dark:border-orange-600">
               <div className="text-center text-orange-800 dark:text-orange-200 font-bold mb-2">CENTRAL</div>
               <div className="space-y-2 text-sm">
-                <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Chicago • 89 drivers</div>
+                <div className="flex items-center gap-2">
+                  <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Chicago • 89 drivers</div>
+                  <div className="bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-2 py-0.5 rounded-full text-[10px] font-extrabold border border-blue-300 dark:border-blue-700">Primary Hub</div>
+                </div>
                 <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Dallas • 78 drivers</div>
                 <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Houston • 72 drivers</div>
                 <div className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Denver • 64 drivers</div>
@@ -149,7 +152,7 @@ const GeographicCoverage: React.FC<SlideProps> = ({
           </div>
           
           {/* Legend */}
-          <div className="flex justify-center space-x-8 mt-6 text-sm">
+          <div className="flex justify-center space-x-8 mt-12 md:mt-14 text-sm">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
               <span className="text-gray-600 dark:text-gray-300">Primary Hubs</span>
@@ -167,10 +170,28 @@ const GeographicCoverage: React.FC<SlideProps> = ({
       </div>
       
       {/* Canada Presence Callout */}
-      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 p-6 rounded-2xl border border-emerald-200 dark:border-emerald-700 text-center">
-        <p className="text-emerald-800 dark:text-emerald-200 text-base sm:text-lg">
-          Canada Presence: Active in Toronto, Montreal, and Vancouver. Current programs include OEM support such as Ford Canada.
-        </p>
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900/40 dark:to-gray-800/40 p-8 md:p-10 rounded-3xl border border-blue-200 dark:border-blue-700 shadow-xl max-w-3xl mx-auto w-full">
+        <div className="flex items-center justify-center mb-4">
+          <div className="w-12 h-12 rounded-full bg-white/90 dark:bg-white/10 ring-1 ring-blue-200/70 dark:ring-blue-700/60 flex items-center justify-center text-2xl shadow-md">🇨🇦</div>
+        </div>
+        <h3 className="text-lg sm:text-xl font-extrabold text-indigo-800 dark:text-indigo-200 text-center tracking-wide">
+          Canada Presence
+        </h3>
+        <div className="mt-5 text-center">
+          <div className="text-indigo-900/80 dark:text-indigo-100 mb-2 text-sm font-semibold uppercase tracking-wide">Active Cities</div>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-2 bg-white/90 dark:bg-white/10 backdrop-blur-sm text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm font-semibold border border-indigo-200/70 dark:border-indigo-700/50 shadow-sm">Toronto</span>
+            <span className="inline-flex items-center gap-2 bg-white/90 dark:bg-white/10 backdrop-blur-sm text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm font-semibold border border-indigo-200/70 dark:border-indigo-700/50 shadow-sm">Montreal</span>
+            <span className="inline-flex items-center gap-2 bg-white/90 dark:bg-white/10 backdrop-blur-sm text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm font-semibold border border-indigo-200/70 dark:border-indigo-700/50 shadow-sm">Vancouver</span>
+          </div>
+        </div>
+        <div className="mt-6 pt-5 border-t border-indigo-200/60 dark:border-indigo-700/40 text-center">
+          <div className="text-indigo-900/80 dark:text-indigo-100 mb-2 text-sm font-semibold uppercase tracking-wide">Current Programs</div>
+          <div className="inline-flex items-center gap-2 bg-white/90 dark:bg-white/10 backdrop-blur-sm text-indigo-900 dark:text-indigo-100 px-3 py-1 rounded-full text-sm font-semibold border border-indigo-200/70 dark:border-indigo-700/50 shadow-sm">
+            <span>🚗</span>
+            <span>OEM Support: Ford Canada</span>
+          </div>
+        </div>
       </div>
 
       {/* Coverage Metrics */}

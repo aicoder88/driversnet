@@ -35,6 +35,20 @@ const ExecutiveSummary: React.FC<SlideProps> = ({
           </p>
         </div>
         
+        {/* Program Highlights (Concise) */}
+        <div className="flex justify-center mt-2">
+          <div className="flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-2 bg-blue-600/10 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+              <span>🗺️</span>
+              <span>13+ cities (US & Canada)</span>
+            </span>
+            <span className="inline-flex items-center gap-2 bg-blue-600/10 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+              <span>⚡</span>
+              <span>Hundreds/day • 24–48 hr notice</span>
+            </span>
+          </div>
+        </div>
+
         {/* Interactive Pain Point Calculator */}
         <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto content-fade-in content-stagger-3">
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 sm:mb-8 text-center">

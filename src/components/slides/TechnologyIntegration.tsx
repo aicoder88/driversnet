@@ -62,7 +62,7 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
   ];
 
   return (
-    <section className={`min-h-screen flex flex-col justify-center space-y-20 ${className}`}>
+    <section className={`min-h-screen flex flex-col space-y-16 ${className}`}>
       {/* Hero Section */}
       <div className="text-center space-y-12">
         <div className="space-y-6">
@@ -83,7 +83,7 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
       </div>
 
       {/* Technology Stack Overview */}
-      <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 p-12 md:p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-7xl mx-auto w-full">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Enterprise-Grade Technology Stack
@@ -100,11 +100,11 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
                 {category.category}
               </h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.technologies.map((tech, techIndex) => (
                   <div 
                     key={techIndex}
-                    className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl border border-gray-200 dark:border-gray-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl border border-gray-200 dark:border-gray-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="text-3xl">{tech.icon}</div>
@@ -127,11 +127,11 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
       </div>
 
       {/* Integration Features */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full">
         {integrationFeatures.map((feature, index) => (
           <div 
             key={index}
-            className={`bg-gradient-to-br from-${feature.color}-50 to-${feature.color}-100 dark:from-${feature.color}-900/20 dark:to-${feature.color}-800/20 p-8 rounded-3xl border border-${feature.color}-200 dark:border-${feature.color}-700 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300`}
+            className={`bg-gradient-to-br from-${feature.color}-50 to-${feature.color}-100 dark:from-${feature.color}-900/20 dark:to-${feature.color}-800/20 p-8 rounded-3xl border border-${feature.color}-200 dark:border-${feature.color}-700 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 h-full`}
           >
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">{feature.icon}</div>
@@ -156,7 +156,7 @@ const TechnologyIntegration: React.FC<SlideProps> = ({
       </div>
 
       {/* Vendor Integrations Summary */}
-      <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto w-full">
         <div className="text-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Vendor Integrations</h2>
         </div>

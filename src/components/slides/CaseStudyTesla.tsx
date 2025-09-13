@@ -55,10 +55,16 @@ const CaseStudyTesla: React.FC<SlideProps> = ({
                 <p className="text-xl text-white dark:text-white opacity-90 font-medium">Luxury Vehicle Transport • White-Glove Service • $1.8M Annual Contract</p>
               </div>
             </div>
-            <div className="text-right text-white dark:text-white">
-              <div className="text-lg text-white dark:text-white font-bold mb-1">Partnership since 2018–present</div>
-              <div className="text-sm text-white dark:text-white opacity-80">Launched in 13+ cities across the US & Canada</div>
-              <div className="text-sm text-white dark:text-white opacity-80">Hundreds of vehicles per city/day on 24–48 hrs notice</div>
+            <div className="text-right text-white dark:text-white flex flex-col items-end space-y-2">
+              <div className="text-lg text-white dark:text-white font-extrabold">Partnership since 2018–present</div>
+              <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-sm">
+                <span className="text-base">🗺️</span>
+                <span>13+ cities (US & Canada)</span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-sm">
+                <span className="text-base">⚡</span>
+                <span>Hundreds/day per city • 24–48 hr notice</span>
+              </div>
             </div>
           </div>
 

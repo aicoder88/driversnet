@@ -233,6 +233,19 @@ const ClientPortfolio: React.FC<SlideProps> = ({
                     </div>
                   ))}
                 </div>
+
+                {partner.name === 'Tesla' && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    <span className="inline-flex items-center gap-1 bg-red-600/10 text-red-800 dark:text-red-200 px-2.5 py-1 rounded-full text-xs font-semibold">
+                      <span>🗺️</span>
+                      <span>13+ cities (US & Canada)</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 bg-red-600/10 text-red-800 dark:text-red-200 px-2.5 py-1 rounded-full text-xs font-semibold">
+                      <span>⚡</span>
+                      <span>Hundreds/day • 24–48 hr notice</span>
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           ))}
