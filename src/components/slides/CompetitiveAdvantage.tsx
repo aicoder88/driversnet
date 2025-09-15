@@ -223,7 +223,7 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({
             Key Competitive Insights
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform duration-300">
                 🏆
@@ -270,18 +270,40 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({
             </div>
 
             {/* Multi-Vertical Leadership */}
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center group relative overflow-hidden rounded-3xl p-6 border border-amber-200 dark:border-amber-600/50 bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20">
+              <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-amber-300/30 blur-2xl pointer-events-none" />
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 🏨
               </div>
-              <h3 className="text-xl font-bold text-amber-600 dark:text-amber-400 mb-3">
+              <h3 className="text-xl font-bold text-amber-700 dark:text-amber-300 mb-2">
                 Multi-Vertical Leadership
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                DN is a leader as a multi-vertical service network across the hospitality and real estate industries
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
+                DN leads as a multi-vertical service network, powering high-touch operations across hospitality and real estate—from concierge logistics and FF&E to tenant turnovers and property staging.
               </p>
-              <div className="mt-4 text-2xl font-bold text-amber-500">
-                Hospitality • Real Estate
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-200/80 text-amber-900 dark:bg-amber-800/40 dark:text-amber-200 border border-amber-300/60 dark:border-amber-700/60">🏨 Hospitality</span>
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-200/80 text-orange-900 dark:bg-orange-800/40 dark:text-orange-200 border border-orange-300/60 dark:border-orange-700/60">🏢 Real Estate</span>
+              </div>
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200">Concierge Logistics</span>
+                <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200">FF&E</span>
+                <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200">Tenant Turnovers</span>
+                <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200">Staging & Install</span>
+              </div>
+              <div className="mt-5 grid grid-cols-3 gap-3 max-w-xs mx-auto">
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                  <div className="text-lg font-bold text-amber-700 dark:text-amber-300">19+</div>
+                  <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">Markets</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                  <div className="text-lg font-bold text-amber-700 dark:text-amber-300">Top</div>
+                  <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">Brands</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                  <div className="text-lg font-bold text-amber-700 dark:text-amber-300">99%+</div>
+                  <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">SLA</div>
+                </div>
               </div>
             </div>
           </div>
