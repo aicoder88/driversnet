@@ -79,6 +79,13 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       color: 'emerald'
     },
     {
+      industry: 'Hospitality',
+      clients: ['National Hotel Groups', 'Luxury Resorts', 'Event Venues'],
+      specialization: 'Concierge logistics, valet, FF&E, events',
+      icon: '🏨',
+      color: 'amber'
+    },
+    {
       industry: 'Automotive & Manufacturing',
       clients: ['Tesla', 'BMW', 'Parts Suppliers'],
       specialization: 'High-value asset transport',
@@ -98,6 +105,13 @@ const ClientPortfolio: React.FC<SlideProps> = ({
       specialization: 'Sensitive equipment handling',
       icon: '💻',
       color: 'purple'
+    },
+    {
+      industry: 'Real Estate',
+      clients: ['Property Managers', 'REITs', 'Developers'],
+      specialization: 'Tenant turnovers, staging, building ops logistics',
+      icon: '🏢',
+      color: 'orange'
     }
   ];
 

@@ -177,6 +177,25 @@ const ServiceDivisions: React.FC<SlideProps> = ({
             regardless of market fluctuations in any single sector.
           </p>
         </div>
+
+        {/* Multi-Vertical Leadership Callout */}
+        <div className="mt-6 p-6 sm:p-8 rounded-2xl border border-amber-300/40 dark:border-amber-700/40 bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20">
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white text-2xl mr-3 align-middle">🏨</div>
+            <span className="align-middle text-xl sm:text-2xl font-bold text-amber-700 dark:text-amber-300">Multi-Vertical Leadership</span>
+          </div>
+          <p className="text-amber-800 dark:text-amber-200 text-sm sm:text-base max-w-3xl mx-auto text-center">
+            DN leads across hospitality and real estate, powering concierge logistics, valet operations, FF&E, tenant turnovers, and staging installs with the same reliability standards that define our automotive and healthcare work.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-200/80 text-amber-900 dark:bg-amber-800/40 dark:text-amber-200 border border-amber-300/60 dark:border-amber-700/60">🏨 Hospitality</span>
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-200/80 text-orange-900 dark:bg-orange-800/40 dark:text-orange-200 border border-orange-300/60 dark:border-orange-700/60">🏢 Real Estate</span>
+            <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200 text-xs">Concierge Logistics</span>
+            <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200 text-xs">FF&E</span>
+            <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200 text-xs">Tenant Turnovers</span>
+            <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200 text-xs">Staging & Install</span>
+          </div>
+        </div>
       </div>
 
       {/* Slide Navigation */}
