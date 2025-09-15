@@ -303,6 +303,14 @@ export default function DriverNetworkPresentation() {
     }
   };
 
+  const addExportMode = () => {
+    document.body.classList.add('export-mode');
+  };
+
+  const removeExportMode = () => {
+    document.body.classList.remove('export-mode');
+  };
+
   const exportSingleSlideToPDF = async () => {
     setIsExporting(true);
     try {
@@ -313,7 +321,8 @@ export default function DriverNetworkPresentation() {
         format: [297, 167] // 16:9 ratio, width 297mm
       });
 
-      const slideElement = document.querySelector('.presentation-slide');
+      addExportMode();
+      const slideElement = document.querySelector('main.presentation-slide .slide-content');
       if (!slideElement) {
         throw new Error('Slide element not found');
       }
@@ -331,10 +340,12 @@ export default function DriverNetworkPresentation() {
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        width: slideElement.scrollWidth,
-        height: slideElement.scrollHeight,
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight
+        width: (slideElement as HTMLElement).scrollWidth,
+        height: (slideElement as HTMLElement).scrollHeight,
+        windowWidth: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+        windowHeight: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+        scrollX: 0,
+        scrollY: -window.scrollY
       });
 
       // Restore hidden elements
@@ -376,6 +387,7 @@ export default function DriverNetworkPresentation() {
       alert('Export failed. Please try again.');
     } finally {
       setIsExporting(false);
+      removeExportMode();
     }
   };
 
@@ -390,6 +402,7 @@ export default function DriverNetworkPresentation() {
       });
 
       const currentSlide = activeTab;
+      addExportMode();
       let addedFirstPage = false;
 
       // Hide navigation elements
@@ -403,9 +416,9 @@ export default function DriverNetworkPresentation() {
         setActiveTab(slideId);
         
         // Wait for slide to render
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 700));
         
-        const slideElement = document.querySelector('.presentation-slide');
+        const slideElement = document.querySelector('main.presentation-slide .slide-content');
         if (!slideElement) continue;
 
         // Wait for assets within the slide
@@ -413,12 +426,16 @@ export default function DriverNetworkPresentation() {
 
         // Create canvas for this slide
         const canvas = await html2canvas(slideElement as HTMLElement, {
-          scale: 1.5,
+          scale: 2,
           useCORS: true,
           allowTaint: true,
           backgroundColor: '#ffffff',
-          width: slideElement.scrollWidth,
-          height: slideElement.scrollHeight
+          width: (slideElement as HTMLElement).scrollWidth,
+          height: (slideElement as HTMLElement).scrollHeight,
+          windowWidth: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+          windowHeight: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+          scrollX: 0,
+          scrollY: -window.scrollY
         });
 
         const imgData = canvas.toDataURL('image/png');
@@ -468,6 +485,7 @@ export default function DriverNetworkPresentation() {
       alert('Export failed. Please try again.');
     } finally {
       setIsExporting(false);
+      removeExportMode();
     }
   };
 
@@ -979,6 +997,37 @@ export default function DriverNetworkPresentation() {
               background: white !important;
             }
           }
+
+          /* Export mode: normalize layout for html2canvas captures */
+          :global(body.export-mode) * {
+            animation: none !important;
+            transition: none !important;
+          }
+          :global(body.export-mode) .no-print,
+          :global(body.export-mode) .thumbnail-nav {
+            display: none !important;
+          }
+          :global(body.export-mode) main.presentation-slide {
+            padding: 0 !important;
+            margin: 0 !important;
+            background: #ffffff !important;
+          }
+          :global(body.export-mode) main.presentation-slide .slide-container {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          :global(body.export-mode) main.presentation-slide .slide-content {
+            background: #ffffff !important;
+            margin: 0 auto !important;
+            box-shadow: none !important;
+          }
+          /* Expand container width during export */
+          :global(body.export-mode) main.presentation-slide .max-w-7xl {
+            max-width: 100% !important;
+          }
+          :global(body.export-mode) main.presentation-slide .px-4 { padding-left: 0 !important; padding-right: 0 !important; }
+          :global(body.export-mode) main.presentation-slide .sm\:px-6 { padding-left: 0 !important; padding-right: 0 !important; }
+          :global(body.export-mode) main.presentation-slide .lg\:px-8 { padding-left: 0 !important; padding-right: 0 !important; }
         `}</style>
 
         {/* Mobile Swipe Indicator */} 
