@@ -1208,9 +1208,7 @@ export default function DriverNetworkPresentation() {
               {/* Left Controls */} 
               <div className="flex items-center space-x-3 ml-16">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-[#276EF1] rounded-lg flex items-center justify-center">
-                    <span className="text-white dark:text-white dark:text-white dark:text-white font-bold text-sm">DN</span>
-                  </div>
+                  <img src="/driversnet-logo-dn1-512.jpg" alt="Driver Network" className="w-8 h-8 rounded-lg object-contain bg-white p-1 shadow" />
                   <div className="text-white dark:text-white dark:text-gray-50">
                     <div className="text-sm font-bold">Driver Network Inc.</div>
                     <div className="text-xs text-gray-300 dark:text-gray-400">Partnership Proposal</div>

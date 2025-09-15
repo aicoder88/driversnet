@@ -215,7 +215,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
               <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 rounded-2xl shadow-2xl border-4 border-blue-500">
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-4">
-                    <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
+                    <img src="/driversnet-logo-dn1-512.jpg" alt="Driver Network" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">DRIVER NETWORK</h3>
                   <div className="space-y-2 text-sm">

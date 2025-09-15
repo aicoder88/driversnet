@@ -84,7 +84,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
             {/* Driver Network */}
             <div className="text-center">
               <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-2xl shadow-lg mb-4">
-                <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
+                <img src="/driversnet-logo-dn1-512.jpg" alt="Driver Network" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
               </div>
               <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">DRIVER NETWORK</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">1,000+ drivers ready</p>

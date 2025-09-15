@@ -42,7 +42,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
         <div className="text-center mb-12">
           {/* Logo Partnership in Header Section */}
           <div className="flex items-center justify-center space-x-8 mb-8">
-            <img src="/driversnet logo.jpeg" alt="Driver Network" className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" />
+            <img src="/driversnet-logo-dn1-512.jpg" alt="Driver Network" className="w-20 h-20 rounded-2xl object-contain bg-white p-3 shadow-lg" />
             <div className="text-4xl">🤝</div>
             <img 
               src="/Instacart-Logo.jpg" 
