@@ -1,8 +1,6 @@
 
 import { NextSeo } from 'next-seo';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { Card, CardContent, CardHeader, CardTitle } from '../src/components/ui/card';
 import { Button } from '../src/components/ui/button';
 import { Badge } from '../src/components/ui/badge';
@@ -37,22 +35,12 @@ export default function DriverNetworkPresentation() {
   const [slideTransition, setSlideTransition] = useState('');
   const [presentationStartTime, setPresentationStartTime] = useState<Date | null>(null);
   const [slideTimer, setSlideTimer] = useState(0);
-  const [showSpeakerNotes, setShowSpeakerNotes] = useState(false);
-  const [isExporting, setIsExporting] = useState(false);
+  // Removed speaker notes and export states
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [showSwipeIndicator, setShowSwipeIndicator] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showAnalytics, setShowAnalytics] = useState(false);
-  const [analytics, setAnalytics] = useState({
-    slideViews: {} as { [key: string]: number },
-    timeOnSlide: {} as { [key: string]: number },
-    navigationActions: 0,
-    sessionStartTime: new Date(),
-    totalPresentationTime: 0,
-    keyboardShortcuts: 0,
-    touchGestures: 0
-  });
+  // Removed analytics state
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -69,24 +57,7 @@ export default function DriverNetworkPresentation() {
   ], []);
 
   // Analytics tracking functions
-  const trackSlideView = useCallback((slideId: string) => {
-    setAnalytics(prev => ({
-      ...prev,
-      slideViews: {
-        ...prev.slideViews,
-        [slideId]: (prev.slideViews[slideId] || 0) + 1
-      }
-    }));
-  }, []);
-
-  const trackNavigation = useCallback((method: 'keyboard' | 'touch' | 'click') => {
-    setAnalytics(prev => ({
-      ...prev,
-      navigationActions: prev.navigationActions + 1,
-      ...(method === 'keyboard' && { keyboardShortcuts: prev.keyboardShortcuts + 1 }),
-      ...(method === 'touch' && { touchGestures: prev.touchGestures + 1 })
-    }));
-  }, []);
+  // Removed analytics tracking
 
   const navigateTab = useCallback((direction: 'prev' | 'next', method: 'keyboard' | 'touch' | 'click' = 'click') => {
     console.log('navigateTab called with direction:', direction, 'method:', method, 'activeTab:', activeTab);
@@ -101,10 +72,6 @@ export default function DriverNetworkPresentation() {
     
     console.log('Navigation: currentIndex:', currentIndex, 'newIndex:', newIndex, 'newTab:', tabs[newIndex]);
     
-    // Track analytics
-    trackNavigation(method);
-    trackSlideView(tabs[newIndex]);
-    
     // Add slide transition effect
     setSlideTransition(direction === 'next' ? 'slide-left' : 'slide-right');
     setTimeout(() => setSlideTransition(''), 400);
@@ -114,19 +81,15 @@ export default function DriverNetworkPresentation() {
     
     // Save progress to localStorage
     localStorage.setItem('dn-presentation-slide', tabs[newIndex]);
-  }, [activeTab, tabs, trackNavigation, trackSlideView]);
+  }, [activeTab, tabs]);
 
   const goToSlide = useCallback((slideId: string, method: 'keyboard' | 'touch' | 'click' = 'click') => {
-    // Track analytics
-    trackNavigation(method);
-    trackSlideView(slideId);
-    
     setSlideTransition('fade');
     setTimeout(() => setSlideTransition(''), 500);
     setActiveTab(slideId);
     scrollToTop();
     localStorage.setItem('dn-presentation-slide', slideId);
-  }, [trackNavigation, trackSlideView]);
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -146,9 +109,6 @@ export default function DriverNetworkPresentation() {
       } else if (event.key === 't' || event.key === 'T') {
         event.preventDefault();
         setShowThumbnails(!showThumbnails);
-      } else if (event.key === 'n' || event.key === 'N') {
-        event.preventDefault();
-        setShowSpeakerNotes(!showSpeakerNotes);
       } else if (event.key === 'Home') {
         event.preventDefault();
         goToSlide('agenda-overview', 'keyboard');
@@ -160,7 +120,7 @@ export default function DriverNetworkPresentation() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [navigateTab, goToSlide, showThumbnails, showSpeakerNotes]);
+  }, [navigateTab, goToSlide, showThumbnails]);
 
   // Load saved progress
   useEffect(() => {
@@ -273,262 +233,7 @@ export default function DriverNetworkPresentation() {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const printPresentation = () => {
-    // Create a print-friendly version of all slides
-    window.print();
-  };
-
-  const waitForImagesAndFonts = async (container: Element) => {
-    try {
-      const images = Array.from(container.querySelectorAll('img')) as HTMLImageElement[];
-      const pending: Promise<void>[] = [];
-      for (const img of images) {
-        if (!img.complete || (img.naturalWidth === 0 && img.naturalHeight === 0)) {
-          pending.push(new Promise<void>((resolve) => {
-            const onDone = () => {
-              img.removeEventListener('load', onDone);
-              img.removeEventListener('error', onDone);
-              resolve();
-            };
-            img.addEventListener('load', onDone, { once: true });
-            img.addEventListener('error', onDone, { once: true });
-          }));
-        }
-      }
-      // Wait for web fonts if supported
-      const fontsReady = (document as any).fonts?.ready?.catch?.(() => undefined);
-      await Promise.all([Promise.all(pending), fontsReady].filter(Boolean) as Promise<any>[]);
-    } catch {
-      // Best-effort only
-    }
-  };
-
-  const addExportMode = () => {
-    document.body.classList.add('export-mode');
-  };
-
-  const removeExportMode = () => {
-    document.body.classList.remove('export-mode');
-  };
-
-  const exportSingleSlideToPDF = async () => {
-    setIsExporting(true);
-    try {
-      // Use 16:9 aspect ratio for widescreen format
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: [297, 167] // 16:9 ratio, width 297mm
-      });
-
-      addExportMode();
-      const slideElement = document.querySelector('main.presentation-slide .slide-content');
-      if (!slideElement) {
-        throw new Error('Slide element not found');
-      }
-
-      // Temporarily hide navigation elements for clean export
-      const elementsToHide = document.querySelectorAll('.no-print');
-      elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
-
-      // Ensure assets are ready before rendering
-      await waitForImagesAndFonts(slideElement);
-
-      // Create canvas with optimized settings for presentations
-      const canvas = await html2canvas(slideElement as HTMLElement, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: (slideElement as HTMLElement).scrollWidth,
-        height: (slideElement as HTMLElement).scrollHeight,
-        windowWidth: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
-        windowHeight: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
-        scrollX: 0,
-        scrollY: -window.scrollY
-      });
-
-      // Restore hidden elements
-      elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
-
-      const imgData = canvas.toDataURL('image/png');
-      const pdfWidth = 297;
-      const pdfHeight = 167;
-      
-      // Calculate dimensions to fit the slide properly
-      const canvasAspectRatio = canvas.width / canvas.height;
-      const pdfAspectRatio = pdfWidth / pdfHeight;
-      
-      let finalWidth = pdfWidth;
-      let finalHeight = pdfHeight;
-      let xOffset = 0;
-      let yOffset = 0;
-      
-      if (canvasAspectRatio > pdfAspectRatio) {
-        // Canvas is wider than PDF
-        finalHeight = pdfWidth / canvasAspectRatio;
-        yOffset = (pdfHeight - finalHeight) / 2;
-      } else {
-        // Canvas is taller than PDF
-        finalWidth = pdfHeight * canvasAspectRatio;
-        xOffset = (pdfWidth - finalWidth) / 2;
-      }
-      
-      pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight);
-      
-      // Save the PDF
-      const slideNumber = tabs.indexOf(activeTab) + 1;
-      pdf.save(`DriverNetwork-Slide-${slideNumber}.pdf`);
-      
-      // Show success message
-      alert('PDF exported successfully!');
-    } catch (error) {
-      console.error('Export failed:', error);
-      alert('Export failed. Please try again.');
-    } finally {
-      setIsExporting(false);
-      removeExportMode();
-    }
-  };
-
-  const exportAllSlidesToPDF = async () => {
-    setIsExporting(true);
-    try {
-      // Use 16:9 aspect ratio for widescreen format
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: [297, 167] // 16:9 ratio, width 297mm
-      });
-
-      const currentSlide = activeTab;
-      addExportMode();
-      let addedFirstPage = false;
-
-      // Hide navigation elements
-      const elementsToHide = document.querySelectorAll('.no-print');
-      elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
-
-      for (let i = 0; i < tabs.length; i++) {
-        const slideId = tabs[i];
-        
-        // Navigate to the slide
-        setActiveTab(slideId);
-        
-        // Wait for slide to render
-        await new Promise(resolve => setTimeout(resolve, 700));
-        
-        const slideElement = document.querySelector('main.presentation-slide .slide-content');
-        if (!slideElement) continue;
-
-        // Wait for assets within the slide
-        await waitForImagesAndFonts(slideElement);
-
-        // Create canvas for this slide
-        const canvas = await html2canvas(slideElement as HTMLElement, {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          width: (slideElement as HTMLElement).scrollWidth,
-          height: (slideElement as HTMLElement).scrollHeight,
-          windowWidth: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
-          windowHeight: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
-          scrollX: 0,
-          scrollY: -window.scrollY
-        });
-
-        const imgData = canvas.toDataURL('image/png');
-        
-        // Add new page if not the first slide
-        if (addedFirstPage) {
-          pdf.addPage();
-        }
-        addedFirstPage = true;
-        
-        // Calculate dimensions to fit the slide properly
-        const pdfWidth = 297;
-        const pdfHeight = 167;
-        const canvasAspectRatio = canvas.width / canvas.height;
-        const pdfAspectRatio = pdfWidth / pdfHeight;
-        
-        let finalWidth = pdfWidth;
-        let finalHeight = pdfHeight;
-        let xOffset = 0;
-        let yOffset = 0;
-        
-        if (canvasAspectRatio > pdfAspectRatio) {
-          finalHeight = pdfWidth / canvasAspectRatio;
-          yOffset = (pdfHeight - finalHeight) / 2;
-        } else {
-          finalWidth = pdfHeight * canvasAspectRatio;
-          xOffset = (pdfWidth - finalWidth) / 2;
-        }
-        
-        pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight);
-      }
-      
-      // Restore navigation elements
-      elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
-      
-      // Restore original slide
-      setActiveTab(currentSlide);
-      // Scroll to top after restoring
-      setTimeout(() => scrollToTop(), 100);
-      
-      // Save the complete PDF
-      pdf.save('DriverNetwork-Complete-Presentation.pdf');
-      
-      alert(`Complete presentation exported successfully! (${tabs.length} slides)`);
-    } catch (error) {
-      console.error('Export failed:', error);
-      alert('Export failed. Please try again.');
-    } finally {
-      setIsExporting(false);
-      removeExportMode();
-    }
-  };
-
-  const exportToImages = async () => {
-    setIsExporting(true);
-    try {
-      const slideElement = document.querySelector('.presentation-slide');
-      if (!slideElement) {
-        throw new Error('Slide element not found');
-      }
-
-      // Create high-quality canvas from current slide
-      const canvas = await html2canvas(slideElement as HTMLElement, {
-        scale: 3,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: slideElement.scrollWidth,
-        height: slideElement.scrollHeight
-      });
-
-      // Convert to blob and download
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.download = `DriverNetwork-Slide-${tabs.indexOf(activeTab) + 1}.png`;
-          link.href = url;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
-          
-          alert('Image exported successfully!');
-        }
-      }, 'image/png', 1.0);
-    } catch (error) {
-      console.error('Export failed:', error);
-      alert('Export failed. Please try again.');
-    } finally {
-      setIsExporting(false);
-    }
-  };
+  // Removed print and export functionality
 
   // Touch gesture handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -555,40 +260,7 @@ export default function DriverNetworkPresentation() {
   };
 
 
-  const trackTimeOnSlide = useCallback((slideId: string, timeSpent: number) => {
-    setAnalytics(prev => ({
-      ...prev,
-      timeOnSlide: {
-        ...prev.timeOnSlide,
-        [slideId]: (prev.timeOnSlide[slideId] || 0) + timeSpent
-      }
-    }));
-  }, []);
-
-  const generateAnalyticsReport = useCallback(() => {
-    const totalViews = Object.values(analytics.slideViews).reduce((sum, views) => sum + views, 0);
-    const totalTimeSpent = Object.values(analytics.timeOnSlide).reduce((sum, time) => sum + time, 0);
-    const sessionDuration = (new Date().getTime() - analytics.sessionStartTime.getTime()) / 1000;
-    
-    const report = {
-      sessionSummary: {
-        sessionDuration: Math.round(sessionDuration),
-        totalSlideViews: totalViews,
-        totalTimeSpent: Math.round(totalTimeSpent),
-        navigationActions: analytics.navigationActions,
-        keyboardShortcuts: analytics.keyboardShortcuts,
-        touchGestures: analytics.touchGestures,
-      },
-      slideAnalytics: Object.entries(analytics.slideViews).map(([slideId, views]) => ({
-        slideId,
-        views,
-        timeSpent: Math.round(analytics.timeOnSlide[slideId] || 0),
-        averageTime: Math.round((analytics.timeOnSlide[slideId] || 0) / views)
-      })).sort((a, b) => b.views - a.views),
-    };
-    
-    return report;
-  }, [analytics]);
+  // Analytics removed
 
   const struggleMetrics = [
     { label: 'Companies that fail', value: '73%', description: 'Within first 2 years of expansion' },
@@ -966,68 +638,7 @@ export default function DriverNetworkPresentation() {
             }
           }
 
-          /* Print Styles */
-          @media print {
-            .no-print {
-              display: none !important;
-            }
-            
-            .print-slide {
-              page-break-after: always;
-              width: 100vw;
-              height: 100vh;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              padding: 2rem;
-            }
-            
-            .print-slide:last-child {
-              page-break-after: avoid;
-            }
-            
-            * {
-              -webkit-print-color-adjust: exact;
-              color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            
-            body {
-              background: white !important;
-            }
-          }
-
-          /* Export mode: normalize layout for html2canvas captures */
-          :global(body.export-mode) * {
-            animation: none !important;
-            transition: none !important;
-          }
-          :global(body.export-mode) .no-print,
-          :global(body.export-mode) .thumbnail-nav {
-            display: none !important;
-          }
-          :global(body.export-mode) main.presentation-slide {
-            padding: 0 !important;
-            margin: 0 !important;
-            background: #ffffff !important;
-          }
-          :global(body.export-mode) main.presentation-slide .slide-container {
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-          :global(body.export-mode) main.presentation-slide .slide-content {
-            background: #ffffff !important;
-            margin: 0 auto !important;
-            box-shadow: none !important;
-          }
-          /* Expand container width during export */
-          :global(body.export-mode) main.presentation-slide .max-w-7xl {
-            max-width: 100% !important;
-          }
-          :global(body.export-mode) main.presentation-slide .px-4 { padding-left: 0 !important; padding-right: 0 !important; }
-          :global(body.export-mode) main.presentation-slide .sm\:px-6 { padding-left: 0 !important; padding-right: 0 !important; }
-          :global(body.export-mode) main.presentation-slide .lg\:px-8 { padding-left: 0 !important; padding-right: 0 !important; }
+          /* Print and export functionality removed */
         `}</style>
 
         {/* Mobile Swipe Indicator */} 
@@ -1046,8 +657,7 @@ export default function DriverNetworkPresentation() {
           }`}>
             <div className="p-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center">
-                  <span className="mr-2">📋</span>
+                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   Slide Navigation
                 </h3>
                 {isMobile && (
@@ -1144,30 +754,12 @@ export default function DriverNetworkPresentation() {
               </button>
               
               <div className="w-px h-6 bg-white/30"></div>
-              
               <button
                 onClick={() => setShowThumbnails(!showThumbnails)}
                 className={`p-2 rounded-full transition-all ${showThumbnails ? 'bg-blue-500/30' : 'hover:bg-white/20'}`}
                 title="Toggle thumbnails"
               >
                 ⊞
-              </button>
-              
-              <button
-                onClick={() => setShowSpeakerNotes(!showSpeakerNotes)}
-                className={`p-2 rounded-full transition-all ${showSpeakerNotes ? 'bg-yellow-500/30' : 'hover:bg-white/20'}`}
-                title="Toggle speaker notes (N)"
-              >
-                📝
-              </button>
-              
-              
-              <button
-                onClick={() => setShowAnalytics(!showAnalytics)}
-                className={`p-2 rounded-full transition-all ${showAnalytics ? 'bg-purple-500/30' : 'hover:bg-white/20'}`}
-                title="View analytics"
-              >
-                📊
               </button>
               
               <button
@@ -1181,28 +773,8 @@ export default function DriverNetworkPresentation() {
           </div>
         )}
 
-        {/* Enhanced Header with Presentation Controls */} 
+        {/* Enhanced Header */} 
         <div className={`fixed top-0 left-0 right-0 z-50 bg-black/90 dark:bg-gray-900/95 backdrop-blur-md border-b border-white/20 dark:border-gray-700/30 no-print transition-transform duration-300 ${isFullscreen ? 'hidden' : ''} ${!isHeaderVisible ? '-translate-y-full' : 'translate-y-0'}`}> 
-          {/* Navigation buttons at screen edges */}
-          <div className="absolute left-0 top-0 bottom-0 flex items-center pl-4">
-            <button
-              onClick={() => navigateTab('prev')}
-              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/70 rounded-lg transition-all backdrop-blur-md bg-black/40 border-2 border-white/30 dark:border-gray-500/50 shadow-lg"
-              title="Previous slide (←)"
-            >
-              ←
-            </button>
-          </div>
-          <div className="absolute right-0 top-0 bottom-0 flex items-center pr-4">
-            <button
-              onClick={() => navigateTab('next')}
-              className="p-3 text-white dark:text-white dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/70 rounded-lg transition-all backdrop-blur-md bg-black/40 border-2 border-white/30 dark:border-gray-500/50 shadow-lg"
-              title="Next slide (→)"
-            >
-              →
-            </button>
-          </div>
-          
           <Container>
             <div className="flex justify-between items-center py-3">
               {/* Left Controls */} 
@@ -1223,7 +795,6 @@ export default function DriverNetworkPresentation() {
                     <span>Slide {tabs.indexOf(activeTab) + 1} of {tabs.length}</span>
                     {presentationStartTime && (
                       <div className="flex items-center space-x-1">
-                        <span>⏱</span>
                         <span>{formatTime(slideTimer)}</span>
                       </div>
                     )}
@@ -1264,102 +835,40 @@ export default function DriverNetworkPresentation() {
               <div className="flex items-center space-x-2 mr-16">
                 <button
                   onClick={() => setShowThumbnails(!showThumbnails)}
-                  className={`p-2 rounded transition-all ${showThumbnails 
-                    ? 'bg-blue-500/20 text-blue-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                  className={`px-3 py-1.5 text-xs rounded-lg font-semibold transition-all border ${showThumbnails 
+                    ? 'bg-blue-600/20 text-blue-200 border-blue-500/30' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 border-white/20'}`}
                   title="Toggle thumbnails (T)"
                 >
-                  ⊞
+                  Thumbnails
                 </button>
-                
-                <button
-                  onClick={() => setShowSpeakerNotes(!showSpeakerNotes)}
-                  className={`p-2 rounded transition-all ${showSpeakerNotes 
-                    ? 'bg-yellow-500/20 text-yellow-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
-                  title="Toggle speaker notes (N)"
-                >
-                  📝
-                </button>
-                
-                
-                <button
-                  onClick={() => setShowAnalytics(!showAnalytics)}
-                  className={`p-2 rounded transition-all ${showAnalytics 
-                    ? 'bg-purple-500/20 text-purple-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
-                  title="View analytics"
-                >
-                  📊
-                </button>
-                
-                <button
-                  onClick={toggleFullscreen}
-                  className={`p-2 rounded transition-all ${isFullscreen 
-                    ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
-                  title="Toggle fullscreen (F11)"
-                >
-                  ⛶
-                </button>
-                
+
                 {activeTab !== 'agenda-overview' && (
                   <button
                     onClick={() => goToSlide('agenda-overview')}
-                    className="px-3 py-1.5 text-xs bg-blue-600/20 dark:bg-blue-700/30 text-blue-300 dark:text-blue-200 rounded-lg font-semibold hover:bg-blue-600/30 dark:hover:bg-blue-700/40 transition-all flex items-center border border-blue-500/30 dark:border-blue-600/40"
+                    className="px-3 py-1.5 text-xs bg-blue-600/20 dark:bg-blue-700/30 text-blue-200 rounded-lg font-semibold hover:bg-blue-600/30 dark:hover:bg-blue-700/40 transition-all border border-blue-500/30"
                     title="Back to agenda overview"
                   >
-                    🏠 Overview
+                    Overview
                   </button>
                 )}
-                
-                <div className="relative group">
-                  <button
-                    className="px-3 py-1.5 text-xs bg-gray-600 dark:bg-gray-700 text-white dark:text-white rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-600 transition-all flex items-center"
-                    title="Export options"
-                  >
-                    {isExporting ? '⏳' : '📤'} Export
-                  </button>
-                  <div className="absolute right-0 top-full mt-1 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <div className="p-1">
-                      <button
-                        onClick={printPresentation}
-                        className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
-                        disabled={isExporting}
-                      >
-                        🖨️ Print All Slides
-                      </button>
-                      <button
-                        onClick={exportSingleSlideToPDF}
-                        className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
-                        disabled={isExporting}
-                      >
-                        📄 PDF - Current Slide
-                      </button>
-                      <button
-                        onClick={exportAllSlidesToPDF}
-                        className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
-                        disabled={isExporting}
-                      >
-                        📑 PDF - Full Presentation
-                      </button>
-                      <button
-                        onClick={exportToImages}
-                        className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
-                        disabled={isExporting}
-                      >
-                        🖼️ Image - Current Slide
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
+
+                <button
+                  onClick={toggleFullscreen}
+                  className={`px-3 py-1.5 text-xs rounded-lg font-semibold transition-all border ${isFullscreen 
+                    ? 'bg-green-600/20 text-green-200 border-green-500/30' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 border-white/20'}`}
+                  title="Toggle fullscreen (F11)"
+                >
+                  Fullscreen
+                </button>
+
                 <button
                   onClick={startPresentation}
                   className="px-3 py-1.5 text-xs bg-gradient-to-r from-[#276EF1] to-blue-600 text-white dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all"
                   title="Start presentation"
                 >
-                  ▶ Start
+                  Start
                 </button>
               </div>
             </div>
@@ -1367,39 +876,9 @@ export default function DriverNetworkPresentation() {
         </div>
 
 
-        {/* Speaker Notes Panel */} 
-        {showSpeakerNotes && (
-          <div className="fixed bottom-0 left-0 right-0 z-30 bg-yellow-50 dark:bg-yellow-900/20 border-t border-yellow-200 dark:border-yellow-700 max-h-40 overflow-y-auto no-print">
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 flex items-center">
-                  <span className="mr-2">📝</span>
-                  Speaker Notes - Slide {tabs.indexOf(activeTab) + 1}
-                </h3>
-                <button
-                  onClick={() => setShowSpeakerNotes(false)}
-                  className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-200 transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="space-y-1">
-                {(speakerNotes[activeTab] || ['No speaker notes for this slide']).map((note, index) => (
-                  <div key={index} className="flex items-start space-x-2 text-sm text-yellow-800 dark:text-yellow-200">
-                    <span className="w-4 h-4 rounded-full bg-yellow-200 dark:bg-yellow-700 flex items-center justify-center text-xs font-bold mt-0.5">
-                      {index + 1}
-                    </span>
-                    <span>{note}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Main Content with Slide Transitions */} 
         <main 
-          className={`presentation-slide ${isFullscreen ? 'pt-8 pb-16' : 'pt-20 pb-8'} ${showSpeakerNotes && !isMobile ? 'pb-48' : showSpeakerNotes ? 'pb-32' : ''} ${showThumbnails && isMobile ? 'pb-64' : ''} slide-container ${slideTransition} ${showThumbnails && !isFullscreen && !isMobile ? 'ml-80' : ''} transition-all duration-300`}
+          className={`presentation-slide ${isFullscreen ? 'pt-8 pb-16' : 'pt-20 pb-8'} ${showThumbnails && isMobile ? 'pb-64' : ''} slide-container ${slideTransition} ${showThumbnails && !isFullscreen && !isMobile ? 'ml-80' : ''} transition-all duration-300`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -1596,63 +1075,7 @@ export default function DriverNetworkPresentation() {
           </div>
         )}
 
-        {/* Analytics Panel */} 
-        {showAnalytics && (
-          <div className="fixed top-0 right-0 bottom-0 z-50 bg-white dark:bg-gray-900 shadow-2xl w-96 p-6 border-l border-gray-200 dark:border-gray-700 overflow-y-auto no-print">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center">
-                <span className="mr-2">📊</span>
-                Presentation Analytics
-              </h3>
-              <button
-                onClick={() => setShowAnalytics(false)}
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2">Session Summary</h4>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <div className="text-gray-500 dark:text-gray-400">Duration</div>
-                    <div className="text-lg font-bold text-gray-900 dark:text-gray-100">{formatTime(generateAnalyticsReport().sessionSummary.sessionDuration)}</div>
-                  </div>
-                  <div>
-                    <div className="text-gray-500 dark:text-gray-400">Slide Views</div>
-                    <div className="text-lg font-bold text-gray-900 dark:text-gray-100">{generateAnalyticsReport().sessionSummary.totalSlideViews}</div>
-                  </div>
-                  <div>
-                    <div className="text-gray-500 dark:text-gray-400">Navigations</div>
-                    <div className="text-lg font-bold text-gray-900 dark:text-gray-100">{analytics.navigationActions}</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2">Slide Engagement</h4>
-                <div className="space-y-2">
-                  {generateAnalyticsReport().slideAnalytics.map(slide => (
-                    <div key={slide.slideId} className="text-sm">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-800 dark:text-gray-200">{slide.slideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
-                        <span className="text-gray-500 dark:text-gray-400">{slide.views} view{slide.views !== 1 ? 's' : ''}</span>
-                      </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div 
-                          className="bg-blue-500 h-1.5 rounded-full"
-                          style={{ width: `${(slide.timeSpent / Math.max(...Object.values(analytics.timeOnSlide))) * 100}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Analytics removed */}
 
         {/* Bottom Navigation - Spread Apart */}
         {!isFullscreen && (
