@@ -268,6 +268,22 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({
                 99.9% Uptime
               </div>
             </div>
+
+            {/* Multi-Vertical Leadership */}
+            <div className="text-center group">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform duration-300">
+                🏨
+              </div>
+              <h3 className="text-xl font-bold text-amber-600 dark:text-amber-400 mb-3">
+                Multi-Vertical Leadership
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                DN is a leader as a multi-vertical service network across the hospitality and real estate industries
+              </p>
+              <div className="mt-4 text-2xl font-bold text-amber-500">
+                Hospitality • Real Estate
+              </div>
+            </div>
           </div>
         </div>
       </div>

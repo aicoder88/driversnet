@@ -194,7 +194,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
           <div className="inline-block px-6 py-3 bg-white/20 rounded-full font-semibold text-lg mb-6">
             🎯 Next Steps
           </div>
-          <h2 className="text-4xl font-bold mb-6">Ready to Integrate with Uber Freight?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Integrate with Drivers Net?</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Three simple steps to transform your logistics capacity
           </p>

@@ -278,6 +278,31 @@ export default function DriverNetworkPresentation() {
     window.print();
   };
 
+  const waitForImagesAndFonts = async (container: Element) => {
+    try {
+      const images = Array.from(container.querySelectorAll('img')) as HTMLImageElement[];
+      const pending: Promise<void>[] = [];
+      for (const img of images) {
+        if (!img.complete || (img.naturalWidth === 0 && img.naturalHeight === 0)) {
+          pending.push(new Promise<void>((resolve) => {
+            const onDone = () => {
+              img.removeEventListener('load', onDone);
+              img.removeEventListener('error', onDone);
+              resolve();
+            };
+            img.addEventListener('load', onDone, { once: true });
+            img.addEventListener('error', onDone, { once: true });
+          }));
+        }
+      }
+      // Wait for web fonts if supported
+      const fontsReady = (document as any).fonts?.ready?.catch?.(() => undefined);
+      await Promise.all([Promise.all(pending), fontsReady].filter(Boolean) as Promise<any>[]);
+    } catch {
+      // Best-effort only
+    }
+  };
+
   const exportSingleSlideToPDF = async () => {
     setIsExporting(true);
     try {
@@ -288,7 +313,7 @@ export default function DriverNetworkPresentation() {
         format: [297, 167] // 16:9 ratio, width 297mm
       });
 
-      const slideElement = document.querySelector('.presentation-slide main');
+      const slideElement = document.querySelector('.presentation-slide');
       if (!slideElement) {
         throw new Error('Slide element not found');
       }
@@ -296,6 +321,9 @@ export default function DriverNetworkPresentation() {
       // Temporarily hide navigation elements for clean export
       const elementsToHide = document.querySelectorAll('.no-print');
       elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
+
+      // Ensure assets are ready before rendering
+      await waitForImagesAndFonts(slideElement);
 
       // Create canvas with optimized settings for presentations
       const canvas = await html2canvas(slideElement as HTMLElement, {
@@ -377,8 +405,11 @@ export default function DriverNetworkPresentation() {
         // Wait for slide to render
         await new Promise(resolve => setTimeout(resolve, 500));
         
-        const slideElement = document.querySelector('.presentation-slide main');
+        const slideElement = document.querySelector('.presentation-slide');
         if (!slideElement) continue;
+
+        // Wait for assets within the slide
+        await waitForImagesAndFonts(slideElement);
 
         // Create canvas for this slide
         const canvas = await html2canvas(slideElement as HTMLElement, {

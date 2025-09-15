@@ -55,6 +55,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: url('/cybercursor_32.png') 16 16, auto;
   }
 }

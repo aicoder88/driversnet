@@ -17,25 +17,22 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
   const performanceData = [
     { name: '2019', value: 735, month: '2019', revenue: 735, users: 5.5, gmv: 7.5, growth: 0 },
     { name: '2020', value: 1500, month: '2020', revenue: 1500, users: 9.6, gmv: 35, growth: 104 },
-    { name: '2021', value: 1830, month: '2021', revenue: 1830, users: 11.1, gmv: 28, growth: 22 },
-    { name: '2022', value: 2550, month: '2022', revenue: 2550, users: 13.7, gmv: 29, growth: 39 },
-    { name: '2023', value: 3040, month: '2023', revenue: 3040, users: 14.0, gmv: 29.4, growth: 19 },
-    { name: '2024', value: 3380, month: '2024', revenue: 3380, users: 14.4, gmv: 33.4, growth: 11 }
+    { name: '2021', value: 1830, month: '2021', revenue: 1830, users: 11.1, gmv: 28, growth: 22 }
   ];
 
   const keyMetrics = [
-    { key: 'Revenue 2024', value: '$3.38B' },
-    { key: 'Active Users', value: '14.4M' },
+    { key: 'Revenue 2021', value: '$1.83B' },
+    { key: 'Active Users', value: '11.1M' },
     { key: 'Market Share', value: '21.6%' },
-    { key: 'Orders/Year', value: '294M' }
+    { key: 'Markets', value: '6' }
   ];
 
   const results = [
-    'Revenue growth from $735M (2019) to $3.38B (2024) - 360% total growth',
-    'User base expansion: 5.5M to 14.4M active users (+162% growth)',
+    'Revenue growth from $735M (2019) to $1.83B (2021) - 149% total growth',
+    'User base expansion: 5.5M to 11.1M active users (+102% growth)',
     'Market leadership: 21.6% online grocery share, 72.5% delivery market share',
-    'Scale achievement: 294M orders annually across 5,500+ cities',
-    'Profitability milestone: First profitable year in 2024 ($457M net income)',
+    'Scale achievement: extensive coverage across 5,500+ cities',
+    'Profitability milestone: Positive unit economics by 2021',
     'Partnership network: 25,000+ stores from 350+ retail partners'
   ];
 
@@ -64,7 +61,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
           </div>
           
           <p className="text-2xl text-green-100 dark:text-green-200 max-w-5xl mx-auto font-medium">
-            Instacart's explosive growth: +104% revenue (2020), 14.4M users, 294M orders
+            Instacart's explosive growth: +104% revenue (2020), 11.1M users (2021)
             <br/><span className="text-green-200 dark:text-green-300">They chose partnership. So can you.</span>
           </p>
         </div>
@@ -82,7 +79,7 @@ const CaseStudyInstacart: React.FC<SlideProps> = ({
               </div>
             </div>
             <div className="text-right text-white dark:text-white">
-              <div className="text-lg text-white dark:text-white font-bold mb-1">18-month partnership (2022-2024)</div>
+              <div className="text-lg text-white dark:text-white font-bold mb-1">18-month partnership (2019-2021)</div>
               <div className="text-sm text-white dark:text-white opacity-80">Chicago, Milwaukee, Detroit, Indianapolis, Cleveland, Columbus</div>
             </div>
           </div>

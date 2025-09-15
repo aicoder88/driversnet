@@ -383,7 +383,7 @@ const NextSteps: React.FC<SlideProps> = ({
       {/* Enhanced Final Call to Action with Visual Impact */}
       <div className="relative overflow-hidden text-center space-y-8 backdrop-blur-lg bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-800 p-16 rounded-3xl text-white border border-blue-400/30 dark:border-blue-500/30 shadow-2xl">
         {/* Background Graphics */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-10 left-10 w-32 h-32 bg-white/20 rounded-full animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/15 rounded-full animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/25 rounded-full animate-pulse delay-500"></div>
@@ -433,7 +433,7 @@ const NextSteps: React.FC<SlideProps> = ({
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
           <a
             href={CALENDLY_URL}
             target="_blank"
@@ -452,7 +452,7 @@ const NextSteps: React.FC<SlideProps> = ({
           </a>
         </div>
         
-        <div className="pt-8 opacity-75">
+        <div className="relative z-10 pt-8 opacity-75">
           <p>Available for partnership discussions • {CONTACT_EMAIL}</p>
         </div>
       </div>
