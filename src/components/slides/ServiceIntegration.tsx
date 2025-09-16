@@ -43,10 +43,10 @@ const ServiceIntegration: React.FC<SlideProps> = ({
       <div className="text-center space-y-12">
         <div className="space-y-6">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-full font-semibold text-lg">
-            🔗 Seamless Uber Freight Integration
+            🔗 Seamless Platform Integration
           </div>
           <h1 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-            🚀 Uber Freight
+            🚀 Your Platform
             <br />
             <span className="text-black dark:text-white">Integration</span>
           </h1>
@@ -60,12 +60,12 @@ const ServiceIntegration: React.FC<SlideProps> = ({
         {/* Clear Value Proposition Visual */}
         <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-3xl border border-gray-200 dark:border-gray-600 shadow-2xl max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 items-center">
-            {/* Uber Freight */}
+            {/* Partner Platform */}
             <div className="text-center">
               <div className="bg-black p-6 rounded-2xl shadow-lg mb-4">
-                <img src="/uber-logo.jpg" alt="Uber Freight" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
+                <img src="/globe.svg" alt="Your Platform" className="w-16 h-16 mx-auto object-contain rounded-lg bg-white p-2" />
               </div>
-              <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">UBER FREIGHT</h3>
+              <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-2">YOUR PLATFORM</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">Your existing platform</p>
             </div>
             
@@ -136,7 +136,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
                   <h4 className="text-xl font-bold text-green-800 dark:text-green-200">Workflow Automation</h4>
                 </div>
                 <ul className="space-y-2 text-green-700 dark:text-green-300">
-                  <li>• Seamless handoff from Uber Freight platform</li>
+                  <li>• Seamless handoff from your platform</li>
                   <li>• Automated driver matching based on location/skills</li>
                   <li>• Dynamic pricing and capacity management</li>
                   <li>• Exception handling and escalation protocols</li>
@@ -182,7 +182,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
             
             <div className="mt-6 p-4 bg-gradient-to-r from-[#276EF1]/20 to-indigo-500/20 rounded-xl border border-blue-300/30">
               <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">💡 Custom Solutions Available</h4>
-              <p className="text-blue-700 dark:text-blue-300 text-sm">Bespoke service packages tailored to specific Uber Freight requirements and volume commitments.</p>
+              <p className="text-blue-700 dark:text-blue-300 text-sm">Bespoke service packages tailored to your platform's requirements and volume commitments.</p>
             </div>
           </div>
         </div>
@@ -264,7 +264,7 @@ const ServiceIntegration: React.FC<SlideProps> = ({
               📞 Schedule Integration Call
             </a>
             <a
-              href={`mailto:${PARTNERSHIPS_EMAIL}?subject=Integration Team Contact&body=Hi Driver Network Team,%0D%0A%0D%0AI'm interested in discussing integration opportunities with Uber Freight.%0D%0A%0D%0APlease contact me to schedule a technical integration call.%0D%0A%0D%0AThanks!`}
+              href={`mailto:${PARTNERSHIPS_EMAIL}?subject=Integration Team Contact&body=Hi Driver Network Team,%0D%0A%0D%0AI'm interested in discussing integration opportunities with your platform.%0D%0A%0D%0APlease contact me to schedule a technical integration call.%0D%0A%0D%0AThanks!`}
               className="inline-block bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition cursor-pointer"
             >
               📧 Email Integration Team

@@ -2,9 +2,9 @@
   <!-- Background circle -->
   <circle cx="16" cy="16" r="16" fill="#000000"/>
   
-  <!-- Uber-style geometric pattern -->
+  <!-- Geometric pattern -->
   <g transform="translate(6, 6)">
-    <!-- Main geometric shape inspired by Uber's design -->
+    <!-- Main geometric shape -->
     <path d="M10 2 L18 6 L18 14 L10 18 L2 14 L2 6 Z" fill="#FFFFFF" stroke="none"/>
     
     <!-- Inner accent -->

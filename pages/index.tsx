@@ -286,8 +286,8 @@ export default function DriverNetworkPresentation() {
     'executive-summary': [
       'Open with confidence - emphasize our proven track record',
       'Highlight 1,000+ drivers as key differentiator',
-      '21 markets show we understand scale Uber needs',
-      'Focus on reliability metrics - this is what matters to Uber'
+      '21 markets show we understand the scale your company needs',
+      'Focus on reliability metrics - this is what matters to your company'
     ],
     'company-evolution': [
       'Show growth trajectory - we\'ve been building this for 12 years',
@@ -299,10 +299,10 @@ export default function DriverNetworkPresentation() {
       'Lead with concrete numbers - 100% on-time delivery',
       'Safety record is crucial for partnership',
       '$50M in value delivered without major incidents',
-      'These metrics directly address Uber\'s KPIs'
+      'These metrics directly address your KPIs'
     ],
     'case-study-instacart': [
-      'This is our strongest use case - similar to Uber model',
+      'This is our strongest use case - similar to on-demand platform model',
       'Emphasize gig economy compatibility',
       '6 markets proves we can scale quickly',
       'Zero delays shows operational excellence'
@@ -310,7 +310,7 @@ export default function DriverNetworkPresentation() {
     'partnership-proposal': [
       'This is the key slide - pause for questions',
       'Emphasize mutual benefit, not just what we need',
-      'Strategic fit with Uber\'s growth plans',
+      'Strategic fit with your growth plans',
       'Ready to start pilot program immediately'
     ],
     'next-steps': [
@@ -324,8 +324,8 @@ export default function DriverNetworkPresentation() {
   return (
     <>
       <NextSeo
-        title="Driver Network Inc. - Uber Freight Partnership Proposal"
-        description="Comprehensive logistics solutions for Uber's freight delivery network"
+        title="Driver Network Inc. - Enterprise Partnership Proposal"
+        description="Comprehensive logistics solutions for your delivery network"
         noindex={true}
         nofollow={true}
         additionalMetaTags={[

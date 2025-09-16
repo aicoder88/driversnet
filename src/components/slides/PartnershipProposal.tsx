@@ -90,7 +90,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
 
   const mutualBenefits = [
     {
-      category: 'For Uber Freight',
+      category: 'For Your Platform',
       benefits: [
         'Instant capacity expansion without capital investment',
         'Access to specialized driver networks (automotive, medical, etc.)',
@@ -104,7 +104,7 @@ const PartnershipProposal: React.FC<SlideProps> = ({
     {
       category: 'For Driver Network',
       benefits: [
-        'Access to Uber\'s vast customer base and brand power',
+        'Access to your customer base and brand reach',
         'Technology platform integration and optimization',
         'Increased driver utilization and revenue streams',
         'Strategic positioning in enterprise logistics market',
@@ -183,14 +183,14 @@ const PartnershipProposal: React.FC<SlideProps> = ({
           </div>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Uber Freight */}
+            {/* Partner Platform */}
             <div className="relative">
               <div className="bg-black text-white p-8 rounded-2xl shadow-2xl border-4 border-gray-800">
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-4">
-                    <img src="/uber-logo.jpg" alt="Uber Freight" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
+                    <img src="/globe.svg" alt="Your Platform" className="w-16 h-16 object-contain rounded-lg bg-white p-2" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">UBER FREIGHT</h3>
+                  <h3 className="text-2xl font-bold mb-4">YOUR PLATFORM</h3>
                   <div className="space-y-2 text-sm">
                     <div className="bg-gray-800 px-3 py-2 rounded-lg">🌐 Global Platform</div>
                     <div className="bg-gray-800 px-3 py-2 rounded-lg">📱 Technology Leadership</div>
