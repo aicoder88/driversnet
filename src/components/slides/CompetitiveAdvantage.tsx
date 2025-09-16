@@ -292,15 +292,15 @@ const CompetitiveAdvantage: React.FC<SlideProps> = ({
                 <span className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-800/60 border border-amber-300/40 dark:border-amber-700/40 text-amber-800 dark:text-amber-200">Staging & Install</span>
               </div>
               <div className="mt-5 grid grid-cols-3 gap-3 max-w-xs mx-auto">
-                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3 text-center">
                   <div className="text-lg font-bold text-amber-700 dark:text-amber-300">19+</div>
                   <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">Markets</div>
                 </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3 text-center">
                   <div className="text-lg font-bold text-amber-700 dark:text-amber-300">Top</div>
                   <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">Brands</div>
                 </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3">
+                <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl border border-amber-200/60 dark:border-amber-700/60 p-3 text-center">
                   <div className="text-lg font-bold text-amber-700 dark:text-amber-300">99%+</div>
                   <div className="text-[10px] uppercase tracking-wide text-amber-700/80 dark:text-amber-300/80">SLA</div>
                 </div>
