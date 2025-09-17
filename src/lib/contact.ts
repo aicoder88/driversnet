@@ -1,4 +1,4 @@
-// Updated contact email for all communications - force rebuild
+// Updated contact email for all communications - with fullscreen scrolling fix
 export const CONTACT_EMAIL = 'Nathan@driversnet.io';
 export const PARTNERSHIPS_EMAIL = 'Nathan@driversnet.io';
 export const CALENDLY_URL = 'https://calendly.com/nathan-driversnet/driver-s-net-inquiry-meeting-1';
