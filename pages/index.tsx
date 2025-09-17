@@ -544,6 +544,7 @@ export default function DriverNetworkPresentation() {
             height: 100vh;
             z-index: 9999;
             background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(219, 234, 254) 100%);
+            overflow-y: auto;
           }
           
           .dark .fullscreen-mode {
