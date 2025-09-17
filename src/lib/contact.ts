@@ -1,3 +1,4 @@
+// Updated contact email for all communications
 export const CONTACT_EMAIL = 'Nathan@driversnet.io';
 export const PARTNERSHIPS_EMAIL = 'Nathan@driversnet.io';
 export const CALENDLY_URL = 'https://calendly.com/nathan-driversnet/driver-s-net-inquiry-meeting-1';
